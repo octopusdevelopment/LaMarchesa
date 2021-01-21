@@ -65,28 +65,28 @@
         </style>
     </head>
     <body>
-        <h1>My Shop</h1>
+        <h1>La marchesa</h1>
         <p>
-            Invoice no. {{ order.id }}</br>
+            Commande NO° {{ order.id }}</br>
             <span class="secondary">
             {{ order.created|date:"M d, Y" }}
             </span>
         </p>
-        <h3>Bill to</h3>
+        <h3>A l'ordre de </h3>
         <p>
             {{ order.first_name }} {{ order.last_name }}<br>
             {{ order.email }}<br>
             {{ order.address }}<br>
             {{ order.postal_code }}, {{ order.city }}
         </p>
-        <h3>Items bought</h3>
+        <h3>Articles acheté :</h3>
         <table>
             <thead>
                 <tr>
-                    <th>Product</th>
-                    <th>Price</th>
-                    <th>Quantity</th>
-                    <th>Cost</th>
+                    <th>Produit</th>
+                    <th>Prix</th>
+                    <th>Quantité</th>
+                    <th>Total produit</th>
                 </tr>
             </thead>
             <tbody>
@@ -106,7 +106,7 @@
         </table>
     
         <span class="{% if order.paid %}paid{% else %}pending{% endif %}">
-        {% if order.paid %}Paid{% else %}Pending payment{% endif %}
+        {% if order.paid %}Payé{% else %}Non payé{% endif %}
         </span>
    </body>
    </html>
