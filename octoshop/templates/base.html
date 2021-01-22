@@ -58,16 +58,13 @@
 					<li>
 						<a href="about.html">A propos</a>
 					</li>
-					<li>
-						<a href="{% url 'main:products' %}">Chaussures</a>
-					</li>
+					{% for cat in categories %}
+						<li>
+							<a href="{{cat.get_absolute_url}}">{{cat.name}}</a>
+						</li>
+					{% endfor %}
 
-					<li >
-						<a href="{% url 'main:products' %}">Sacs</a>
-					</li>
-					<li >
-						<a href="{% url 'main:products' %}">Accessoires</a>
-					</li>
+					
 
 
 					<li>
@@ -251,16 +248,11 @@
 							<li>
 								<a href="about.html">A propos</a>
 							</li>
-							<li>
-								<a href="{% url 'main:products' %}">Chaussures</a>
-							</li>
-
-							<li >
-								<a href="{% url 'main:products' %}">Sacs</a>
-							</li>
-							<li >
-								<a href="{% url 'main:products' %}">Accessoires</a>
-							</li>
+							{% for cat in categories %}
+								<li>
+									<a href="{{cat.get_absolute_url}}">{{cat.name}}</a>
+								</li>
+							{% endfor %}
 
 
 							<li>
@@ -398,17 +390,11 @@
 					<li>
 						<a href="about.html">A propos</a>
 					</li>
-					<li>
-						<a href="{% url 'main:products' %}">Chaussures</a>
-					</li>
-
-					<li>
-						<a href="{% url 'main:products' %}">Sacs</a>
-					</li>
-					<li>
-						<a href="{% url 'main:products' %}">Accessoires</a>
-					</li>
-
+					{% for cat in categories %}
+						<li>
+							<a href="{{cat.get_absolute_url}}">{{cat.name}}</a>
+						</li>
+					{% endfor %}
 
 					<li>
 						<a href="/contact">Contact</a>

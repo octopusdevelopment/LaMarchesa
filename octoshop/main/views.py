@@ -13,18 +13,28 @@ class IndexView(TemplateView):
         return context
 
 
-def product_list(request, category_slug=None):
+def product_list(request, category_slug=None, sous_cat_slug=None):
     sous_cat = None
+    cat= None
     sous_categories = SubCateory.objects.all()
     products = Product.objects.filter(afficher=True)
+
     if category_slug:
-        sous_cat = get_object_or_404(SubCateory, slug=category_slug)
-        # products = products.filter(subCategory = category)
+        cat = get_object_or_404(Category, slug=category_slug)
+        # sous_cat = get_object_or_404(SubCateory, slug=category_slug)
+
+        products = products.filter(subCategory__category = cat)
+        print('hellooooo')
+
+    elif sous_cat_slug:
+        sous_cat = get_object_or_404(SubCateory, slug=sous_cat_slug)
         products = products.filter(subCategory = sous_cat)
+
+
     return render(request,
         'product.html',{
             # 'category': sous_cat,
-            'categories' : sous_categories,
+            'sous_categories' : sous_categories,
             'products' : products,
         }
     )
