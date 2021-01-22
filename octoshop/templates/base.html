@@ -61,12 +61,14 @@
 					{% for cat in categories %}
 						<li>
 							<a href="{{cat.get_absolute_url}}">{{cat.name}}</a>
+							<ul class="sub_menu">
+								{% for sc in sub_cat %}
+									<li><a href="index.html">{{sc.name}}</a></li>
+								{% endfor %}
+								
+							</ul>
 						</li>
 					{% endfor %}
-
-					
-
-
 					<li>
 						<a href="/contact">Contact</a>
 					</li>
@@ -249,10 +251,16 @@
 								<a href="about.html">A propos</a>
 							</li>
 							{% for cat in categories %}
-								<li>
-									<a href="{{cat.get_absolute_url}}">{{cat.name}}</a>
-								</li>
-							{% endfor %}
+							<li>
+								<a href="{{cat.get_absolute_url}}">{{cat.name}}</a>
+								<ul class="sub_menu">
+									{% for sc in sub_cat %}
+										<li><a href="index.html">{{sc.name}}</a></li>
+									{% endfor %}
+									
+								</ul>
+							</li>
+						{% endfor %}
 
 
 							<li>
@@ -393,6 +401,12 @@
 					{% for cat in categories %}
 						<li>
 							<a href="{{cat.get_absolute_url}}">{{cat.name}}</a>
+							<ul class="sub_menu">
+								{% for sc in sub_cat %}
+									<li><a href="index.html">{{sc.name}}</a></li>
+								{% endfor %}
+								
+							</ul>
 						</li>
 					{% endfor %}
 

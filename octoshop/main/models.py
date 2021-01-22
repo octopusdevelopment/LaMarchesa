@@ -32,7 +32,7 @@ class Category(models.Model):
 class SubCateory(models.Model):
     name = models.CharField(max_length=200, db_index=True)
     slug = models.SlugField(max_length=200, unique=True)
-    category = models.ForeignKey(Category, on_delete=models.CASCADE, verbose_name='categorie')
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, verbose_name='categorie', related_name="sub_categories")
     class Meta:
         ordering = ('name',)
         verbose_name = 'Sous Catégorie'
