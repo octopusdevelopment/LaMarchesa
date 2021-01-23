@@ -73,7 +73,6 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'cart.context_processors.cart',
                 'main.context_processors.category',
-                'main.context_processors.sub_category'
             ],
         },
     },

@@ -26,7 +26,7 @@
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="{% static 'vendor/animsition/css/animsition.min.css' %}">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{% static 'vendor/select2/select2.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/select2/select2.css' %}">
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="{% static 'vendor/daterangepicker/daterangepicker.css' %}">
 <!--===============================================================================================-->
@@ -62,10 +62,9 @@
 						<li>
 							<a href="{{cat.get_absolute_url}}">{{cat.name}}</a>
 							<ul class="sub_menu">
-								{% for sc in sub_cat %}
-									<li><a href="index.html">{{sc.name}}</a></li>
+								{% for c in cat.sub_categories.all %}
+									<li><a href="index.html">{{c}}</a></li>
 								{% endfor %}
-								
 							</ul>
 						</li>
 					{% endfor %}
@@ -251,16 +250,15 @@
 								<a href="about.html">A propos</a>
 							</li>
 							{% for cat in categories %}
-							<li>
-								<a href="{{cat.get_absolute_url}}">{{cat.name}}</a>
-								<ul class="sub_menu">
-									{% for sc in sub_cat %}
-										<li><a href="index.html">{{sc.name}}</a></li>
-									{% endfor %}
-									
-								</ul>
-							</li>
-						{% endfor %}
+								<li>
+									<a href="{{cat.get_absolute_url}}">{{cat.name}}</a>
+									<ul class="sub_menu">
+										{% for c in cat.sub_categories.all %}
+											<li><a href="index.html">{{c}}</a></li>
+										{% endfor %}
+									</ul>
+								</li>
+							{% endfor %}
 
 
 							<li>
@@ -402,10 +400,9 @@
 						<li>
 							<a href="{{cat.get_absolute_url}}">{{cat.name}}</a>
 							<ul class="sub_menu">
-								{% for sc in sub_cat %}
-									<li><a href="index.html">{{sc.name}}</a></li>
+								{% for c in cat.sub_categories.all %}
+									<li><a href="index.html">{{c}}</a></li>
 								{% endfor %}
-								
 							</ul>
 						</li>
 					{% endfor %}
