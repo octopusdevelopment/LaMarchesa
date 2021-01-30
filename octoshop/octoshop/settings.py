@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'main.apps.MainConfig',
     'cart.apps.CartConfig',
     'orders.apps.OrdersConfig',
+    'livraison.apps.LivraisonConfig',
     'debug_toolbar',
 
 

@@ -5,6 +5,8 @@ from django.http import HttpResponse
 from django.template.loader import render_to_string
 import weasyprint
 from .models import OrderItem, Order
+from livraison.models import Wilaya, Commune
+
 from .forms import OrderCreateForm
 from .tasks import order_created
 from cart.cart import Cart
@@ -12,6 +14,7 @@ from cart.cart import Cart
 
 def order_create(request):
     cart = Cart(request)
+    wilayas= Wilaya.objects.all()
     if request.method == 'POST':
         form = OrderCreateForm(request.POST)
         if form.is_valid():
@@ -25,7 +28,7 @@ def order_create(request):
     else:
         form = OrderCreateForm()
     
-    return render(request, 'create.html', {'cart':cart, 'form' : form})
+    return render(request, 'create.html', {'cart':cart, 'form' : form, 'wilayas' : wilayas})
 
 @staff_member_required
 def admin_order_detail(request, order_id):
@@ -42,3 +45,9 @@ def admin_order_pdf(request, order_id):
     # weasyprint.HTML(string=html).write_pdf(response, stylesheets=[weasyprint.CSS(settings.STATIC_ROOT + 'css/pdf.css')])# ajouter le style plus t ard erreur ???
     weasyprint.HTML(string=html).write_pdf(response)
     return response
+
+def load_communes(request):
+    wilaya_id = request.GET.get('wilaya')
+    communes = Commune.objects.filter(Wilaya__id=wilaya_id)
+    return render(request, 'main/commune_dropdown_list_options.html', {'communes': communes})
+

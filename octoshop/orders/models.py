@@ -1,14 +1,17 @@
 from django.db import models
-
+from livraison.models import Wilaya, Commune
+# , CoutLivraison
 # Create your models here.
 from main.models import Product
 
 class Order(models.Model):
     first_name  = models.CharField(verbose_name="Nom" , max_length=50)
     last_name   = models.CharField(verbose_name="Prenom" , max_length=50)
-    addresse     = models.CharField(verbose_name="Adresse" , max_length=250)
+    addresse    = models.CharField(verbose_name="Adresse" , max_length=250)
     phone       = models.CharField(verbose_name="Téléphone" , max_length=25)
     email       = models.EmailField()
+    wilaya      = models.ForeignKey(Wilaya, on_delete=models.SET_NULL, null=True, blank=True)
+    commune     = models.ForeignKey(Commune, on_delete=models.SET_NULL, null=True, blank=True)
     created     = models.DateTimeField(auto_now_add=True)
     updated     = models.DateTimeField(auto_now=True)
     paid        = models.BooleanField(default=False)
@@ -34,3 +37,5 @@ class OrderItem(models.Model):
 
     def get_cost(self):
         return self.price * self.quantity
+
+        

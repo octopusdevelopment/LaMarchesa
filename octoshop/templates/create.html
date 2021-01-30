@@ -3,26 +3,150 @@
 {% static "img" as baseUrl %}
 
 {% block content %}
-
+<center>
  <h1>Checkout</h1>
+ </center>
 
-	<div class="order-info">
-		<h3>Your order</h3>
-		<ul>
-			{% for item in cart %}
-				<li>
-					{{ item.quantity }}x {{ item.product.name }}
-					<span>${{ item.total_price }}</span>
-				</li>
-			{% endfor %}
-		</ul>
-		<p>Total: ${{ cart.get_total_price }}</p>
-	</div>
 
-	<form method="post" class="order-form">
-		{{ form.as_p }}
-			<p><input type="submit" value="Place order"></p>
-		{% csrf_token %}
-	</form>
 
+		<!-- SECTION -->
+		<div class="section">
+			<!-- container -->
+			<div class="container">
+				<!-- row -->
+				<div class="row">
+
+					<div class="col-md-7">
+						<!-- Billing Details -->
+						
+
+						<form class="card-body" method='POST' id="checkoutForm" >
+
+							{% csrf_token %}
+							<!--Grid row-->
+							<div class="row">
+							  <!--Grid column-->
+							  <div class="col-md-6 mb-2">
+								<!--firstName-->
+								<div class="form-group ">
+								  <input class="input" type="text" name="first_name" id="first_name" class="form-control" required>
+								  <label for="nom" class="">Nom</label>
+								</div>
+							  </div>
+							  <div class="col-md-6 mb-2">
+								<!--lastName-->
+								<div class="form-group">
+								  <input class="input" type="text" name="last_name" id="last_name" class="form-control" required>
+								  <label for="prenom" class="">Prenom</label>
+								</div>
+							  </div>
+							</div>
+							<div class="row">
+							<div class="col-md-6 mb-2">
+							  <div class="form-group mb-5">
+								<input class="input" type="text" name="email" id="email" class="form-control" placeholder="youremail@example.com" >
+								<label for="email" class="">Email</label>
+							  </div>
+							</div>
+							<!--telephone-->
+							<div class="col-md-6 mb-2">
+							  <div class="form-group mb-5">
+								<input class="input" type="text" name="telephone" id="telephone" class="form-control" placeholder="votre numéro de téléphone" required>
+								<label  class="">Téléphone</label>
+							  </div>
+							</div>
+							</div>
+							<!--address-->
+							<div class="form-group mb-5">
+							  <input class="input" type="text" name="addresse" id="address" class="form-control" placeholder="1234 Main St">
+							  <label for="adresse" class="">Address</label>
+							</div>
+							<!--Grid row-->
+							<div class="row">
+							  <!--Grid column-->
+							  <div class="col-lg-4 col-md-12 mb-4">
+								<label for="country">Wilaya</label>
+								<select name="wilaya" class="custom-select d-block w-100" id="id_wilaya" required>
+								  <option value='' selected>---------</option>
+								  {% for wilaya in wilayas %}
+								  <option value={{wilaya.pk}}>{{wilaya.name}}</option>
+								  {% endfor %}
+								</select>
+								<div class="invalid-feedback">
+								  Please select a valid wilaya.
+								</div>
+			  
+							  </div>
+							  <!--Grid column-->
+							  <div class="col-lg-4 col-md-6 mb-4">
+								<label for="state">Commune</label>
+								<select name="commune" class="custom-select d-block w-100" id="id_commune" required>
+								  <option value='' selected>---------</option>
+								  {% for commune in communes %}
+								  <option value={{commune.pk}}>{{commune.name}}</option>
+								  {% endfor %}
+								</select>
+								<div class="invalid-feedback">
+								  Please provide a valid state.
+								</div>
+							  </div>
+							  <!--Grid column-->
+							  <!--Grid column-->
+							  <div class="col-lg-4 col-md-6 mb-4">
+								<label for="zip">Code postale</label>
+								<input type="text" class="form-control" id="zip" placeholder="" required>
+								<div class="invalid-feedback">
+								  Code postale requis
+								</div>
+							  </div>
+							  <!--Grid column-->
+							</div>
+							<hr class="mb-4">
+							<button class="btn btn-primary btn-lg btn-block" type="submit">Valider ma commande</button>
+						</form>
+						<!-- Order notes -->
+						<div class="order-notes">
+							<textarea class="input" placeholder="Order Notes"></textarea>
+						</div>
+						<!-- /Order notes -->
+					</div>
+
+					<!-- Order Details -->
+					<div class="col-md-5 order-details">
+						<div class="section-title text-center">
+							<h3 class="title">Your Order</h3>
+						</div>
+						<div class="order-summary">
+							<div class="order-col">
+								<div><strong>PRODUCT</strong></div>
+								<div><strong>TOTAL</strong></div>
+							</div>
+							<div class="order-products">
+								{% for item in cart %}
+									<div class="order-col">
+										<div>{{ item.quantity }}x {{ item.product.name }}</div>
+										<div>{{ item.total_price }} DA</div>
+									</div>
+								{% endfor %}
+								
+							</div>
+							<div class="order-col">
+								<div>Shiping</div>
+								<div><strong>FREE</strong></div>
+							</div>
+							<div class="order-col">
+								<div><strong>TOTAL</strong></div>
+								<div><strong class="order-total">{{ cart.get_total_price }}DA</strong></div>
+							</div>
+						</div>
+
+
+					</div>
+					<!-- /Order Details -->
+				</div>
+				<!-- /row -->
+			</div>
+			<!-- /container -->
+		</div>
+		<!-- /SECTION -->
 {% endblock content %}
