@@ -3,7 +3,7 @@ from django.conf import settings
 from django.contrib.admin.views.decorators import staff_member_required
 from django.http import HttpResponse
 from django.template.loader import render_to_string
-import weasyprint
+# import weasyprint
 from .models import OrderItem, Order
 from livraison.models import Wilaya, Commune
 
@@ -16,15 +16,18 @@ def order_create(request):
     cart = Cart(request)
     wilayas= Wilaya.objects.all()
     if request.method == 'POST':
-        form = OrderCreateForm(request.POST)
-        if form.is_valid():
-            order = form.save()
-            for item in cart:
-                OrderItem.objects.create(order=order,product=item['product'],price=item['price'],quantity=item['quantity'])
-            cart.clear()
-            order_created.delay(order.id)
-            return render(request, 'created.html', {'order': order})
-
+        try:
+            print('il ya pas du tout de probleeme la ')
+            form = OrderCreateForm(request.POST)
+            if form.is_valid():
+                order = form.save()
+                for item in cart:
+                    OrderItem.objects.create(order=order,product=item['product'],price=item['price'],quantity=item['quantity'])
+                cart.clear()
+                order_created.delay(order.id)
+                return render(request, 'created.html', {'order': order})
+        except:
+            print('il ya un gros probleeme')
     else:
         form = OrderCreateForm()
     
@@ -43,11 +46,11 @@ def admin_order_pdf(request, order_id):
     response = HttpResponse(content_type='application/pdf')
     response['Content-Disposition'] = f'filename=order_{order.id}.pdf'
     # weasyprint.HTML(string=html).write_pdf(response, stylesheets=[weasyprint.CSS(settings.STATIC_ROOT + 'css/pdf.css')])# ajouter le style plus t ard erreur ???
-    weasyprint.HTML(string=html).write_pdf(response)
+    # weasyprint.HTML(string=html).write_pdf(response)
     return response
 
 def load_communes(request):
     wilaya_id = request.GET.get('wilaya')
     communes = Commune.objects.filter(Wilaya__id=wilaya_id)
-    return render(request, 'main/commune_dropdown_list_options.html', {'communes': communes})
+    return render(request, 'commune_dropdown_list_options.html', {'communes': communes})
 
