@@ -29,7 +29,6 @@ def product_list(request, category_slug=None):
             cat = get_object_or_404(Category, slug=category_slug)
             products = products.filter(subCategory__category = cat)
         except:
-            print('subactttdfg')
             sous_cat = get_object_or_404(SubCateory, slug=category_slug)
             products = products.filter(subCategory = sous_cat)
 

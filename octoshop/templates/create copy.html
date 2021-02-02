@@ -3,17 +3,7 @@
 {% static "img" as baseUrl %}
 
 {% block content %}
-<style>
-	option {
-		background-color: #ffffff;
-	}
-	option:hover {
-		background-color: #f6f6f6;
-	}
-</style>
-<center>
- <h1>Checkout</h1>
- </center>
+<center> <h1>Checkout</h1> </center>
 
 
 
@@ -26,6 +16,14 @@
 
 					<div class="col-md-7">
 						<!-- Billing Details -->
+						<!-- <form class="card-body" method='POST' id="checkoutForm"  data-communes-url="{% url 'orders:ajax_load_communes' %}">
+							{{form.as_p}}
+							{% csrf_token %}
+						
+							<hr class="mb-4">
+							<button class="btn btn-primary btn-lg btn-block" type="submit">Valider ma commande</button>
+						</form> -->
+
 						<form class="card-body" method='POST' id="checkoutForm" data-communes-url="{% url 'orders:ajax_load_communes' %}">
 							{% csrf_token %}
 							<!--Grid row-->
@@ -34,55 +32,66 @@
 							  <div class="col-md-6 mb-2">
 								<!--firstName-->
 								<div class="form-group ">
-									<input class="input" type="text" name="first_name" id="first_name" class="form-control" placeholder="Votre Nom" required>
+								  <input class="input" type="text" name="first_name" id="first_name" class="form-control" required>
+								  <label for="nom" class="">Nom</label>
 								</div>
 							  </div>
 							  <div class="col-md-6 mb-2">
 								<!--lastName-->
 								<div class="form-group">
-									<input class="input" type="text" name="last_name" id="last_name" class="form-control"placeholder="Votre Prénom" required>
+								  <input class="input" type="text" name="last_name" id="last_name" class="form-control" required>
+								  <label for="prenom" class="">Prenom</label>
 								</div>
 							  </div>
 							</div>
 							<div class="row">
 							<div class="col-md-6 mb-2">
 							  <div class="form-group mb-5">
-								<input class="input" type="text" name="email" id="email" class="form-control" placeholder="VotreEmail@example.com" >
+								<input class="input" type="text" name="email" id="email" class="form-control" placeholder="youremail@example.com" >
+								<label for="email" class="">Email</label>
 							  </div>
 							</div>
 							<!--telephone-->
 							<div class="col-md-6 mb-2">
 							  <div class="form-group mb-5">
 								<input class="input" type="text" name="telephone" id="telephone" class="form-control" placeholder="votre numéro de téléphone" required>
+								<label  class="">Téléphone</label>
 							  </div>
 							</div>
 							</div>
 							<!--address-->
 							<div class="form-group mb-5">
-							  <input class="input" type="text" name="addresse" id="address" class="form-control" placeholder="votre adresse de livraison">
+							  <input class="input" type="text" name="addresse" id="address" class="form-control" placeholder="1234 Main St">
+							  <label for="adresse" class="">Address</label>
 							</div>
 							<!--Grid row-->
 							<div class="row">
 							  <!--Grid column-->
 							  <div class="col-lg-4 col-md-12 mb-4">
 								<label for="country">Wilaya</label>
-								<select class="input" name="wilaya" id="id_wilaya" class=" d-block w-100" style="cursor: pointer;">
-								  <option class="option" value='' selected>---------</option>
+								<select name="wilaya" id="id_wilaya" class="custom-select d-block w-100" >
+								  <option value='' selected>---------</option>
 								  {% for wilaya in wilayas %}
-								  	<option class="option" value={{wilaya.pk}}>{{wilaya.name}}</option>
+								  <option value={{wilaya.pk}}>{{wilaya.name}}</option>
 								  {% endfor %}
 								</select>
-				
+								<div class="invalid-feedback">
+								  Please select a valid wilaya.
+								</div>
 			  
 							  </div>
 							  <!--Grid column-->
 							  <div class="col-lg-4 col-md-6 mb-4">
 								<label for="state">Commune</label>
-								<select class="input  d-block w-100" name="commune" id="id_commune" style="cursor: pointer;" required>
-								  <option class="option" value='' selected>---------</option>
-
+								<select name="commune" class="custom-select d-block w-100" id="id_commune" required>
+								  <option value='' selected>---------</option>
+								  {% for commune in communes %}
+								  <option value={{commune.pk}}>{{commune.name}}</option>
+								  {% endfor %}
 								</select>
-
+								<div class="invalid-feedback">
+								  Please provide a valid state.
+								</div>
 							  </div>
 							  <!--Grid column-->
 							  <!--Grid column-->
@@ -95,17 +104,14 @@
 							  </div>
 							  <!--Grid column-->
 							</div>
-													<!-- Order notes -->
-							<div class="order-notes">
-								<textarea class="input" placeholder="Remplissez ce champ si vous avez une précision sur votre commande"></textarea>
-							</div>
-							<!-- /Order notes -->
 							<hr class="mb-4">
 							<button class="btn btn-primary btn-lg btn-block" type="submit">Valider ma commande</button>
 						</form>
-
-
-
+						<!-- Order notes -->
+						<div class="order-notes">
+							<textarea class="input" placeholder="Order Notes"></textarea>
+						</div>
+						<!-- /Order notes -->
 					</div>
 
 					<!-- Order Details -->
@@ -146,4 +152,23 @@
 			<!-- /container -->
 		</div>
 		<!-- /SECTION -->
+		{% block javascript %}
+		<script>
+			$("#id_wilaya").change(function () {
+			  var url = $("#checkoutForm").attr("data-communes-url");
+			  var wilayaId = $(this).val();
+		 
+			  $.ajax({
+				url: url,
+				data: {
+				  'wilaya': wilayaId
+				},
+				success: function (data) {
+				  $("#id_commune").html(data);
+				}
+			  });
+		 
+			});
+		  </script>
+		{% endblock javascript %}
 {% endblock content %}

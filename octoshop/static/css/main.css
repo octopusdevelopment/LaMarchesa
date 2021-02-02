@@ -138,10 +138,10 @@ ul, li {
 
 
 /* ------------------------------------ */
-input {
+/* input {
 	outline: none;
 	border: none !important;
-}
+} */
 
 textarea {
   outline: none;
@@ -151,7 +151,7 @@ textarea {
   border-color: transparent !important;
 } */
 
-input:focus::-webkit-input-placeholder { color:transparent; }
+/* input:focus::-webkit-input-placeholder { color:transparent; }
 input:focus:-moz-placeholder { color:transparent; }
 input:focus::-moz-placeholder { color:transparent; }
 input:focus:-ms-input-placeholder { color:transparent; }
@@ -159,7 +159,7 @@ input:focus:-ms-input-placeholder { color:transparent; }
 textarea:focus::-webkit-input-placeholder { color:transparent; }
 textarea:focus:-moz-placeholder { color:transparent; }
 textarea:focus::-moz-placeholder { color:transparent; }
-textarea:focus:-ms-input-placeholder { color:transparent; }
+textarea:focus:-ms-input-placeholder { color:transparent; } */
 
 /* ------------------------------------ */
 button {
@@ -1105,10 +1105,10 @@ li.sale-noti > a {
   line-height: 2.5;
 }
 
-.side-menu .sub-menu > li {
+/* .side-menu .sub-menu > li {
   padding-left: 12px;
   padding-top: 
-}
+} */
 
 .side-menu .sub-menu a:hover {
   text-decoration: none;
@@ -2530,3 +2530,11 @@ textarea.input {
   opacity: 0.9;
   color: #FFF;
 }
+.option:hover, .option:focus, .option.selected:focus {
+  background-color: #f6f6f6!important; }
+.option.selected {
+  font-weight: bold!important; }
+.option.disabled {
+  background-color: transparent;
+  color: #999;
+  cursor: default; }
