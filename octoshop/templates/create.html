@@ -11,10 +11,23 @@
 		background-color: #f6f6f6;
 	}
 </style>
-<center>
- <h1>Checkout</h1>
- </center>
-
+<div id="breadcrumb" class="section">
+	<!-- container -->
+	<div class="container">
+		<!-- row -->
+		<div class="row">
+			<div class="col-md-12">
+				<h3 class="breadcrumb-header">Commande</h3>
+				<ul class="breadcrumb-tree">
+					<li><a href="{% url 'main:index' %}">Accueil</a></li>
+					<li class="active">Commande</li>
+				</ul>
+			</div>
+		</div>
+		<!-- /row -->
+	</div>
+	<!-- /container -->
+</div>
 
 
 		<!-- SECTION -->
@@ -97,7 +110,7 @@
 							</div>
 													<!-- Order notes -->
 							<div class="order-notes">
-								<textarea class="input" placeholder="Remplissez ce champ si vous avez une précision sur votre commande"></textarea>
+								<textarea class="input" placeholder="Notes pour cette commande (facultatif)"></textarea>
 							</div>
 							<!-- /Order notes -->
 							<hr class="mb-4">

@@ -4,11 +4,23 @@
 {% block content %}
   
 	<!-- Title Page -->
-	<section class="bg-title-page p-t-40 p-b-50 flex-col-c-m" style="background-image: url();">
-		<h2 class="l-text2 t-center">
-			Cart
-		</h2>
-	</section>
+	<div id="breadcrumb" class="section">
+		<!-- container -->
+		<div class="container">
+			<!-- row -->
+			<div class="row">
+				<div class="col-md-12">
+					<h3 class="breadcrumb-header">PANIER</h3>
+					<ul class="breadcrumb-tree">
+						<li><a href="{% url 'main:index' %}">Accueil</a></li>
+						<li class="active">PANIER</li>
+					</ul>
+				</div>
+			</div>
+			<!-- /row -->
+		</div>
+		<!-- /container -->
+	</div>
 
 	<!-- Cart -->
 	<section class="cart bgwhite p-t-70 p-b-100">

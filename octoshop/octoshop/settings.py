@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'orders.apps.OrdersConfig',
     'livraison.apps.LivraisonConfig',
     'debug_toolbar',
+    'django_extensions',
 
 
 ]

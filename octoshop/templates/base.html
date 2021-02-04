@@ -26,7 +26,7 @@
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="{% static 'vendor/animsition/css/animsition.min.css' %}">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{% static 'vendor/select2/select2.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/select2/select2.min.css' %}">
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="{% static 'vendor/daterangepicker/daterangepicker.css' %}">
 <!--===============================================================================================-->
@@ -448,29 +448,15 @@
 				</h4>
 
 				<ul>
-					<li class="p-b-9">
-						<a href="#" class="s-text7">
-							Men
-						</a>
-					</li>
+					{% for cat in categories %}
+						<li class="p-b-9">
+							<a href="{{cat.get_absolute_url}}" class="s-text7">
+								{{cat.name}}
+							</a>
+						</li>
+					{% endfor %}
 
-					<li class="p-b-9">
-						<a href="#" class="s-text7">
-							Women
-						</a>
-					</li>
-
-					<li class="p-b-9">
-						<a href="#" class="s-text7">
-							Dresses
-						</a>
-					</li>
-
-					<li class="p-b-9">
-						<a href="#" class="s-text7">
-							Sunglasses
-						</a>
-					</li>
+					
 				</ul>
 			</div>
 
@@ -482,7 +468,7 @@
 				<ul>
 					<li class="p-b-9">
 						<a href="#" class="s-text7">
-							Search
+							Shop
 						</a>
 					</li>
 
@@ -498,38 +484,20 @@
 						</a>
 					</li>
 
-					<li class="p-b-9">
-						<a href="#" class="s-text7">
-							Returns
-						</a>
-					</li>
+				
 				</ul>
 			</div>
 
 			<div class="w-size7 p-t-30 p-l-15 p-r-15 respon4">
 				<h4 class="s-text12 p-b-30">
-					Help
+					Aide
 				</h4>
-
 				<ul>
 					<li class="p-b-9">
 						<a href="#" class="s-text7">
-							Track Order
+							Livraison
 						</a>
 					</li>
-
-					<li class="p-b-9">
-						<a href="#" class="s-text7">
-							Returns
-						</a>
-					</li>
-
-					<li class="p-b-9">
-						<a href="#" class="s-text7">
-							Shipping
-						</a>
-					</li>
-
 					<li class="p-b-9">
 						<a href="#" class="s-text7">
 							FAQs
@@ -537,52 +505,33 @@
 					</li>
 				</ul>
 			</div>
-
-			<div class="w-size8 p-t-30 p-l-15 p-r-15 respon3">
-				<h4 class="s-text12 p-b-30">
-					Newsletter
-				</h4>
-
-				<form>
-					<div class="effect1 w-size9">
-						<input class="s-text7 bg6 w-full p-b-5" type="text" name="email" placeholder="email@example.com">
-						<span class="effect1-line"></span>
-					</div>
-
-					<div class="w-size2 p-t-20">
-						<!-- Button -->
-						<button class="flex-c-m size2 bg4 bo-rad-23 hov1 m-text3 trans-0-4">
-							Subscribe
-						</button>
-					</div>
-
-				</form>
-			</div>
 		</div>
 
 		<div class="t-center p-l-15 p-r-15">
 			<a href="#">
-				<img class="h-size2" src="{% static 'images/icons/paypal.png' %}" alt="IMG-PAYPAL">
+				<img  src="{% static 'images/icons/facebook.png' %}" alt="IMG-facebook" style="height:44px;">
+			</a>
+			
+			<a href="#">
+				<img  src="{% static 'images/icons/pinterest.png' %}" alt="IMG-pinterest" style="height:44px;">
+			</a>
+			<a href="#">
+				<img  src="{% static 'images/icons/instagram.png' %}" alt="IMG-instagram" style="height:44px;">
 			</a>
 
 			<a href="#">
-				<img class="h-size2" src="{% static 'images/icons/visa.png' %}" alt="IMG-VISA">
+				<img  src="{% static 'images/icons/youtube.png' %}" alt="IMG-youtube" style="height:44px;">
 			</a>
 
-			<a href="#">
-				<img class="h-size2" src="{% static 'images/icons/mastercard.png' %}" alt="IMG-MASTERCARD">
-			</a>
 
-			<a href="#">
-				<img class="h-size2" src="{% static 'images/icons/express.png' %}" alt="IMG-EXPRESS">
-			</a>
 
-			<a href="#">
-				<img class="h-size2" src="{% static 'images/icons/discover.png' %}" alt="IMG-DISCOVER">
-			</a>
 
 			<div class="t-center s-text8 p-t-20">
-				Copyright © 2018 All rights reserved. | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+				<p class="copy_right text-center">
+					<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> Tous droits réservés Maison La Marchesa | Powred by <a href="http://octopus-consulting.com/" target="_blank">OCTOPUS CONSULTING</a>
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+				</p>
 			</div>
 		</div>
 	</footer>
@@ -622,7 +571,7 @@
 <script type="text/javascript" src="{% static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>
 <!--===============================================================================================-->
 <script type="text/javascript" src="{% static 'vendor/animsition/js/animsition.min.js' %}"></script>
-<script type="text/javascript" src="{% static 'vendor/select2/select2.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'vendor/select2/select2.js' %}"></script>
 
 	<script type="text/javascript">
 		$(".selection-1").select2({

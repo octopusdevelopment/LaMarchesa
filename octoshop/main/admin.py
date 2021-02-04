@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import Product, SubCateory, Wilaya, Commune, Color, Category
+from .models import Product, SubCateory, Wilaya, Commune, Color, Category, Taille
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
@@ -23,9 +23,13 @@ class ProductAdmin(admin.ModelAdmin):
 
 
 @admin.register(Color)
-class CategoryAdmin(admin.ModelAdmin):
+class ColorAdmin(admin.ModelAdmin):
     list_display = ['id', 'name', 'hex_value']
     list_editable = ['name', 'hex_value']
 
+@admin.register(Taille)
+class TailleAdmin(admin.ModelAdmin):
+    list_display = ['id', 'name']
+    list_editable = ['name']
 
 
