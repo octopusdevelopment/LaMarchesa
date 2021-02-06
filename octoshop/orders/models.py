@@ -17,6 +17,7 @@ class Order(models.Model):
     paid        = models.BooleanField(default=False)
 
     class Meta:
+        verbose_name = "Commande"
         ordering = ('-created',)
 
     def __str__(self):

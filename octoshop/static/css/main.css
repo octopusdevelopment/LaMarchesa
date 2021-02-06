@@ -1616,6 +1616,7 @@ li.sale-noti > a {
 /*[ Block1 ]
 ///////////////////////////////////////////////////////////
 */
+
 .block1-wrapbtn {
   position: absolute;
   left: 50%;
@@ -1633,7 +1634,25 @@ li.sale-noti > a {
   -ms-box-shadow: 0 1px 3px 0px rgba(0, 0, 0, 0.1);
 }
 
-
+.rupture-wrapbtn {
+  position: absolute;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+  transform: translateX(-50%);
+  bottom: 40%;
+  width: 100%!important;
+  box-shadow: 0 1px 3px 0px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0 1px 3px 0px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 0 1px 3px 0px rgba(0, 0, 0, 0.1);
+  -o-box-shadow: 0 1px 3px 0px rgba(0, 0, 0, 0.1);
+  -ms-box-shadow: 0 1px 3px 0px rgba(0, 0, 0, 0.1);
+}
+.rupture-wrapbtn p {
+  cursor: pointer;
+}
 /*[ Block2 ]
 ///////////////////////////////////////////////////////////
 */
@@ -1651,7 +1670,7 @@ li.sale-noti > a {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 50px;
+  width: 90px;
   height: 22px;
   border-radius: 11px;
   position: absolute;
@@ -1661,13 +1680,16 @@ li.sale-noti > a {
 
 .block2-labelsale::before {
   background-color: #e65540;
-  content: 'Sale';
+  content: 'Promotion';
 }
 
-/* .block2-labelnew::before {
-  background-color: #66a8a6;
+
+.block2-labelnew::before {
+  background-color: #233774;
   content: 'New';
-} */
+}
+
+
 
 /* ------------------------------------ */
 .block2-overlay {
@@ -2643,4 +2665,131 @@ textarea.input {
 
   width: 3rem;
 
+}
+
+
+/******/
+
+.size-radios {
+  --primary: #e65540;
+  --other: hsl(0, 0%, 14%);
+
+}
+
+.size-radios label {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: nowrap;
+
+  margin: 12px 0;
+
+  cursor: pointer;
+  position: relative;
+}
+
+
+/* input */
+.size-radios input {
+  opacity: 0;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+}
+
+
+/* .design */
+.size-radios .design {
+  width: 16px;
+  height: 16px;
+
+  border: 1px solid var(--other);
+  border-radius: 100%;
+  margin-right: 16px;
+
+  position: relative;
+}
+
+.size-radios .design::before,
+.size-radios .design::after {
+  content: "";
+  display: block;
+
+  width: inherit;
+  height: inherit;
+
+  border-radius: inherit;
+
+  position: absolute;
+  transform: scale(0);
+  transform-origin: center center;
+}
+
+.size-radios .design:before {
+  background: var(--other);
+  opacity: 0;
+  transition: .3s;
+}
+
+.size-radios .design::after {
+  background: var(--primary);
+  opacity: .4;
+  transition: .6s;
+}
+
+
+/* .text */
+.size-radios .text {
+  color: var(--other);
+  font-weight: bold;
+}
+
+
+/* checked state */
+.size-radios input:checked+.design::before {
+  opacity: 1;
+  transform: scale(.6);
+}
+
+
+/* other states */
+.size-radios input:hover+.design,
+.size-radios input:focus+.design {
+  border: 1px solid var(--primary);
+}
+
+.size-radios input:hover+.design:before,
+.size-radios input:focus+.design:before {
+  background: var(--primary);
+}
+
+.size-radios input:hover~.text {
+  color: var(--primary);
+}
+
+.size-radios input:focus+.design::after,
+.size-radios input:active+.design::after {
+  opacity: .1;
+  transform: scale(2.6);
+}
+
+.size-radios .abs-site-link {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  color: hsla(0, 0%, 0%, .6);
+  background: hsla(0, 0%, 98%, .6);
+  font-size: 16px;
+}
+
+.rupture-overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(46, 46, 46, 0.5);
+  opacity: 1;
 }

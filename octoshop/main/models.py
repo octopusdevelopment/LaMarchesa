@@ -52,6 +52,8 @@ class Color(models.Model):
 
     def __str__(self):
         return self.name
+    class Meta:
+        verbose_name = "Couleur"
 
 class Taille(models.Model):
     name = models.CharField(max_length=254, null=True, blank=True, verbose_name='nom')
@@ -83,7 +85,8 @@ class Product(models.Model):
     def get_absolute_url(self):
         return reverse("main:product-detail", args=[self.slug, self.id])
     
-
+    class Meta:
+        verbose_name = "Produit"
 
 
 

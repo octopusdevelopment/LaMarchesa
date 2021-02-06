@@ -27,16 +27,17 @@
 						<ul class="p-b-54">
 							<li class="p-t-4">
 								<a href="{% url 'main:products' %}" class="s-text13 active1">
-									All
+									Tous
 								</a>
 							</li>
 							{% for cat in sous_categories %}
 								<li class="p-t-4">
-									<a href="{{cat.get_absolute_url}}" class="s-text13">
+									<a href="{{cat.get_absolute_url}}" class="s-text13 text-capitalize">
 										{{cat.name}}
 									</a>
 								</li>
 							{% endfor %}
+						</ul>
 
 
 							<!-- <li class="p-t-4">
@@ -56,9 +57,8 @@
 									Accesories
 								</a>
 							</li> -->
-						</ul>
 
-						<!--  -->
+						<!--  
 						<h4 class="m-text14 p-b-32">
 							Filters
 						</h4>
@@ -74,7 +74,7 @@
 
 							<div class="flex-sb-m flex-w p-t-16">
 								<div class="w-size11">
-									<!-- Button -->
+								
 									<button class="flex-c-m size4 bg7 bo-rad-15 hov1 s-text14 trans-0-4">
 										Filter
 									</button>
@@ -128,7 +128,6 @@
 								</li>
 							</ul>
 						</div>
-
 						<div class="search-product pos-relative bo4 of-hidden">
 							<input class="s-text7 size6 p-l-23 p-r-50" type="text" name="search-product" placeholder="Search Products...">
 
@@ -136,55 +135,51 @@
 								<i class="fs-12 fa fa-search" aria-hidden="true"></i>
 							</button>
 						</div>
+ -->
+
 					</div>
 				</div>
-
 				<div class="col-sm-6 col-md-8 col-lg-9 p-b-50">
 					<!--  -->
 					<div class="flex-sb-m flex-w p-b-35">
-						
-
 						<span class="s-text8 p-t-5 p-b-5">
-							<h3>
+							<h3 >
 								{{products.count}} Produit trouver
 							</h3>
 						</span>
 					</div>
-
 					<!-- Product -->
 					<div class="row">
 						{% for prod in products %}
-						  
-							<div class="col-sm-12 col-md-6 col-lg-4 p-b-50">
+							<div class="col-sm-12 col-md-6 col-lg-4 p-b-50 ">
 								<!-- Block2 -->
 								<div class="block2">
-									<div class="block2-img wrap-pic-w of-hidden pos-relative block2-labelnew">
+									<div class=" block2-img wrap-pic-w of-hidden pos-relative {% if prod.status == 'N' %} block2-labelnew {% elif prod.status == 'P' %} block2-labelsale {% endif %}">
 										{% if prod.image %}
-										  
-										<img src="{{ prod.image.url }}" alt="IMG-PRODUCT">
+											<img src="{{ prod.image.url }}" alt="IMG-PRODUCT">
 										{% else %}
-										
-										<img src="/static/images/banner-01.jpg" alt="IMG-PRODUCT">
+											<img src="/static/images/banner-01.jpg" alt="IMG-PRODUCT">
+										{% endif %}
+<!-- produit en rupture -->
+										{% if prod.status == 'R' %}
+											<div class="rupture-overlay trans-0-4 ">
+												<div class="rupture-wrapbtn">
+													<p class="flex-c-m size1 bg3 hov1 s-text2 trans-0-4">Rupture</p>
+												</div>
+											</div>
+										{% else %}
+											<div class="block2-overlay block2-btn-addcart w-size1 trans-0-4 ">
+												<div class="block2-btn-addcart w-size1 trans-0-4">
+													<a href="{{prod.get_absolute_url}}" class="flex-c-m size1 bg3 bo-rad-23 hov1 s-text2 trans-0-4">Voir</a>
+												</div>
+											</div>
 										{% endif %}
 
-										<div class="block2-overlay trans-0-4">
-											<a href="{% url 'main:index' %}" class="block2-btn-addwishlist hov-pointer trans-0-4">
-												<i class="icon-wishlist icon_heart_alt" aria-hidden="true"></i>
-												<i class="icon-wishlist icon_heart dis-none" aria-hidden="true"></i>
-											</a>
-
-											<div class="block2-btn-addcart w-size1 trans-0-4">
-												<!-- Button -->
-
-											</div>
-										</div>
 									</div>
-
 									<div class="block2-txt p-t-20">
-										<a href="{{prod.get_absolute_url}}" class="block2-name dis-block s-text3 p-b-5">
+										<a href="{{prod.get_absolute_url}}" class="block2-name dis-block s-text3 p-b-5 text-capitalize">
 											{{prod.name}}
 										</a>
-
 										<span class="block2-price m-text6 p-r-5">
 											{{prod.price}} DZD
 										</span>

@@ -6,7 +6,7 @@ from django.template.loader import render_to_string
 
 from django.conf import settings
 from .models import Order
-# import weasyprint
+import weasyprint
 @task
 def order_created(order_id):
     order = Order.objects.get(id=order_id)
@@ -28,6 +28,6 @@ def order_validated(order_id):
     html = render_to_string('pdf.html', {"order":order})
     out = BytesIO()
     # stylesheets = [weasyprint.CSS(settings.STATIC_ROOT + 'css/pdf.css')]
-    # weasyprint.HTML(string=html).write_pdf(out)
+    weasyprint.HTML(string=html).write_pdf(out)
     email.attach(f'order_{order.id}.pdf', out.getvalue(), 'application/pdf')
     email.send()

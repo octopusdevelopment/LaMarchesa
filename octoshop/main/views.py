@@ -18,6 +18,8 @@ class IndexView(TemplateView):
         return context
 
 
+
+
 def product_list(request, category_slug=None):
     sous_cat = None
     cat= None
@@ -46,6 +48,13 @@ def productDetail(request, id, slug):
     product = get_object_or_404(Product, id=id, slug=slug, afficher=True)
     cart_product_form = CartAddProductForm()
     return render(request, 'product-detail.html',{ 'product': product, 'cart_product_form': cart_product_form}) 
+
+
+def aboutView(request):
+    return render(request, 'about.html') 
+
+def contactView(request):
+    return render(request, 'contact.html') 
 
 
 

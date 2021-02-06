@@ -147,33 +147,48 @@
 					<!-- - -->
 					<div class="tab-pane fade show active" id="best-seller" role="tabpanel">
 						<div class="row">
-							{% for product in products %}
-								<div class="col-sm-6 col-md-4 col-lg-3 p-b-50" >
-									<!-- Block2 -->
-										<div class="block2">
-											<div class="block2-img wrap-pic-w of-hidden pos-relative block2-labelnew">
-												<img src="{{product.image.url}}" alt="IMG-PRODUCT">
-												<div class="block2-overlay trans-0-4">
-													<div class="block1-wrapbtn w-size2">
-														<a href="{{product.get_absolute_url}}" class="flex-c-m size1 bg3 bo-rad-23 hov1 s-text2 trans-0-4">Voir</a>
-													</div>
+							{% for prod in products %}
+							<div class="col-sm-12 col-md-6 col-lg-4 p-b-50 ">
+								<!-- Block2 -->
+								<div class="block2">
+									<div class=" block2-img wrap-pic-w of-hidden pos-relative {% if prod.status == 'N' %} block2-labelnew {% elif prod.status == 'P' %} block2-labelsale {% endif %}">
+										{% if prod.image %}
+											<img src="{{ prod.image.url }}" alt="IMG-PRODUCT">
+										{% else %}
+											<img src="/static/images/banner-01.jpg" alt="IMG-PRODUCT">
+										{% endif %}
+<!-- produit en rupture -->
+										{% if prod.status == 'R' %}
+											<div class="rupture-overlay trans-0-4 ">
+												<div class="rupture-wrapbtn">
+													<p class="flex-c-m size1 bg3 hov1 s-text2 trans-0-4">Rupture</p>
 												</div>
 											</div>
-											<div class="block2-txt p-t-20">
-												<a href="{{product.get_absolute_url}}" class="block2-name dis-block s-text3 p-b-5">
-													{{product.subCategory.category}}
-												</a>
-												{% if product.old_price %}
-													<span class="block2-oldprice m-text7 p-r-5">
-														{{product.old_price}}
-													</span>
-												{% endif %}
-												<span class="block2-newprice {% if product.old_price %} m-text8 {% endif %} p-r-5" style="font-weight: bold;font-size:large;" >
-													{{product.price}} DA
-												</span>
+										{% else %}
+											<div class="block2-overlay block2-btn-addcart w-size1 trans-0-4 ">
+												<div class="block2-btn-addcart w-size1 trans-0-4">
+													<a href="{{prod.get_absolute_url}}" class="flex-c-m size1 bg3 bo-rad-23 hov1 s-text2 trans-0-4">Voir</a>
+												</div>
 											</div>
-										</div>
+										{% endif %}
+
 									</div>
+									<div class="block2-txt p-t-20">
+										<a href="{{prod.get_absolute_url}}" class="block2-name dis-block s-text3 p-b-5 text-capitalize">
+											{{prod.name}}
+										</a>
+										{% if prod.old_price %}
+										  
+										<span class="block2-oldprice m-text7 p-r-5">
+											{{prod.old_price}}
+										</span>
+										{% endif %}
+										<span class="block2-price m-text6 p-r-5">
+											{{prod.price}} DZD
+										</span>
+									</div>
+								</div>
+							</div>
 							{% endfor %}
 
 							

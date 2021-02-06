@@ -44,7 +44,7 @@
 	<!-- header fixed -->
 	<div class="wrap_header fixed-header2 trans-0-4">
 		<!-- Logo -->
-		<a href="/" class="logo">
+		<a href="{% url 'main:index' %}" class="logo">
 			<img src="{% static 'images/icons/logo.png' %}" alt="IMG-LOGO">
 		</a>
 
@@ -56,7 +56,7 @@
 						<a class="active sale-noti" href="{% url 'main:index' %}">Accueil</a>
 					</li>
 					<li>
-						<a href="about.html">A propos</a>
+						<a href="{% url 'main:about' %}">A propos</a>
 					</li>
 					{% for cat in categories %}
 						<li>
@@ -118,7 +118,7 @@
 					<div class="header-cart-buttons">
 						<div class="header-cart-wrapbtn">
 							<!-- Button -->
-							<a href="cart.html" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
+							<a href="/panie" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
 								Voir panier
 							</a>
 						</div>
@@ -247,7 +247,7 @@
 
 							</li>
 							<li>
-								<a href="about.html">A propos</a>
+								<a href="{% url 'main:about' %}">A propos</a>
 							</li>
 							{% for cat in categories %}
 						<li>
@@ -394,7 +394,7 @@
 
 					</li>
 					<li>
-						<a href="about.html">A propos</a>
+						<a href="{% url 'main:about' %}">A propos</a>
 					</li>
 					{% for cat in categories %}
 					<li>
@@ -508,21 +508,23 @@
 		</div>
 
 		<div class="t-center p-l-15 p-r-15">
-			<a href="#">
-				<img  src="{% static 'images/icons/facebook.png' %}" alt="IMG-facebook" style="height:44px;">
-			</a>
-			
-			<a href="#">
-				<img  src="{% static 'images/icons/pinterest.png' %}" alt="IMG-pinterest" style="height:44px;">
-			</a>
-			<a href="#">
-				<img  src="{% static 'images/icons/instagram.png' %}" alt="IMG-instagram" style="height:44px;">
-			</a>
+{% comment %}
+<a href="#">
+	<img  src="{% static 'images/icons/facebook.png' %}" alt="IMG-facebook" style="height:44px;">
+</a>
 
-			<a href="#">
-				<img  src="{% static 'images/icons/youtube.png' %}" alt="IMG-youtube" style="height:44px;">
-			</a>
+<a href="#">
+	<img  src="{% static 'images/icons/pinterest.png' %}" alt="IMG-pinterest" style="height:44px;">
+</a>
+<a href="#">
+	<img  src="{% static 'images/icons/instagram.png' %}" alt="IMG-instagram" style="height:44px;">
+</a>
 
+<a href="#">
+	<img  src="{% static 'images/icons/youtube.png' %}" alt="IMG-youtube" style="height:44px;">
+</a>
+
+{% endcomment %}
 
 
 
@@ -615,6 +617,16 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> Tous 
 				swal(nameProduct, "is added to wishlist !", "success");
 			});
 		});
+		$(".selection-1").select2({
+			minimumResultsForSearch: 20,
+			dropdownParent: $('#dropDownSelect1')
+		});
+
+		$(".selection-2").select2({
+			minimumResultsForSearch: 20,
+			dropdownParent: $('#dropDownSelect2')
+		});
+
 	</script>
 
 <!--===============================================================================================-->
@@ -647,6 +659,9 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> Tous 
 		skipValues[handle].innerHTML = Math.round(values[handle]) ;
 	});
 </script>
+{% block javascript %}
+  
+{% endblock javascript %}
 	<script src="{% static 'js/main.js' %}"></script>
 	<script src="{% static 'js/form-commune.js' %}"></script>
 
