@@ -29,81 +29,98 @@
 			<div class="container-table-cart pos-relative">
 				<div class="wrap-table-shopping-cart bgwhite">
 					<table class="table-shopping-cart">
+						
 						<tr class="table-head">
-							<th class="column-1"></th>
-							<th class="column-2">Product</th>
-							<th class="column-3">Price</th>
-							<th class="column-4 p-l-70">Quantity</th>
+							<th class="column-1">Photo</th>
+							<th class="column-2">Produit</th>
+							<th class="column-3">Prix</th>
+							<th class="column-4">Quantité</th>
+							<th class="column-4">Supprimer</th>
+
 							<th class="column-5">Total</th>
 						</tr>
-						{% for item in cart %}
-							{% with product=item.product %}
-							
-							<tr class="table-row">
-								<td class="column-1">
-									<div class="cart-img-product b-rad-4 o-f-hidden">
-										<img src="{% if product.image %}{{product.image.url}}{% else %} {% static 'images/heading-pages-01.jpg' %}{% endif %}" alt="IMG-PRODUCT">
-									</div>
-								</td>
-								{% if product.name %}
-								<td class="column-2">{{product.name}}</td>
-								
-								{% else %}
-								<td class="column-2">hellooo</td>
-								  
-								{% endif %}
-								
-								<td class="column-3">{{item.price}} DZD</td>
-								<td class="column-4">
-									<div class="flex-w bo5 of-hidden w-size17">
-										<button class="btn-num-product-down color1 flex-c-m size7 bg8 eff2">
-											<i class="fs-12 fa fa-minus" aria-hidden="true"></i>
-										</button>
+				
+						{% if cart|length > 0 %}
+							{% for item in cart %}
+								{% with product=item.product %}
+								<tr class="table-row">
+									<td class="column-1">
+										<div class="cart-img-product b-rad-4 o-f-hidden">
+											<img src="{% if product.image %}{{product.image.url}}{% else %} {% static 'images/heading-pages-01.jpg' %}{% endif %}" alt="IMG-PRODUCT">
+										</div>
+									</td>
+									{% if product.name %}
+										<td class="column-2">{{product.name}}</td>
+									
+									{% else %}
+										<td class="column-2">hellooo</td>
+									
+									{% endif %}
+									
+									<td class="column-3">{{item.price}} DZD</td>
+									<td class="column-4">
+										<form id="quantity-item" action="{% url 'cart:cart_add' product.id %}" method="post">
+											<div class="inputs d-flex">
+												{{ item.update_quantity_form.quantity }}
+												{{ item.update_quantity_form.override }}
+												<button class="btn ml-3" type="submit"> <i class="fa fa-check"></i></button>
+											</div>
+												{% csrf_token %}
+										</form>
+									</td>
+									<td>
+										<form action="{% url 'cart:cart_remove' product.id %}" method="post">
+											<div class="inputs-trash d-flex">
+												<button class="btn ml-3" type="submit"> <i class="fa fa-trash" ></i></button>
+												{% csrf_token %}
+											</div>
+										</form>
+									<td class="column-5">{{ item.total_price }} DZD</td>
+								</tr>
+								{% endwith %}
+							{% endfor %}
 
-										<input class="size8 m-text18 t-center num-product" type="number" name="quantity" value="{{item.quantity}}">
+						{% else %}
+						<tr class="table-row">
+						<center>	<td colspan="6"><h2 class="ml-5 text-uppercase text-center text-danger " >Votre Panier est vide</h2></td> </center>
+						</tr>
+						{% endif %}
 
-										<button class="btn-num-product-up color1 flex-c-m size7 bg8 eff2">
-											<i class="fs-12 fa fa-plus" aria-hidden="true"></i>
-										</button>
-									</div>
-								</td>
-								<td class="column-5">{{ item.total_price }} DZD</td>
-							</tr>
-							{% endwith %}
-						{% endfor %}
-						
-
+						<tr class="total">
+							<td><h3 class="ml-5 text-uppercase ">Total</h3></td>
+							<td  colspan="3"></td>
+							<td class="num"><h3>{{ cart.get_total_price }} DA</h3></td>
+						</tr>
 					</table>
 				</div>
 			</div>
 
 			<div class="flex-w flex-sb-m p-t-25 p-b-25 bo8 p-l-35 p-r-60 p-lr-15-sm">
+				{% if cart|length > 0 %}
+				  
 				<div class="flex-w flex-m w-full-sm">
-					<div class="size11 bo4 m-r-10">
-						<input class="sizefull s-text7 p-l-22 p-r-22" type="text" name="coupon-code" placeholder="Coupon Code">
-					</div>
-
-					<div class="size12 trans-0-4 m-t-10 m-b-10 m-r-10">
-						<!-- Button -->
-						<button class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4">
-							Apply coupon
-						</button>
+					<div class="size11 m-r-10">
+						<a class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4" href="{% url 'main:products' %}" type="button">POURSUIVRE LES ACHATS</a>
 					</div>
 				</div>
-
 				<div class="size10 trans-0-4 m-t-10 m-b-10">
-					<!-- Button -->
-					<input class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4" type="button" value="Update Cart" style="cursor:pointer;">
-					{% comment %}
-					  <!-- <form action="{% url 'cart:cart_add' product.id %}" method="post">
-						{{ item.update_quantity_form.override }}
-					</form> -->
-					{% endcomment %}
+					<a class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4 " href="{% url 'orders:order_create' %}" type="button">Valider</a>
 				</div>
+
+				{% else %}
+				<div class="size11 m-r-10">
+					<a class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4" href="{% url 'main:products' %}" type="button">SHOP</a>
+				</div>
+				{% endif %}
+
+					
 			</div>
 
 			
 		</div>
 	</section>
+{% block javascript %}
+
+{% endblock javascript %}
 
 {% endblock content %}

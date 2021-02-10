@@ -2090,7 +2090,7 @@ li.sale-noti > a {
 .table-shopping-cart {
   border-collapse: collapse;
   width: 100%;
-  min-width: 992px;
+  /* min-width: 992px; */
 }
 
 .table-shopping-cart .table-row {
@@ -2111,9 +2111,10 @@ li.sale-noti > a {
   padding-right: 30px;
 }
 .table-shopping-cart .column-4 {
-  width: 355px;
+  width: 200px;
   padding-right: 30px;
 }
+
 .table-shopping-cart .column-5 {
   padding-right: 30px;
 }
@@ -2792,4 +2793,33 @@ textarea.input {
   left: 0;
   background-color: rgba(46, 46, 46, 0.5);
   opacity: 1;
+}
+#quantity-item input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+  width: 30px;
+}
+
+.inputs .btn {
+  background-color: #e65540;
+  border: none;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  height: 38px;
+}
+input#id_quantity {
+  font-size:16px ;
+  text-align: center!important;
+  width: 70px!important;
+}
+
+.inputs-trash .btn{
+  background-color: #e65540;
+  border: none;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  height: 38px;
 }

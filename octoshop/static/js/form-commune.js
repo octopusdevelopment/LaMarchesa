@@ -47,27 +47,27 @@ $(document).ready(function(){
     });
 
 
-    $('#id_quantity').change(function(){
-        var prix = parseInt($('#id_price span').text());
-        var livraison = parseInt($('#id_livraison span').text())
-        var quantity = $('#id_quantity');
-        var quantityVal = parseInt(quantity.val());
-        var coutProduits = prix * quantityVal
-        var ttc = coutProduits + livraison 
-        var totalPrice = $('#id_total_price span')
-        totalPrice.html(ttc)
+    // $('#id_quantity').change(function(){
+    //     var prix = parseInt($('#id_price span').text());
+    //     var livraison = parseInt($('#id_livraison span').text())
+    //     var quantity = $('#id_quantity');
+    //     var quantityVal = parseInt(quantity.val());
+    //     var coutProduits = prix * quantityVal
+    //     var ttc = coutProduits + livraison 
+    //     var totalPrice = $('#id_total_price span')
+    //     totalPrice.html(ttc)
 
-    });
-    $('#id_wilaya').change(function(){
-        var prix = parseInt($('#id_price span').text());
-        var livraison = parseInt($('#id_livraison span').text())
-        var quantity = $('#id_quantity');
-        var quantityVal = parseInt(quantity.val());
-        var coutProduits = prix * quantityVal
-        var ttc = coutProduits + livraison 
-        var totalPrice = $('#id_total_price span')
-        totalPrice.html(ttc)
+    // });
+    // $('#id_wilaya').change(function(){
+    //     var prix = parseInt($('#id_price span').text());
+    //     var livraison = parseInt($('#id_livraison span').text())
+    //     var quantity = $('#id_quantity');
+    //     var quantityVal = parseInt(quantity.val());
+    //     var coutProduits = prix * quantityVal
+    //     var ttc = coutProduits + livraison 
+    //     var totalPrice = $('#id_total_price span')
+    //     totalPrice.html(ttc)
 
-    });
+    // });
 
 });

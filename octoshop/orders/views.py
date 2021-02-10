@@ -20,12 +20,15 @@ def order_create(request):
             print('il ya pas du tout de probleeme la ')
             form = OrderCreateForm(request.POST)
             if form.is_valid():
+                print('le formulaire est valid')
                 order = form.save()
                 for item in cart:
                     OrderItem.objects.create(order=order,product=item['product'],price=item['price'],quantity=item['quantity'])
                 cart.clear()
                 order_created.delay(order.id)
                 return render(request, 'created.html', {'order': order})
+            else:
+                print('le form est non valid')
         except:
             print('il ya un gros probleeme')
     else:

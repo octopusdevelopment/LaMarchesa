@@ -2068,7 +2068,7 @@ li.sale-noti > a {
 .table-shopping-cart {
   border-collapse: collapse;
   width: 100%;
-  min-width: 992px;
+  /* min-width: 992px; */
 }
 
 .table-shopping-cart .table-row {
@@ -2089,7 +2089,7 @@ li.sale-noti > a {
   padding-right: 30px;
 }
 .table-shopping-cart .column-4 {
-  width: 355px;
+  width: 100px;
   padding-right: 30px;
 }
 .table-shopping-cart .column-5 {

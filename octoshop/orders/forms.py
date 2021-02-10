@@ -5,7 +5,7 @@ from livraison.models import Wilaya, Commune
 class OrderCreateForm(forms.ModelForm):
     class Meta:
         model = Order
-        fields = ['first_name', 'last_name', 'addresse', 'email', 'phone', 'wilaya', 'commune']
+        fields = ['first_name', 'last_name', 'addresse', 'email', 'phone', 'wilaya', 'commune', 'note']
     
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

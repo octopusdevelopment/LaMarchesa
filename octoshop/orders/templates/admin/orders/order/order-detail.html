@@ -5,10 +5,10 @@
 
 {% block breadcrumbs %}
     <div class="breadcrumbs">
-        <a href="{% url "admin:index" %}">Home</a> &rsaquo;
-        <a href="{% url "admin:orders_order_changelist" %}">Orders</a>
+        <a href="{% url 'admin:index' %}">Home</a> &rsaquo;
+        <a href="{% url 'admin:orders_order_changelist' %}">Orders</a>
         &rsaquo;
-        <a href="{% url "admin:orders_order_change" order.id %}">Order {{ order.id }}</a>
+        <a href="{% url 'admin:orders_order_change' order.id %}">Order {{ order.id }}</a>
         &rsaquo; Detail
     </div>
 {% endblock %}
@@ -22,11 +22,11 @@
 
     <table>
         <tr>
-            <th>Created</th>
+            <th>Crée le</th>
             <td>{{ order.created }}</td>
         </tr>
         <tr>
-            <th>Customer</th>
+            <th>Client</th>
             <td>{{ order.first_name }} {{ order.last_name }}</td>
         </tr>
         <tr>
@@ -34,19 +34,19 @@
             <td><a href="mailto:{{ order.email }}">{{ order.email }}</a></td>
         </tr>
         <tr>
-            <th>Address</th>
+            <th>Addresse</th>
             <td>
-            {{ order.address }},
+            {{ order.addresse }},
             {{ order.postal_code }} {{ order.city }}
             </td>
         </tr>
         <tr>
-            <th>Total amount</th>
-            <td>${{ order.get_total_cost }}</td>
+            <th>Total</th>
+            <td>{{ order.get_total_cost }} DA</td>
         </tr>
         <tr>
             <th>Status</th>
-            <td>{% if order.paid %}Paid{% else %}Pending payment{% endif %}</td>
+            <td>{% if order.paid %}Payé{% else %}En attente de paiement{% endif %}</td>
         </tr>
     </table>
     <div class="module">
@@ -58,24 +58,38 @@
                 <tr>
                     <th>Produit</th>
                     <th>Prix DZD</th>
+                    <th>Couleur</th>
+                    <th>Taille</th>
                     <th>Quantité</th>
                     <th>Total DZD</th>
                 </tr>
             </thead>
             <tbody>
                 {% for item in order.items.all %}
-                    <tr class="row{% cycle "1" "2" %}">
+                    <tr class="row{% cycle '1' '2' %}">
                         <td>{{ item.product.name }}</td>
                         <td class="num"> {{ item.price }} </td>
-                        <td class="num">{{ item.quantity }}</td>
+                        <td class="num"> {{ item.color }} </td>
+                        <td class="num"> {{ item.taille }} </td>
+                        <td class="num"> {{ item.quantity }}</td>
                         <td class="num"> {{ item.get_cost }} </td>
                     </tr>
                 {% endfor %}
                 <tr class="total">
-                    <td colspan="3"><h3>Total</h3></td>
+                    <td colspan="5"><h3>Total</h3></td>
                     <td class="num"> <h3>{{ order.get_total_cost }}</h3> </td>
                 </tr>
             </tbody>
         </table>
+        <br>
+        <div>
+            <h3>Notes</h3>
+            {% if order.note %}
+                <p>{{order.note}}</p>
+            {% else %}
+                <p>pas de note pour cette commande</p>
+            {% endif %}
+        </div>
     </div>
 {% endblock %}
+

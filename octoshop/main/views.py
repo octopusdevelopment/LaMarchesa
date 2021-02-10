@@ -20,6 +20,7 @@ class IndexView(TemplateView):
 
 
 
+
 def product_list(request, category_slug=None):
     sous_cat = None
     cat= None

@@ -14,7 +14,9 @@ class Order(models.Model):
     commune     = models.ForeignKey(Commune, on_delete=models.SET_NULL, null=True, blank=True)
     created     = models.DateTimeField(auto_now_add=True)
     updated     = models.DateTimeField(auto_now=True)
+    note        = models.TextField(blank=True, null=True)
     paid        = models.BooleanField(default=False)
+    confirmer   = models.BooleanField(default=False)
 
     class Meta:
         verbose_name = "Commande"

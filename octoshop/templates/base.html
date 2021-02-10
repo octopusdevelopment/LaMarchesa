@@ -69,7 +69,7 @@
 						</li>
 					{% endfor %}
 					<li>
-						<a href="/contact">Contact</a>
+						<a href="{% url 'main:contact' %}">Contact</a>
 					</li>
 				</ul>
 			</nav>
@@ -118,7 +118,7 @@
 					<div class="header-cart-buttons">
 						<div class="header-cart-wrapbtn">
 							<!-- Button -->
-							<a href="/panie" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
+							<a href="{% url 'cart:cart_detail' %}" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
 								Voir panier
 							</a>
 						</div>
@@ -262,7 +262,7 @@
 
 
 							<li>
-								<a href="/contact">Contact</a>
+								<a href="{% url 'main:contact' %}">Contact</a>
 							</li>
 						</ul>
 					</nav>
@@ -408,7 +408,7 @@
 				{% endfor %}
 
 					<li>
-						<a href="/contact">Contact</a>
+						<a href="{% url 'main:contact' %}">Contact</a>
 					</li>
 				</ul>
 			</nav>
@@ -551,7 +551,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> Tous 
 	<div id="dropDownSelect1"></div>
 
 	<!-- Modal Video 01-->
-	<div class="modal fade" id="modal-video-01" tabindex="-1" role="dialog" aria-hidden="true">
+	<div class="modal fade " id="modal-video-01" tabindex="-1" role="dialog" aria-hidden="true">
 
 		<div class="modal-dialog" role="document" data-dismiss="modal">
 			<div class="close-mo-video-01 trans-0-4" data-dismiss="modal" aria-label="Close">&times;</div>
