@@ -14,12 +14,12 @@ class Cart(object):
         self.cart = cart
 
 
-    def add(self, product, taille, quantity=1,  override_quantity=False):
+    def add(self, product, taille, color, quantity=1,  override_quantity=False):
 
         product_id = str(product.id)
         if product_id not in self.cart:
             # a vérifier pourquoi la quantité est egale a 0 et non pas a 1 vu que c'est la methode add !!!!!!
-            self.cart[product_id] = {'quantity': 0, 'price': str(product.price), 'taille': taille}
+            self.cart[product_id] = {'quantity': 0, 'price': str(product.price), 'taille': taille, 'color': color}
         if override_quantity:
             self.cart[product_id]['quantity'] = quantity
         else:
@@ -48,6 +48,7 @@ class Cart(object):
         for item in cart.values():
             item['price'] = Decimal(item['price'])
             item['taille'] = item['taille'] 
+            item['color'] = item['color'] 
             item['total_price'] = item['price'] * item['quantity']
             yield item
 
