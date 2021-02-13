@@ -13,23 +13,21 @@ class Cart(object):
             cart = self.session[settings.CART_SESSION_ID] = {}
         self.cart = cart
 
+    def save(self):
+        self.session.modified = True
 
     def add(self, product, taille, color, quantity=1,  override_quantity=False):
-
         product_id = str(product.id)
         if product_id not in self.cart:
             # a vérifier pourquoi la quantité est egale a 0 et non pas a 1 vu que c'est la methode add !!!!!!
             self.cart[product_id] = {'quantity': 0, 'price': str(product.price), 'taille': taille, 'color': color}
         if override_quantity:
+            print('self.cart' , self.cart)
             self.cart[product_id]['quantity'] = quantity
         else:
             self.cart[product_id]['quantity'] += quantity
-           
-
         self.save()
 
-    def save(self):
-        self.session.modified = True
 
     def remove(self, product):
         product_id = str(product.id)
@@ -51,6 +49,8 @@ class Cart(object):
             item['color'] = item['color'] 
             item['total_price'] = item['price'] * item['quantity']
             yield item
+
+
 
     def __len__(self):
         return sum(item['quantity'] for item in self.cart.values())

@@ -1,6 +1,9 @@
 from django import forms 
 from django.forms import NumberInput
+from django.core import validators
 # PRODUCT_QUANTITY_CHOICES = [(i, str(i)) for i in range(1, 5)]
+
+
 
 
 class CartAddProductForm(forms.Form):
@@ -8,3 +11,4 @@ class CartAddProductForm(forms.Form):
     override = forms.BooleanField(required=False, initial=False, widget=forms.HiddenInput)
     taille   = forms.CharField(max_length=20, required=True)
     color    = forms.CharField(max_length=20, required=True)
+

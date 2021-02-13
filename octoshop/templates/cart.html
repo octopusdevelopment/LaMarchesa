@@ -33,6 +33,8 @@
 						<tr class="table-head">
 							<th class="column-1">Photo</th>
 							<th class="column-2">Produit</th>
+							<th class="column-2">Taille</th>
+							<th class="column-2">Couleur</th>
 							<th class="column-3">Prix</th>
 							<th class="column-4">Quantité</th>
 							<th class="column-4">Supprimer</th>
@@ -57,9 +59,12 @@
 									
 									{% endif %}
 									
+									<td class="column-3">{{item.taille}}</td>
+									<td class="column-3"><span class="dot small-dot mr-2" style="background-color: {{ item.color }};"></span></td>
 									<td class="column-3">{{item.price}} DZD</td>
+
 									<td class="column-4">
-										<form id="quantity-item" action="{% url 'cart:cart_add' product.id %}" method="post">
+										<form id="quantity-item" action="{% url 'cart:cart_update' product.id %}" method="post">
 											<div class="inputs d-flex">
 												{{ item.update_quantity_form.quantity }}
 												{{ item.update_quantity_form.override }}

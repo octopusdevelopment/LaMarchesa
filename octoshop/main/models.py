@@ -47,8 +47,8 @@ class SubCateory(models.Model):
 
 
 class Color(models.Model):
-    hex_value = models.CharField(max_length=7)
-    name = models.CharField(max_length=254, null=True, blank=True, verbose_name='nom')
+    hex_value   = models.CharField(max_length=7)
+    name        = models.CharField(max_length=254, null=True, blank=True, verbose_name='nom')
 
     def __str__(self):
         return self.name

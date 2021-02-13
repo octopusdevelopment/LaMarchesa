@@ -73,6 +73,7 @@
 					{% csrf_token %}
 					<div class="size-radios mt-5" >
 						<h5 >Selectionner une taille</h5>
+	
 							{% for co in product.taille.all %}
 								<label>
 									<input type="radio" name="taille" value="{{co.name}}"/>
@@ -88,7 +89,7 @@
 								{% for co in product.color.all %}
 									<td class="colours">
 										<div class="d-inline-block text-center dot-wrapper">
-											<input type="radio" id="{{co.hex_value}}" name="color" value="#{{co.hex_value}}">
+											<input type="radio" id="{{co.hex_value}}" name="color" value="#{{co.hex_value}}" >
 											<label for="{{co.hex_value}}">
 												<span class="dot" style="background-color: #{{ co.hex_value }};" title="{{ co.nom }}"></span>
 											</label>
@@ -100,7 +101,14 @@
 					<p class="s-text8">
 						{{product.description|linebreaks }}
 					</p>
-
+					<div>
+						{% if messages %}
+						{% for mes in messages %}
+						<h5 class="text-danger">{{ mes }}</h5>
+						
+						{% endfor %}
+					{% endif %}
+					</div>
 					
 						<div class="flex-r-m flex-w p-t-10">
 							<div class="w-size16 flex-m flex-w">
