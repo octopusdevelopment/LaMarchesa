@@ -37,7 +37,7 @@ def cart_add(request, product_id):
             messages.error(request, 'veuillez choisir une couleur ')
         if not taille and couleur:
             messages.error(request, 'veuillez choisir une Taille')
-        return redirect(f'/{slug}/{pk}')
+        return redirect(f'/produits/{slug}/{pk}')
         # return HttpResponseRedirect(reverse('main:product-detail'))
 
 
@@ -51,10 +51,10 @@ def cart_remove(request, product_id):
 
 def cart_detail(request):
     cart = Cart(request)
+    return render(request, 'cart.html', {'cart': cart})
     # for item in cart:
     #     item['update_quantity_form'] = CartAddProductForm(initial={'quantity': item['quantity'], 'override': True, 'taille': item['taille'], 'color': item['color']})
     #     print('baskets details', list(cart))
-    return render(request, 'cart.html', {'cart': cart})
 
 @require_POST
 def cart_update(request, product_id):

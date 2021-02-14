@@ -111,25 +111,25 @@
 					<!-- Order Details -->
 					<div class="col-md-5 order-details">
 						<div class="section-title text-center">
-							<h3 class="title">Your Order</h3>
+							<h3 class="title">Votre Commande</h3>
 						</div>
 						<div class="order-summary">
 							<div class="order-col">
-								<div><strong>PRODUCT</strong></div>
+								<div><strong>Produit</strong></div>
 								<div><strong>TOTAL</strong></div>
 							</div>
 							<div class="order-products">
 								{% for item in cart %}
 									<div class="order-col">
-										<div>{{ item.quantity }}x {{ item.product.name }}</div>
+										<div>{{ item.product.name }} <span class="text-danger">X</span> {{ item.quantity }}</div>
 										<div>{{ item.total_price }} DA</div>
 									</div>
 								{% endfor %}
 								
 							</div>
 							<div class="order-col">
-								<div>Shiping</div>
-								<div><strong>FREE</strong></div>
+								<div>Livraison</div>
+								<div><strong>Offerte</strong></div>
 							</div>
 							<div class="order-col">
 								<div><strong>TOTAL</strong></div>

@@ -160,13 +160,15 @@
 						hello@maisonlamarchesa.com
 					</span>
 
-					<div class="topbar-language rs1-select2">
-						<select class="selection-1" name="time">
-							<option>AR</option>
-							<option>FR</option>
-						</select>
-					</div>
+{% comment %}
+<div class="topbar-language rs1-select2">
+	<select class="selection-1" name="time">
+		<option>AR</option>
+		<option>FR</option>
+	</select>
+</div>
 
+{% endcomment %}
 			
 
 					<span class="linedivide1"></span>
@@ -243,7 +245,7 @@
 					<nav class="menu">
 						<ul class="main_menu">
 							<li>
-								<a class="active sale-noti" href="{% url 'main:index' %}">Home</a>
+								<a class="active sale-noti" href="{% url 'main:index' %}">Accueil</a>
 
 							</li>
 							<li>
@@ -390,7 +392,7 @@
 					</li>
 					
 					<li>
-						<a class="sale-noti" href="{% url 'main:index' %}">Home</a>
+						<a class="sale-noti" href="{% url 'main:index' %}">Accueil</a>
 
 					</li>
 					<li>
