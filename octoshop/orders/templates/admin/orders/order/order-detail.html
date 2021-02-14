@@ -34,6 +34,19 @@
             <td><a href="mailto:{{ order.email }}">{{ order.email }}</a></td>
         </tr>
         <tr>
+            <th>Commune</th>
+            <td>
+            {{ order.commune }},
+            </td>
+        </tr>
+        <tr>
+            <th>Wilaya</th>
+            <td>
+            {{ order.wilaya }},
+            {{ order.postal_code }} {{ order.city }}
+            </td>
+        </tr>
+        <tr>
             <th>Addresse</th>
             <td>
             {{ order.addresse }},
@@ -68,9 +81,9 @@
                 {% for item in order.items.all %}
                     <tr class="row{% cycle '1' '2' %}">
                         <td>{{ item.product.name }}</td>
-                        <td class="num"> {{ item.price }} </td>
-                        <td class="num"> {{ item.color }} </td>
-                        <td class="num"> {{ item.taille }} </td>
+                        <td class="num">{{ item.price }} </td>
+                        <td class="num"> <div style="height: 25px; width: 25px; background-color:{{ item.color }}; border-radius:50%; margin-left:10px"></div> </td>
+                        <td class="num">{{ item.taille }}</td>
                         <td class="num"> {{ item.quantity }}</td>
                         <td class="num"> {{ item.get_cost }} </td>
                     </tr>

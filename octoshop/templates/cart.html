@@ -32,9 +32,9 @@
 						
 						<tr class="table-head">
 							<th class="column-1">Photo</th>
-							<th class="column-2">Produit</th>
-							<th class="column-2">Taille</th>
-							<th class="column-2">Couleur</th>
+							<th class="column-3">Produit</th>
+							<th class="column-3">Taille</th>
+							<th class="column-3">Couleur</th>
 							<th class="column-3">Prix</th>
 							<th class="column-4">Quantité</th>
 							<th class="column-4">Supprimer</th>
@@ -52,7 +52,7 @@
 										</div>
 									</td>
 									{% if product.name %}
-										<td class="column-2">{{product.name}}</td>
+										<td class="column-3">{{product.name}}</td>
 									
 									{% else %}
 										<td class="column-2">hellooo</td>
@@ -66,11 +66,31 @@
 									<td class="column-4">
 										<form id="quantity-item" action="{% url 'cart:cart_update' product.id %}" method="post">
 											<div class="inputs d-flex">
-												{{ item.update_quantity_form.quantity }}
-												{{ item.update_quantity_form.override }}
+												<button class="btn-num-product-down colorwhite flex-c-m size7 bg0 eff2">
+													<i class="fs-12 fa fa-minus" aria-hidden="true"></i>
+												</button>
+			
+												<input class="size8 m-text18 t-center num-product" min="1" max="3" type="number" name="quantity" value="{{item.quantity}}">
+			
+												<button class="btn-num-product-up colorwhite flex-c-m size7 bg0 eff2">
+													<i class="fs-12 fa fa-plus" aria-hidden="true"></i>
+												</button>
 												<button class="btn ml-3" type="submit"> <i class="fa fa-check"></i></button>
 											</div>
 												{% csrf_token %}
+													{% comment %}
+														<div class="flex-w bo5 of-hidden w-size17">
+															<button class="btn-num-product-down color1 flex-c-m size7 bg8 eff2">
+																<i class="fs-12 fa fa-minus" aria-hidden="true"></i>
+															</button>
+						
+															<input class="size8 m-text18 t-center num-product" type="number" name="num-product1" value="1">
+						
+															<button class="btn-num-product-up color1 flex-c-m size7 bg8 eff2">
+																<i class="fs-12 fa fa-plus" aria-hidden="true"></i>
+															</button>
+														</div>
+													{% endcomment %}
 										</form>
 									</td>
 									<td>
@@ -93,8 +113,8 @@
 
 						<tr class="total">
 							<td><h3 class="ml-5 text-uppercase ">Total</h3></td>
-							<td  colspan="3"></td>
-							<td class="num"><h3>{{ cart.get_total_price }} DA</h3></td>
+							<td colspan="4" ></td>
+							<td colspan="2" class="num"><h3><span style="color: brown;letter-spacing:2px" > {{ cart.get_total_price }} </span>DA</h3></td>
 						</tr>
 					</table>
 				</div>

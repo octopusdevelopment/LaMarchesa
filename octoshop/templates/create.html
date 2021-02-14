@@ -71,13 +71,11 @@
 							</div>
 							</div>
 							<!--address-->
-							<div class="form-group mb-5">
-							  <input class="input" type="text" name="addresse" id="addresse" class="form-control" placeholder="votre adresse de livraison">
-							</div>
+
 							<!--Grid row-->
 							<div class="row">
 							  <!--Grid column-->
-							  <div class="col-lg-4 col-md-12 mb-4">
+							  <div class="col-6 mb-4">
 								<label for="country">Wilaya</label>
 								<select class="input" name="wilaya" id="id_wilaya" class=" d-block w-100" style="cursor: pointer;">
 								  <option class="option" value='' selected>---------</option>
@@ -85,30 +83,19 @@
 								  	<option class="option" value={{wilaya.pk}}>{{wilaya.name}}</option>
 								  {% endfor %}
 								</select>
-				
-			  
 							  </div>
 							  <!--Grid column-->
-							  <div class="col-lg-4 col-md-6 mb-4">
+							  <div class="col-6 mb-4">
 								<label for="state">Commune</label>
 								<select class="input  d-block w-100" name="commune" id="id_commune" style="cursor: pointer;" required>
 								  <option class="option" value='' selected>---------</option>
-
 								</select>
-
-							  </div>
-							  <!--Grid column-->
-							  <!--Grid column-->
-							  <div class="col-lg-4 col-md-6 mb-4">
-								<label for="zip">Code postale</label>
-								<input type="text" class="form-control" id="zip" placeholder="" required>
-								<div class="invalid-feedback">
-								  Code postale requis
-								</div>
 							  </div>
 							  <!--Grid column-->
 							</div>
-													<!-- Order notes -->
+							<div class="form-group mb-5">
+								<input class="input" type="text" name="addresse" id="addresse" class="form-control" placeholder="votre adresse de livraison" required>
+							  </div>
 							<div class="order-notes">
 								<textarea name="note" id="note" class="input" placeholder="Notes pour cette commande (facultatif)"></textarea>
 							</div>

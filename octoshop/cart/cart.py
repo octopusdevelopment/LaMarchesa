@@ -16,16 +16,16 @@ class Cart(object):
     def save(self):
         self.session.modified = True
 
-    def add(self, product, taille, color, quantity=1,  override_quantity=False):
+    def add(self, product, taille, color, quantity=1):
         product_id = str(product.id)
         if product_id not in self.cart:
             # a vérifier pourquoi la quantité est egale a 0 et non pas a 1 vu que c'est la methode add !!!!!!
             self.cart[product_id] = {'quantity': 0, 'price': str(product.price), 'taille': taille, 'color': color}
-        if override_quantity:
-            print('self.cart' , self.cart)
-            self.cart[product_id]['quantity'] = quantity
-        else:
-            self.cart[product_id]['quantity'] += quantity
+        # if override_quantity:
+        #     print('self.cart' , self.cart)
+        #     self.cart[product_id]['quantity'] = quantity
+        # else:
+        self.cart[product_id]['quantity'] += quantity
         self.save()
 
 
@@ -34,6 +34,11 @@ class Cart(object):
         if product_id in self.cart:
             del self.cart[product_id]
             self.save()
+
+    def update(self, product, quantity):
+        product_id = str(product.id)
+        self.cart[product_id]['quantity'] = quantity
+        self.save()
 
     def __iter__(self):
         "iterate dans la carte et recupere les produits de la DB"
