@@ -200,5 +200,13 @@
         $('.video-mo-01').children('iframe')[0].src = srcOld;
         $('.video-mo-01').css('opacity','0');
     });
+    // $('#quantity-item').on('submit', function(event){
+    //     event.preventDefault();
+    //     console.log("form submitted!");  // sanity check
+    //     console.log($('#item_quantity').val());
 
+    //     update_price();
+    // });
+
+  
 })(jQuery);

@@ -1,0 +1,99 @@
+/*!
+ *  Font Awesome 4.7.0 by @davegandy - http://fontawesome.io - @fontawesome
+ *  License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
+ */
+/* FONT PATH
+ * -------------------------- */
+@font-face {
+  font-family: 'FontAwesome';
+  src: url('../fonts/fontawesome-webfont.eot?v=4.7.0');
+  src: url('../fonts/fontawesome-webfont.eot?#iefix&v=4.7.0') format('embedded-opentype'), url('../fonts/fontawesome-webfont.woff2?v=4.7.0') format('woff2'), url('../fonts/fontawesome-webfont.woff?v=4.7.0') format('woff'), url('../fonts/fontawesome-webfont.ttf?v=4.7.0') format('truetype'), url('../fonts/fontawesome-webfont.svg?v=4.7.0#fontawesomeregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+.fa {
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+/* makes the font 33% larger relative to the icon container */
+/* Deprecated as of 4.4.0 */
+.pull-right {
+  float: right;
+}
+.fa.pull-right {
+  margin-left: .3em;
+}
+@keyframes fa-spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+}
+/* Font Awesome uses the Unicode Private Use Area (PUA) to ensure screen
+   readers do not read off random characters that represent icons */
+.fa-search:before {
+  content: "\f002";
+}
+.fa-check:before {
+  content: "\f00c";
+}
+.fa-remove:before {
+  content: "\f00d";
+}
+.fa-clock-o:before {
+  content: "\f017";
+}
+.fa-play:before {
+  content: "\f04b";
+}
+.fa-plus:before {
+  content: "\f067";
+}
+.fa-minus:before {
+  content: "\f068";
+}
+.fa-calendar:before {
+  content: "\f073";
+}
+.fa-heart-o:before {
+  content: "\f08a";
+}
+
+.fa-facebook:before {
+  content: "\f09a";
+}
+.fa-angle-double-up:before {
+  content: "\f102";
+}
+.fa-angle-left:before {
+  content: "\f104";
+}
+.fa-angle-right:before {
+  content: "\f105";
+}
+.fa-youtube-play:before {
+  content: "\f16a";
+}
+.fa-instagram:before {
+  content: "\f16d";
+}
+.fa-long-arrow-right:before {
+  content: "\f178";
+}
+.fa-trash:before {
+  content: "\f1f8";
+}
+.fa-pinterest-p:before {
+  content: "\f231";
+}
+.fa-snapchat-ghost:before {
+  content: "\f2ac";
+}
