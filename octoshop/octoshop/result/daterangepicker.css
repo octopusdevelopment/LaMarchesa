@@ -1,0 +1,50 @@
+.daterangepicker {
+  position: absolute;
+  color: inherit;
+  background-color: #fff;
+  border-radius: 4px;
+  width: 278px;
+  padding: 4px;
+  margin-top: 1px;
+  top: 100px;
+  left: 20px;
+  /* Calendars */ }
+  .daterangepicker:before, .daterangepicker:after {
+    position: absolute;
+    display: inline-block;
+    border-bottom-color: rgba(0, 0, 0, 0.2);
+    content: ''; }
+  .daterangepicker:before {
+    top: -7px;
+    border-right: 7px solid transparent;
+    border-left: 7px solid transparent;
+    border-bottom: 7px solid #ccc; }
+  .daterangepicker:after {
+    top: -6px;
+    border-right: 6px solid transparent;
+    border-bottom: 6px solid #fff;
+    border-left: 6px solid transparent; }
+  .daterangepicker table {
+    width: 100%;
+    margin: 0; }
+  .daterangepicker td, .daterangepicker th {
+    text-align: center;
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+    border: 1px solid transparent;
+    white-space: nowrap;
+    cursor: pointer; }
+  .daterangepicker td.off {
+    background-color: #fff;
+    border-color: transparent;
+    color: #999; }
+  .daterangepicker td.active, .daterangepicker td.active:hover {
+    background-color: #357ebd;
+    border-color: transparent;
+    color: #fff; }
+
+/*  Larger Screen Styling */
+@media (min-width: 564px) {
+  .daterangepicker {
+    width: auto; } }

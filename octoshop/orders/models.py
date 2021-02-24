@@ -3,8 +3,8 @@ from livraison.models import Wilaya, Commune
 # , CoutLivraison
 # Create your models here.
 from main.models import Product
-
 class Order(models.Model):
+    
     first_name  = models.CharField(verbose_name="Nom" , max_length=50)
     last_name   = models.CharField(verbose_name="Prenom" , max_length=50)
     addresse    = models.CharField(verbose_name="Adresse" , max_length=250)

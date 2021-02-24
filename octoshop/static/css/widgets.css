@@ -1,0 +1,28 @@
+/* SELECTOR (FILTER INTERFACE) */
+
+/* STACKED SELECTORS */
+
+/* DATE AND TIME */
+
+/* URL */
+
+p.url {
+    line-height: 20px;
+    margin: 0;
+    padding: 0;
+    color: #666;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.url a {
+    font-weight: normal;
+}
+
+/* FILE UPLOADS */
+
+/* CALENDARS & CLOCKS */
+
+/* EDIT INLINE */
+
+/* RELATED WIDGET WRAPPER */

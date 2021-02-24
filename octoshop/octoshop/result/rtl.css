@@ -1,0 +1,52 @@
+body {
+    direction: rtl;
+}
+
+/* LOGIN */
+
+/* GLOBAL */
+
+th {
+    text-align: right;
+}
+
+.module h2 {
+    text-align: right;
+}
+
+.module ul {
+    margin-left: 0;
+    margin-right: 1.5em;
+}
+
+.object-tools {
+    float: left;
+}
+
+thead th:first-child {
+    border-left: none;
+}
+
+/* LAYOUT */
+
+div.breadcrumbs {
+    text-align: right;
+}
+
+/* SORTABLE TABLES */
+
+/* dashboard styles */
+
+/* changelists styles */
+
+/* FORMS */
+
+form ul.inline li {
+    float: right;
+    padding-right: 0;
+    padding-left: 7px;
+}
+
+/* WIDGETS */
+
+/* MISC */

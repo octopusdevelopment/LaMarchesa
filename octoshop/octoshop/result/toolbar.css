@@ -1,0 +1,10 @@
+/* Debug Toolbar CSS Reset, adapted from Eric Meyer's CSS Reset */
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+} /* Error */ /* Generic */ /* Keyword */ /* Operator */ /* Name */ /* Literal.Number.Integer */ /* Literal */ /* Other */ /* Punctuation */ /* Literal.Number */ /* Literal.String */ /* Text.Whitespace */ /* Literal.Number.Integer.Long */ /* Name.Attribute */ /* Name.Tag */ /* Name.Variable */ /* Literal.String.Double */ /* Comment.Preproc */

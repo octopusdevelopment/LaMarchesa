@@ -1,0 +1,132 @@
+/* Tablets */
+
+input[type="submit"], button {
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+@media (max-width: 1024px) {
+    /* Basic */
+
+    html {
+        -webkit-text-size-adjust: 100%;
+    }
+
+    td, th {
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    /* Layout */
+
+    #container {
+        min-width: 0;
+    }
+
+    #content {
+        padding: 20px 30px 30px;
+    }
+
+    div.breadcrumbs {
+        padding: 10px 30px;
+    }
+
+    /* Header */
+
+    #header {
+        flex-direction: column;
+        padding: 15px 30px;
+        justify-content: flex-start;
+    }
+
+    /* Dashboard */
+
+    /* Changelist */
+
+    /* Forms */
+
+    label {
+        font-size: 14px;
+    }
+
+    textarea {
+        max-width: 100%;
+        max-height: 120px;
+    }
+
+    /* Related widget */
+
+    /* Selector */
+
+    /* Messages */
+
+    /* Login */
+
+    /* GIS */
+
+    /* Docs */
+}
+
+/* Mobile */
+
+@media (max-width: 767px) {
+    /* Layout */
+
+    #header, #content, #footer {
+        padding: 15px;
+    }
+
+    #footer:empty {
+        padding: 0;
+    }
+
+    div.breadcrumbs {
+        padding: 10px 15px;
+    }
+
+    /* Dashboard */
+
+    /* Changelist */
+
+    .object-tools {
+        float: none;
+        margin: 0 0 15px;
+        padding: 0;
+        overflow: hidden;
+    }
+
+    .object-tools li {
+        height: auto;
+        margin-left: 0;
+    }
+
+    .object-tools li + li {
+        margin-left: 15px;
+    }
+
+    /* Forms */
+
+    textarea {
+        max-width: none;
+    }
+
+    /* Related widget */
+
+    /* Selector */
+
+    /* Inlines */
+
+    /* Submit row */
+
+    /* Messages */
+
+    /* Paginator */
+
+    /* Login */
+
+    /* Calendar and clock */
+
+    /* History */
+
+    /* Docs */
+}
