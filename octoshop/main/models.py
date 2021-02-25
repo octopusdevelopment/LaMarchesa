@@ -87,8 +87,6 @@ class Product(models.Model):
         verbose_name = "Produit"
 
 
-
-
 class Wilaya(models.Model):
     name = models.CharField(max_length=30)
     livraison = models.IntegerField(blank=False, default=600)

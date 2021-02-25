@@ -30,7 +30,6 @@ def cart_add(request, product_id):
         # the_cart = request
         couleur = request.POST.get('color')
         taille = request.POST.get('taille')
-        print('zaaalma hna !!')
         if not couleur and not taille:
             messages.error(request, 'veuillez choisir la taille et la couleur de votre choix')
         if not couleur and taille:
@@ -61,6 +60,5 @@ def cart_update(request, product_id):
     cart = Cart(request)
     product = get_object_or_404(Product, id=product_id)
     quantity = int(request.POST.get('quantity'))
-    print('la quantiteee', type(quantity))
     cart.update(product=product, quantity=quantity)
     return redirect('cart:cart_detail')
