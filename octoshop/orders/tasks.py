@@ -11,9 +11,9 @@ import weasyprint
 def order_created(order_id):
     order = Order.objects.get(id=order_id)
     subject = f'Commande N°: {order.id}'
-    message = f'Chére {order.first_name},\n\n' \
-              f'vous avez passer une commande avec succés' \
-              f'votre identifiant de commande est le: {order.id}'
+    message = f'Chère {order.first_name},\n\n' \
+              f'Vous avez passé une commande avec succès' \
+              f'Votre identifiant de commande est le: {order.id}'
 
     mail_sent = send_mail(subject, message, 'inter.taki@gmail.com',[order.email])
     return mail_sent
@@ -22,12 +22,12 @@ def order_created(order_id):
 def order_validated(order_id):
     order = Order.objects.get(id=order_id)
     subject = f'OCTOSHOP - Commande ID° {order.id}'
-    message = 'Merci de nous avoir fais confiance.\n vueillez trouver votre facture en piece jointe'
+    message = 'Merci de nous avoir fait confiance.\n Veuillez trouver votre facture en piece jointe'
     email = EmailMessage(subject, message,'admin@octoshop.com', [order.email])
 
     html = render_to_string('pdf.html', {"order":order})
     out = BytesIO()
-    # stylesheets = [weasyprint.CSS(settings.STATIC_ROOT + 'css/pdf.css')]
+    stylesheets = [weasyprint.CSS(settings.STATIC_ROOT + 'css/pdf.css')]
     weasyprint.HTML(string=html).write_pdf(out)
     email.attach(f'order_{order.id}.pdf', out.getvalue(), 'application/pdf')
     email.send()

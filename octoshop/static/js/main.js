@@ -194,6 +194,4 @@
 
     //     update_price();
     // });
-
-  
 })(jQuery);

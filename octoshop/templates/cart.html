@@ -60,7 +60,7 @@
 									{% endif %}
 									
 									<td class="column-3">{{item.taille}}</td>
-									<td class="column-3"><span class="dot small-dot mr-2" style="background-color: {{ item.color }};"></span></td>
+									<td class="column-3"><span class="dot small-dot mr-2" style="background-color: {{ item.color }}"></span></td>
 									<td class="column-3">{{item.price}} DZD</td>
 
 									<td class="column-4">
@@ -111,12 +111,41 @@
 						</tr>
 						{% endif %}
 
-						<tr class="total">
-							<td><h3 class="ml-5 text-uppercase ">Total</h3></td>
-							<td colspan="4" ></td>
-							<td colspan="2" class="num"><h3><span style="color: brown;letter-spacing:2px" > {{ cart.get_total_price }} </span>DA</h3></td>
+						
+					 {% if cart.coupon %}
+ 							<tr class="subtotal" class="table-row">
+ 								<td class="column-1">Subtotal</td>
+								<td></td>
+ 								<td class="num column-3">${{ cart.get_total_price|floatformat:2 }}</td>
+ 							</tr>
+ 							<tr class="table-row">
+							 	<td class="column-1">"{{ cart.coupon.code }}" coupon </td>
+								 <td></td>
+							 	{% if cart.coupon.discount_percentage %}
+ 								<td class="column-3"> {{ cart.coupon.discount_percentage}}% off</td>
+								{% else %}
+								<td class="column-3"> {{ cart.coupon.discount_amount}} DA off</td>
+ 								
+								 {% endif %}
+ 				
+							</tr>
+						{% endif %}
+						
+						<tr class="total table-row">
+							<td class="column-1">Total</td>
+							<td></td>
+							<td class="num column-3">${{ cart.get_total_price_after_discount|floatformat:2 }}</td>
 						</tr>
 					</table>
+					<div class="table-row" style= "padding:30px 0 0 50px">
+					<p class="column-1">Apply a coupon: </p>
+					<form action="{% url "coupons:apply" %}" method="post"  class="column-3" style="padding: 10px 0">
+ 						{{ coupon_apply_form }}
+ 						<input type="submit" value="Apply"  class="column-3"> 
+ 					{% csrf_token %}
+					</form>
+					</div>
+					
 				</div>
 			</div>
 

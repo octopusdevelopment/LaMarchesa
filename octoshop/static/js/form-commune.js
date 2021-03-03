@@ -1,12 +1,16 @@
 $(document).ready(function(){
 
     $("#id_wilaya").change(function () {
-
+        console.log('INSIDE')
         var url = $("#checkoutForm").attr("data-communes-url");  // get the url of the `load_cities` view
+        
         var wilayaId = $(this).val();  // get the selected country ID from the HTML input
+        
         if (wilayaId == ''){
         $("#id_commune").empty();
         }
+    
+        console.log('WILAYA', wilayaId)
 
         $.ajax({                       // initialize an AJAX request
         url: url,                    // set the url of the request (= localhost:8000/hr/ajax/load-cities/)
@@ -14,11 +18,17 @@ $(document).ready(function(){
             'wilaya': wilayaId       // add the country id to the GET parameters
         },
         
-        success: function (data) {   // `data` is the return of the `load_cities` view function
-            $("#id_commune").html(data);  // replace the contents of the city input with the data that came from the server        
+        success: function (data) { 
+             // `data` is the return of the `load_cities` view function
+
+           // $("#id_commune").html(data);  // replace the contents of the city input with the data that came from the server        
         }              
         }); 
     });
+
+    const change_delivery_price = function () {
+
+    }
 
     $("select#id_wilaya").change(function(){
 
@@ -30,11 +40,11 @@ $(document).ready(function(){
 
     // var numLivraisonAlger = parseInt(livraisonAlger)
    
-       if (selectedWilaya== 'Alger')  {
-        coutLivraison.html(livraisonAlger)
-       } else {
-        coutLivraison.html(livraisonAutre)
-       }
+    //    if (selectedWilaya== 'Alger')  {
+    //     coutLivraison.html(livraisonAlger)
+    //    } else {
+    //     coutLivraison.html(livraisonAutre)
+    //    }
 
 
     // prix = parseInt($('#id_price span').text());

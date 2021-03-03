@@ -27,15 +27,16 @@
     <!--================Cart Area =================-->
 	<section class="order_details section_gap mb5">
 		<div class="container">
-			<h3 class="title_confirmation">Merci, Votre commande a été effectué avec succée.</h3>
+			<h3 class="title_confirmation">Merci, Votre commande a été effectué avec succès.</h3>
 			<div class="row order_d_inner">
 				<div class="col-lg-4">
 					<div class="details_item">
 						<h4>Commande Infos</h4>
+						
 						<ul class="list">
 							<li><a href="#"><span>Commande Numéro </span> : {{ order.id }}</a></li>
 							<li><a href="#"><span>Date</span> : {{order.created}}</a></li>
-							<li><a href="#"><span>Total</span> : {{ item.get_cost }} DA</a></li>
+							<li><a href="#"><span>Total</span> : {{ total_price}} DA</a></li>
 						</ul>
 					</div>
 				</div>
@@ -60,18 +61,19 @@
 								<th scope="col">Quantité</th>
 								<th scope="col">Couleur</th>
 								<th scope="col">Taille</th>
-								<th scope="col">Total</th>
+								<th scope="col">Prix</th>
 							</tr>
 						</thead>
 						<tbody>
 						{% for item in order.items.all %}
 							<tr>
-								<td><p>{{ item.product.name }}</p></td>
+								<td id="{{item.product.id}}"><p>{{ item.product.name }}</p></td>
 								<td><h5>x {{ item.quantity }}</h5></td>
 								<td class="num"> <div style="height: 25px; width: 25px; background-color:{{ item.color }}; border-radius:50%; margin-left:10px"></div> </td>
 								<td class="num">{{ item.taille }}</td>
-								<td><p> {{ item.price }} DA</p></td>
+								<td><p> {{ item.product.price }} DA</p></td>
 							</tr>
+							
 						{% endfor %}
 							<tr>
 								<td>
@@ -81,7 +83,7 @@
 									<h5></h5>
 								</td>
 								<td>
-									<p>{{ order.get_total_cost }} DA</p>
+									<p>{{ total_price }} DA</p>
 								</td>
 							</tr>
 							<tr>
@@ -102,8 +104,9 @@
 								<td>
 									<h5></h5>
 								</td>
+
 								<td>
-									<p>{{ order.get_total_cost }}</p>
+									<p></p>
 								</td>
 							</tr>
 						</tbody>

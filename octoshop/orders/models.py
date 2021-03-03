@@ -1,7 +1,14 @@
 from django.db import models
 from livraison.models import Wilaya, Commune
+from decimal import Decimal
+from django.core.validators import MinValueValidator, MaxValueValidator
+from coupons.models import Coupon
+
 # , CoutLivraison
-# Create your models here.
+"""
+The coupon is a foreign key that stores the coupon code used, and the discount is the percentage applied with the 
+coupon just in case the coupon gets deleted, we will still have a way to retrieve the discount
+"""
 from main.models import Product
 class Order(models.Model):
     
@@ -17,6 +24,8 @@ class Order(models.Model):
     note        = models.TextField(blank=True, null=True)
     paid        = models.BooleanField(default=False)
     confirmer   = models.BooleanField(default=False)
+    coupon = models.ForeignKey(Coupon, related_name='orders', null=True, blank=True, on_delete= models.SET_NULL)
+    discount = models.IntegerField(default=0, validators= [MinValueValidator(0), MaxValueValidator(100)])
 
     class Meta:
         verbose_name = "Commande"
@@ -26,7 +35,8 @@ class Order(models.Model):
         return f'commande N°:  {self.id}'
 
     def get_total_cost(self):
-        return sum(item.get_cost() for item in self.items.all())
+        total_cost = sum(item.get_cost() for item in self.items.all())
+        return total_cost - total_cost * (self.discount / Decimal(100))
 
 
 class OrderItem(models.Model):
