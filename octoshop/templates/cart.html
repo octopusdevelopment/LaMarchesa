@@ -100,56 +100,91 @@
 												{% csrf_token %}
 											</div>
 										</form>
-									<td class="column-5">{{ item.total_price }} DZD</td>
+									<td class="column-5">{{ item.total_price }} DA</td>
 								</tr>
 								{% endwith %}
 							{% endfor %}
 
 						{% else %}
 						<tr class="table-row">
-						<center>	<td colspan="6"><h2 class="ml-5 text-uppercase text-center text-danger " >Votre Panier est vide</h2></td> </center>
+						<center><td colspan="12"><h2 class="ml-5 text-uppercase text-center text-danger " >Votre Panier est vide</h2></td> </center>
 						</tr>
 						{% endif %}
+					</table>
+				</div>
+			</div>
+			<!-- Cart item -->
 
+
+			
+					<!-- Coupon -->
+			{% if cart|length > 0 %}
+					<!-- Montant -->
+			
+			<div class="container-table-cart pos-relative">
+				<div class="wrap-table-shopping-cart bgwhite">
+					<table class="table-shopping-cart">
+						<tr class="table-head">
+						{% if cart.coupon%}
+							<th class="column-1">Coupon</th>
+							<th class="column-3">Réduction</th>
+							<th class="column-3">Sous Total </th>
+							<th class="column-3">Total</th>
+						{% else %}
+							<th class="column-1">Total</th>
+						{% endif %}
 						
-					 {% if cart.coupon %}
- 							<tr class="subtotal" class="table-row">
- 								<td class="column-1">Subtotal</td>
-								<td></td>
- 								<td class="num column-3">${{ cart.get_total_price|floatformat:2 }}</td>
- 							</tr>
- 							<tr class="table-row">
-							 	<td class="column-1">"{{ cart.coupon.code }}" coupon </td>
-								 <td></td>
-							 	{% if cart.coupon.discount_percentage %}
+
+						</tr>
+						<tr class="table-row">
+						{% if cart.coupon%}
+							<td class="column-1">"{{ cart.coupon.code }}"</td>
+							{% if cart.coupon.discount_percentage %}
  								<td class="column-3"> {{ cart.coupon.discount_percentage}}% off</td>
 								{% else %}
-								<td class="column-3"> {{ cart.coupon.discount_amount}} DA off</td>
- 								
-								 {% endif %}
- 				
-							</tr>
-						{% endif %}
+								<td class="column-3"> - {{ cart.coupon.discount_amount}} DA</td>
+							{%endif%}
+							<td class="column-3">{{ cart.get_total_price|floatformat:2 }} DA</td>
+							<td class="column-3">{{ cart.get_total_price_after_discount|floatformat:2 }} DA</td>
 						
-						<tr class="total table-row">
-							<td class="column-1">Total</td>
-							<td></td>
-							<td class="num column-3">${{ cart.get_total_price_after_discount|floatformat:2 }}</td>
+						{% else %}
+							<td class="column-1">{{ cart.get_total_price_after_discount|floatformat:2 }} DA</td>
+						{% endif %}
 						</tr>
 					</table>
-					<div class="table-row" style= "padding:30px 0 0 50px">
+				</div>
+				</div>
+			{% endif %}
+		<!--Coupon -->
+		{% comment %} <div class="table-row" style= "padding:30px 0 0 50px">
 					<p class="column-1">Apply a coupon: </p>
 					<form action="{% url "coupons:apply" %}" method="post"  class="column-3" style="padding: 10px 0">
  						{{ coupon_apply_form }}
  						<input type="submit" value="Apply"  class="column-3"> 
  					{% csrf_token %}
 					</form>
-					</div>
-					
-				</div>
-			</div>
+		</div> {% endcomment %}
+		<div class="col-md-6 p-b-30">
+					<form class="leave-comment" action="{% url "coupons:apply" %}" method="post">
+						<h4 class="m-text26 p-b-36 p-t-15">
+							Saisissez un coupon ici
+						</h4>
 
-			<div class="flex-w flex-sb-m p-t-25 p-b-25 bo8 p-l-35 p-r-60 p-lr-15-sm">
+						<div class="bo4 of-hidden size15 m-b-20">
+							<input class="sizefull s-text7 p-l-22 p-r-22" type="text" name="code" placeholder="Coupon">
+						</div>
+
+						<div class="w-size25">
+							<!-- Button -->
+							<button class="flex-c-m size2 bg1  hov1 m-text3 trans-0-4">
+								Utiliser
+							</button>
+						</div>
+						{% csrf_token %}
+					</form>
+				</div>
+		<!-- Buttons -->
+		<div class="flex-w flex-sb-m p-t-25 p-b-25   p-lr-15-sm ">
 				{% if cart|length > 0 %}
 				  
 				<div class="flex-w flex-m w-full-sm">
@@ -168,10 +203,12 @@
 				{% endif %}
 
 					
-			</div>
+		</div>
 
 			
 		</div>
+
+
 	</section>
 {% block javascript %}
 

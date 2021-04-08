@@ -37,7 +37,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
     'whitenoise.runserver_nostatic',
 
     'main.apps.MainConfig',
@@ -120,9 +119,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'fr'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Africa/Algiers'
 
 USE_I18N = True
 
@@ -143,16 +142,22 @@ STATIC_ROOT =  os.path.join(BASE_DIR, 'assets')
 MEDIA_URL ='/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 
 INTERNAL_IPS = ['127.0.0.1', '::1', '0.0.0.0']
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# EMAIL CONFIGURATION -- TODO: change later
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'octopus.messagerie@gmail.com'
+EMAIL_HOST_PASSWORD = 'txogjbketqbbkqxe'
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
 
-# MESSAGE_TAGS = {
-#     messages.ERROR: 'danger',
-# }
+
 
 CART_SESSION_ID = 'cart'

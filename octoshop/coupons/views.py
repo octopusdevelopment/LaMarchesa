@@ -13,6 +13,7 @@ redirect the user to the cart_detail URL to display the cart with the coupon app
 def coupon_apply(request):
     now = timezone.now()
     form = CouponApplyForm(request.POST)
+    
     if form.is_valid():
         code = form.cleaned_data['code']
         try:
@@ -20,12 +21,9 @@ def coupon_apply(request):
             coupon = Coupon.objects.get(code__iexact=code, valid_from__lte=now, valid_to__gte=now, active=True)
             if(coupon.stock > 0 ):
                 request.session['coupon_id'] = coupon.id
-                print('INSIDE COUPONS.VIEWS: ')
-                print(f'COUPON ID IN SESSION: {coupon.id}')
             else:
                 print('Coupon non disponible')
         except Coupon.DoesNotExist:
             request.session['coupon_id'] = None
-            print('INSIDE COUPONS.VIEWS: ')
-            print(f'COUPON DOES NOT EXIST')            
+     
     return redirect('cart:cart_detail')

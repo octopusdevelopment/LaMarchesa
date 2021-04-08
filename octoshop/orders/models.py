@@ -25,7 +25,7 @@ class Order(models.Model):
     paid        = models.BooleanField(default=False)
     confirmer   = models.BooleanField(default=False)
     coupon = models.ForeignKey(Coupon, related_name='orders', null=True, blank=True, on_delete= models.SET_NULL)
-    discount = models.IntegerField(default=0, validators= [MinValueValidator(0), MaxValueValidator(100)])
+    delivery    = models.DecimalField( max_digits=10, verbose_name="Coût de Livraison", decimal_places=2, default=0)
 
     class Meta:
         verbose_name = "Commande"
@@ -33,10 +33,24 @@ class Order(models.Model):
 
     def __str__(self):
         return f'commande N°:  {self.id}'
+    
+
+    
+    def get_discount(self):
+        if self.coupon:
+            if self.coupon.discount_amount:
+                return self.coupon.discount_amount
+            else:
+                return (self.coupon.discount_percentage / Decimal(100)) \
+                * self.get_total_price()
+        return Decimal(0)
 
     def get_total_cost(self):
         total_cost = sum(item.get_cost() for item in self.items.all())
-        return total_cost - total_cost * (self.discount / Decimal(100))
+        total_cost = total_cost - self.get_discount()
+        if total_cost < 0:
+            total_cost = 0
+        return total_cost + self.delivery
 
 
 class OrderItem(models.Model):

@@ -1,0 +1,28 @@
+{% extends "admin/base.html" %}
+
+{% load static %}
+
+
+{% block title %}{{ title }} | {{ site_title|default:_('La Marchesa - Panel') }}{% endblock %}
+
+{% block extrahead %}
+    <link rel="icon" href="{% static 'images/icons/favicon.png' %}"/>
+{% endblock %}
+
+
+
+{% block extrastyle %}
+    <link rel="stylesheet" href="{% static 'css/admin.css' %}">  
+{% endblock extrastyle %}
+
+
+{% block branding %}
+  <h1 id="head">
+    <img src="{% static 'images/icons/logo.png' %}" alt="La Marchesa" title="La Marchesa - Site de ventes des vêtements en ligne " width="130" height="auto">
+  </h1>
+{% endblock branding %}
+
+{% block welcome-msg %}
+                Bienvenue
+                <strong>{% firstof user.get_short_name user.get_username %}</strong>.
+{% endblock %}

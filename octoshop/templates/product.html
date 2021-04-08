@@ -1,14 +1,16 @@
 
 {% extends "base.html" %}
 {% load static %}
+{% static "images" as baseUrl %}
+
 {% block content %}
   
-	<section class="bg-title-page p-t-50 p-b-40 flex-col-c-m" style="background-image: url({% static 'images/heading-pages-02.jpg' %});">
+	<section class="bg-title-page p-t-50 p-b-40 flex-col-c-m" style="background-image: url({% static 'images/blue_wall_1920x239.jpg' %});">
 		<h2 class="l-text2 t-center">
-			Women
+			Femmes
 		</h2>
 		<p class="m-text13 t-center">
-			New Arrivals Women Collection 2018
+			Nouveautés Collection Femme
 		</p>
 	</section>
 
@@ -21,7 +23,7 @@
 					<div class="leftbar p-r-20 p-r-0-sm">
 						<!--  -->
 						<h4 class="m-text14 p-b-7">
-							Categories
+							Catégories
 						</h4>
 
 						<ul class="p-b-54">
@@ -47,7 +49,7 @@
 					<div class="flex-sb-m flex-w p-b-35">
 						<span class="s-text8 p-t-5 p-b-5">
 							<h3 >
-								{{products.count}} Produit trouver
+								{{size}}  {% if size > 1 %} Produits trouvés {% else %} Produit trouvé {%endif%}
 							</h3>
 						</span>
 					</div>
@@ -59,11 +61,15 @@
 								<div class="block2">
 									<div class=" block2-img wrap-pic-w of-hidden pos-relative {% if prod.status == 'N' %} block2-labelnew {% elif prod.status == 'P' %} block2-labelsale {% endif %}">
 										{% if prod.image %}
-											<img src="{{ prod.image.url }}" alt="IMG-PRODUCT">
+											<img src="{{ prod.image.url }}" alt="{{prod.name}}">
+										{% elif prod.image2 %}
+											<img src="{{ prod.image2.url }}" alt="{{prod.name}}">
+										{% elif prod.image3 %}
+										<img src="{{ prod.image3.url }}" alt="{{prod.name}}">
 										{% else %}
-											<img src="/static/images/banner-01.jpg" alt="IMG-PRODUCT">
+											<img src="{% static 'images/banner-01.jpg' %}" alt="{{prod.name}}">
 										{% endif %}
-<!-- produit en rupture -->
+										<!-- produit en rupture -->
 										{% if prod.status == 'R' %}
 											<div class="rupture-overlay trans-0-4 ">
 												<div class="rupture-wrapbtn">
@@ -83,9 +89,19 @@
 										<a href="{{prod.get_absolute_url}}" class="block2-name dis-block s-text3 p-b-5 text-capitalize">
 											{{prod.name}}
 										</a>
-										<span class="block2-price m-text6 p-r-5">
-											{{prod.price}} DZD
-										</span>
+										{% if prod.status == 'P' %}
+											<span class="block2-oldprice m-text7 p-r-5">
+											{{prod.old_price}}
+											</span>
+			
+											<span class="block2-newprice m-text8 p-r-5">
+												{{prod.price}} DA
+											</span>
+											{% else %}
+											<span class="block2-price m-text6 p-r-5">
+												{{prod.price}} DA
+											</span>
+										{% endif %}
 									</div>
 								</div>
 							</div>
@@ -93,12 +109,27 @@
 
 						
 					</div>
+				
+					{% if products.paginator.num_pages > 1 %}
 
 					<!-- Pagination -->
-					<!-- <div class="pagination flex-m flex-w p-t-26">
-						<a href="#" class="item-pagination flex-c-m trans-0-4 active-pagination">1</a>
-						<a href="#" class="item-pagination flex-c-m trans-0-4">2</a>
-					</div> -->
+					<div class="pagination flex-m flex-w p-t-26">
+						{% if products.has_previous %}
+						<a href="?page={{ products.previous_page_number }}" class="flex-c-m trans-0-4 page">← Page précédante </a>
+						<a href="?page={{ products.previous_page_number }}" class="item-pagination flex-c-m trans-0-4">{{ products.previous_page_number}}</a>
+						{% else %}
+						<a href="#" class="flex-c-m trans-0-4 page disabled" disabled>← Page précédante </a>
+						{% endif %}
+						<a href="?page={{ products.number }}" class="item-pagination flex-c-m trans-0-4 active-pagination">{{ products.number }}</a>
+						{% if products.has_next %}
+						<a href="?page={{ products.next_page_number }}" class="item-pagination flex-c-m trans-0-4">{{ products.next_page_number }}</a>
+						<a href="?page={{ products.next_page_number }}" class="flex-c-m trans-0-4 page">Page suivante →</a>
+						{% else %}
+						<a href="#" class="flex-c-m trans-0-4 page disabled" disabled>Page suivante →</a>
+						{% endif %}
+					</div> 
+					{%endif%}
+					<!-- End Pagination -->
 				</div>
 			</div>
 		</div>

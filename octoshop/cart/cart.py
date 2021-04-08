@@ -95,7 +95,11 @@ class Cart(object):
 
     # total price after discount = total price - discount price
     def get_total_price_after_discount(self):
-        return self.get_total_price() - self.get_discount()
+        price = self.get_total_price() - self.get_discount()
+        if price > 0:
+            return price
+        else:
+            return 0
     
     def clear(self):
         del self.session[settings.CART_SESSION_ID]

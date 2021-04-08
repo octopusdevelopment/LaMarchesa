@@ -1836,7 +1836,7 @@ li.sale-noti > a {
   margin-left: -6px;
 }
 
-.item-pagination {
+.item-pagination, .page {
   font-family: Montserrat-Regular;
   font-size: 13px;
   color: #808080;
@@ -1847,14 +1847,33 @@ li.sale-noti > a {
   margin: 6px;
 }
 
-.item-pagination:hover {
+.item-pagination:hover, .page {
   background-color: #222222;
   color: white;
 }
 
-.active-pagination {
+.active-pagination, .page {
   background-color: #222222;
   color: white;
+}
+
+.page {
+  background-color: #fff;
+  border: none;
+  color: #222222;
+  border-radius: 0;
+  width: auto;
+  height: 36px;
+}
+
+.page.disabled {
+  color: #666666;
+  pointer-events: none;
+
+}
+
+.page.disabled:hover {
+  color: #666666;  
 }
 
 

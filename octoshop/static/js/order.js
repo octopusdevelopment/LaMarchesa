@@ -9,11 +9,11 @@ const order_total_container = document.querySelector('#order_total')
 // Functions
 
 const change_commune = function(e) {
-
     if(e.target.id == 'id_wilaya') {
         const url_value = url_input.getAttribute('data-communes-url')
+        
         const wilaya_id = e.target.value
-        const url = `http://${window.location.host}${url_value}?wilaya=${wilaya_id}`
+        const url = `${window.location.origin}${url_value}?wilaya=${wilaya_id}`
     fetch(url, {
         headers : { 
             'Accept': 'application/json'
@@ -22,7 +22,7 @@ const change_commune = function(e) {
     .then(response => response.json())
     .then(data => {
         const communes = JSON.parse(data)
-       
+        console.log(communes)
         commune_input.innerHTML = `<option class="option" value='' selected>---------</option>`
 
         for(i = 0; i< communes.length; i++) {
@@ -46,7 +46,8 @@ const change_commune = function(e) {
 }
 
 const change_wilaya = function(wilaya_id){
-    const url = `http://${window.location.host}/orders/fetch/load-wilaya/?wilaya=${wilaya_id}`
+    const url = `${window.location.origin}/orders/fetch/load-wilaya/?wilaya=${wilaya_id}`
+
     fetch(url, {
         headers : { 
             'Accept': 'application/json'
@@ -56,7 +57,7 @@ const change_wilaya = function(wilaya_id){
     .then(data => {
         const wilaya = JSON.parse(data)[0]
         wilaya_price = wilaya.fields.cout
-        console.log(wilaya)
+      
         delivery_price_container.innerHTML = ` ${wilaya_price} DA`
         change_price()
     })
@@ -74,8 +75,7 @@ const change_price = function() {
     
     const total_without_delivery = parseFloat(order_total_container.getAttribute('data-order-total'))
     const total_price = parseFloat(total_without_delivery)+ parseFloat(wilaya_price)
-    console.log(total_price)
-    order_total_container.innerHTML = `${total_price} DA`
+    order_total_container.innerHTML = `${total_price.toFixed(2)} DA`
 }
 window.addEventListener('DOMContentLoaded', function() {
     order_total_container.innerHTML = `${document.querySelector('#order_total').getAttribute('data-order-total')} DA`

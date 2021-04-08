@@ -8,7 +8,7 @@ from .models import OrderItem, Order
 from livraison.models import Wilaya, Commune
 from django.views.generic import TemplateView
 from .forms import OrderCreateForm
-from .tasks import order_created
+from .tasks import order_send_email
 from cart.cart import Cart
 from coupons.models import Coupon
 from django.core import serializers
@@ -33,6 +33,7 @@ def order_create(request):
             if form.is_valid():
                 print('Le formulaire est valid')
                 order = form.save(commit=False)
+                order.delivery = order.wilaya.price
                 if cart.coupon:
                     coupon = Coupon.objects.get(id= cart.coupon.id, stock__gt=0)
                     if coupon: 
@@ -49,7 +50,7 @@ def order_create(request):
                     OrderItem.objects.create(order=order,product=item['product'],price=item['price'],quantity=item['quantity'], taille=item['taille'], color=item['color'])
                 total_price = cart.get_total_price_after_discount()
                 cart.clear()
-                order_created.delay(order.id)
+                order_send_email(order)
                 context = {'order': order,
                            'products_total': products_total, 
                            'total_price': total_price,
@@ -75,7 +76,7 @@ def admin_order_pdf(request, order_id):
                             {'order': order})
     response = HttpResponse(content_type='application/pdf')
     response['Content-Disposition'] = f'filename=order_{order.id}.pdf'
-    weasyprint.HTML(string=html).write_pdf(response, stylesheets=[weasyprint.CSS(settings.STATIC_ROOT + 'css/pdf.css')])# ajouter le style plus t ard erreur ???
+    #weasyprint.HTML(string=html).write_pdf(response, stylesheets=[weasyprint.CSS(settings.STATIC_ROOT + 'css\\pdf.css')])# ajouter le style plus t ard erreur ???
     weasyprint.HTML(string=html).write_pdf(response)
     return response
 

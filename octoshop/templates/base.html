@@ -18,15 +18,7 @@
 <!--===============================================================================================-->
 <!--===============================================================================================-->
 <!--===============================================================================================-->
-{% comment %}
-<link rel="stylesheet" type="text/css" href="{% static 'css/animate.css' %}">
-<link rel="stylesheet" type="text/css" href="{% static 'css/themify-icons.css' %}">
-<link rel="stylesheet" type="text/css" href="{% static 'css/icon-font.min.css' %}">
-<!-- <link rel="stylesheet" type="text/css" href="{% static 'vendor/css-hamburgers/hamburgers.min.css' %}"> -->
 
-<link rel="stylesheet" type="text/css" href="{% static 'css/animsition.min.css' %}">
-<link rel="stylesheet" type="text/css" href="{% static 'css/daterangepicker.css' %}">
-{% endcomment %}
 <!--===============================================================================================-->
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="{% static 'css/select2.min.css' %}">
@@ -40,6 +32,8 @@
 	<link rel="stylesheet" type="text/css" href="{% static 'css/util.css' %}">
 	<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
 <!--===============================================================================================-->
+
+
 </head>
 <body class="animsition">
 
@@ -58,7 +52,7 @@
 						<a class="active sale-noti" href="{% url 'main:index' %}">Accueil</a>
 					</li>
 					<li>
-						<a href="{% url 'main:about' %}">A propos</a>
+						<a href="{% url 'main:about' %}">À propos</a>
 					</li>
 					{% for cat in categories %}
 						<li>
@@ -251,7 +245,7 @@
 
 							</li>
 							<li>
-								<a href="{% url 'main:about' %}">A propos</a>
+								<a href="{% url 'main:about' %}">À propos</a>
 							</li>
 							{% for cat in categories %}
 						<li>
@@ -374,12 +368,12 @@
 								hello@maisonlamarchesa.com
 							</span>
 
-							<div class="topbar-language rs1-select2">
+							{% comment %} <div class="topbar-language rs1-select2">
 								<select class="selection-1" name="time">
 									<option>USD</option>
 									<option>EUR</option>
 								</select>
-							</div>
+							</div> {% endcomment %}
 						</div>
 					</li>
 
@@ -398,7 +392,7 @@
 
 					</li>
 					<li>
-						<a href="{% url 'main:about' %}">A propos</a>
+						<a href="{% url 'main:about' %}">À propos</a>
 					</li>
 					{% for cat in categories %}
 					<li>
@@ -428,12 +422,12 @@
 		<div class="flex-w p-b-90">
 			<div class="w-size6 p-t-30 p-l-15 p-r-15 respon3">
 				<h4 class="s-text12 p-b-30">
-					GET IN TOUCH
+					ENTRER EN CONTACT
 				</h4>
 
 				<div>
 					<p class="s-text7 w-size27">
-						Any questions? Let us know in store at 8th floor, 379 Hudson St, New York, NY 10018 or call us on (+1) 96 716 6879
+						Des questions ? Faites-nous savoir via email ou nos réseaux sociaux ou appelez-nous au (+1) 96716 6879.
 					</p>
 
 					<div class="flex-m p-t-30">
@@ -448,7 +442,7 @@
 
 			<div class="w-size7 p-t-30 p-l-15 p-r-15 respon4">
 				<h4 class="s-text12 p-b-30">
-					Categories
+					Catégories
 				</h4>
 
 				<ul>
@@ -466,25 +460,19 @@
 
 			<div class="w-size7 p-t-30 p-l-15 p-r-15 respon4">
 				<h4 class="s-text12 p-b-30">
-					Links
+					Liens
 				</h4>
 
 				<ul>
 					<li class="p-b-9">
-						<a href="#" class="s-text7">
-							Shop
+						<a href="{% url 'main:about' %}" class="s-text7">
+							À propos
 						</a>
 					</li>
 
 					<li class="p-b-9">
-						<a href="#" class="s-text7">
-							About Us
-						</a>
-					</li>
-
-					<li class="p-b-9">
-						<a href="#" class="s-text7">
-							Contact Us
+						<a href="{% url 'main:contact' %}" class="s-text7">
+							Contact
 						</a>
 					</li>
 
@@ -492,25 +480,7 @@
 				</ul>
 			</div>
 
-			<div class="w-size7 p-t-30 p-l-15 p-r-15 respon4">
-				<h4 class="s-text12 p-b-30">
-					Aide
-				</h4>
-				<ul>
-					<li class="p-b-9">
-						<a href="#" class="s-text7">
-							Livraison
-						</a>
-					</li>
-					<li class="p-b-9">
-						<a href="#" class="s-text7">
-							FAQs
-						</a>
-					</li>
-				</ul>
-			</div>
-		</div>
-
+			
 		<div class="t-center p-l-15 p-r-15">
 {% comment %}
 <a href="#">
@@ -535,7 +505,7 @@
 			<div class="t-center s-text8 p-t-20">
 				<p class="copy_right text-center">
 					<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> Tous droits réservés Maison La Marchesa | Powred by <a href="http://octopus-consulting.com/" target="_blank">OCTOPUS CONSULTING</a>
+					Copyright &copy;<script>document.write(new Date().getFullYear());</script> Tous droits réservés Maison La Marchesa | Powered by <a href="http://octopus-consulting.com/" target="_blank">OCTOPUS CONSULTING</a>
 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 				</p>
 			</div>

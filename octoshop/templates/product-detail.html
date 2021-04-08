@@ -32,7 +32,7 @@
 
 							<div class="item-slick3" data-thumb="{{product.image.url}}">
 								<div class="wrap-pic-w">
-									<img src="{{product.image.url}}" alt="IMG-PRODUCT">
+									<img src="{{product.image.url}}" alt="{{product.name}}">
 								</div>
 							</div>
 						{% endif %}
@@ -41,7 +41,7 @@
 						  
 							<div class="item-slick3" data-thumb="{{product.image2.url}}">
 								<div class="wrap-pic-w">
-									<img src="{{product.image2.url}}" alt="IMG-PRODUCT">
+									<img src="{{product.image2.url}}" alt="{{product.name}}">
 								</div>
 							</div>
 						{% endif %}
@@ -49,7 +49,7 @@
 
 						<div class="item-slick3" data-thumb="{{product.image3.url}}">
 							<div class="wrap-pic-w">
-								<img src="{{product.image3.url}}" alt="IMG-PRODUCT">
+								<img src="{{product.image3.url}}" alt="{{product.name}}">
 							</div>
 						</div>
 						{% endif %}
@@ -64,13 +64,13 @@
 				</h1>
 
 				<span class="s-text23">
-					Prix :{{product.price}} DZD
+					Prix : {{product.price}} DA
 				</span>
 
 				<form action="{% url 'cart:cart_add' product.id %}" method="post">
 					{% csrf_token %}
 					<div class="size-radios mt-5" >
-						<h5 >Selectionner une taille</h5>
+						<h5>Selectionnez une taille</h5>
 	
 							{% for co in product.taille.all %}
 								<label>
@@ -81,7 +81,7 @@
 							{% endfor %}
 					</div>
 					<table classe="mt-5">
-						<h5 >Selectionner une Couleur</h5>
+						<h5 >Selectionnez une Couleur</h5>
 						<tr>
 							<th style="margin-right: 20px;"> Couleur :</th>
 								{% for co in product.color.all %}
@@ -121,14 +121,14 @@
 								</div>
 								<div class="btn-addcart-product-detail size9 trans-0-4 m-t-10 m-b-10">
 									<!-- Button -->
-									<input class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4" type="submit" style="width: 110%;" value="Ajouter au panier">
+									<input class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4" type="submit" style="width: 140%;" value="Ajouter au panier">
 								</div>
 							</div>
 						</div>
 				</form>
 
 				<div class="p-b-45">
-					<span class="s-text8">Categorie: <a href="{{product.subCategory.get_absolute_url}}">{{product.subCategory}}</a>  </span>
+					<span class="s-text8">Catégorie: <a href="{{product.subCategory.get_absolute_url}}">{{product.subCategory}}</a>  </span>
 				</div>
 
 				<!--  -->
@@ -152,63 +152,86 @@
 	</div>
 
 
-	<!-- Relate Product -->
+	<!-- Related Product -->
+	{% if similar_products %}
 	<section class="relateproduct bgwhite p-t-45 p-b-138">
 		<div class="container">
 			<div class="sec-title p-b-60">
 				<h3 class="m-text5 t-center">
-					Related Products
+					Produits similaires
 				</h3>
 			</div>
 
 			<!-- Slide2 -->
 			<div class="wrap-slick2">
 				<div class="slick2">
-
-					
-<!-- cscscs -->
+					{% for prod in similar_products%}
 					<div class="item-slick2 p-l-15 p-r-15">
 						<!-- Block2 -->
 						<div class="block2">
-							<div class="block2-img wrap-pic-w of-hidden pos-relative block2-labelsale">
-								<img src="/static/images/item-07.jpg" alt="IMG-PRODUCT">
+							<div class="block2-img wrap-pic-w of-hidden pos-relative {% if prod.status == 'N' %} block2-labelnew {% elif prod.status == 'P' %} block2-labelsale {% endif %}">
+								{% if prod.image %}
+										<img src="{{ prod.image.url }}" alt="{{prod.name}}">
+										{% elif prod.image2 %}
+											<img src="{{ prod.image2.url }}" alt="{{prod.name}}">
+										{% elif prod.image3 %}
+										<img src="{{ prod.image3.url }}" alt="{{prod.name}}">
+										{% else %}
+										<img src="{% static 'images/banner-01.jpg' %}" alt="{{prod.name}}">
+								{% endif %}
 
 								<div class="block2-overlay trans-0-4">
-									<a href="#" class="block2-btn-addwishlist hov-pointer trans-0-4">
-										<i class="icon-wishlist icon_heart_alt" aria-hidden="true"></i>
-										<i class="icon-wishlist icon_heart dis-none" aria-hidden="true"></i>
-									</a>
+									{% if prod.status == 'R' %}
+											<div class="rupture-overlay trans-0-4 ">
+												<div class="rupture-wrapbtn">
+													<p class="flex-c-m size1 bg3 hov1 s-text2 trans-0-4">Rupture</p>
+												</div>
+											</div>
+										{% else %}
+											<div class="block2-overlay block2-btn-addcart w-size1 trans-0-4 ">
+												<div class="block2-btn-addcart w-size1 trans-0-4">
+													<a href="{{prod.get_absolute_url}}" class="flex-c-m size1 bg3 bo-rad-23 hov1 s-text2 trans-0-4">Voir</a>
+												</div>
+											</div>
+									{% endif %}
 
 									<div class="block2-btn-addcart w-size1 trans-0-4">
 										<!-- Button -->
-										<button class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
-											Add to Cart
-										</button>
+										<a href="{{prod.get_absolute_url}}" class="flex-c-m size1 bg3 bo-rad-23 hov1 s-text2 trans-0-4">Voir</a>
+												
 									</div>
 								</div>
 							</div>
 
 							<div class="block2-txt p-t-20">
-								<a href="product-detail.html" class="block2-name dis-block s-text3 p-b-5">
-									Frayed denim shorts
+								<a href="{{prod.get_absolute_url}}" class="block2-name dis-block s-text3 p-b-5 text-capitalize">
+											{{prod.name}}
 								</a>
-
+								{% if prod.status == 'P' %}
 								<span class="block2-oldprice m-text7 p-r-5">
-									$29.50
+								{{prod.old_price}}
 								</span>
 
 								<span class="block2-newprice m-text8 p-r-5">
-									$15.90
+									{{prod.price}} DA
 								</span>
+								{% else %}
+								<span class="block2-price m-text6 p-r-5">
+											{{prod.price}} DA
+								</span>
+								{% endif %}
 							</div>
 						</div>
 					</div>
+					{% endfor %}
 
 					
 				</div>
 			</div>
 
+
+
 		</div>
 	</section>
-
+	{%endif %}
 {% endblock content %}

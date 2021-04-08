@@ -2,15 +2,26 @@
 {% load static %}
 {% block content %}
 	<!-- Title Page -->
-	<section class="bg-title-page p-t-40 p-b-50 flex-col-c-m" style="background-image: url(/static/images/heading-pages-06.jpg);">
-		<h2 class="l-text2 t-center">
-			Contact
+	<section class="bg-title-page p-t-40 p-b-50 flex-col-c-m" style="background-image: url({% static 'images/bg_leaves_1920x239.jpg' %});">
+		<h2 class="l-text2 t-center" style="color:#242424">
+			CONTACT
 		</h2>
 	</section>
 
 	<!-- content page -->
 	<section class="bgwhite p-t-66 p-b-60">
 		<div class="container">
+		<!-- Alerts-->
+		{% if message %}
+			<div id="message" class="container">
+
+            <div class="alert alert-{{ message.tags }} alert-dismissible text-center" role="alert">
+                <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span></button>
+                {{ message }}
+            </div>
+
+		{% endif %}
+		<!-- end alert -->
 			<div class="row">
 				<div class="col-md-6 p-b-30">
 					<div class="p-r-20 p-r-0-lg">
@@ -32,24 +43,27 @@
 					</div>
 				</div>
 				<div class="col-md-6 p-b-30">
-					<form class="leave-comment">
+					<form class="leave-comment" action="{% url 'main:contact-send' %}" id="contact-form" method="post">
 						<h4 class="m-text26 p-b-36 p-t-15">
 							Envoyer-nous un message
 						</h4>
 
 						<div class="bo4 of-hidden size15 m-b-20">
-							<input class="sizefull s-text7 p-l-22 p-r-22" type="text" name="name" placeholder="Nom complet">
+							<input class="sizefull s-text7 p-l-22 p-r-22" type="text" name="name" placeholder="Nom complet *" required>
 						</div>
 
 						<div class="bo4 of-hidden size15 m-b-20">
-							<input class="sizefull s-text7 p-l-22 p-r-22" type="text" name="phone-number" placeholder="Téléphone">
+							<input class="sizefull s-text7 p-l-22 p-r-22" type="tel" name="phone" placeholder="Téléphone *" required>
 						</div>
 
 						<div class="bo4 of-hidden size15 m-b-20">
-							<input class="sizefull s-text7 p-l-22 p-r-22" type="text" name="email" placeholder="Adresse Email">
+							<input class="sizefull s-text7 p-l-22 p-r-22" type="email" name="email" placeholder="Adresse Email" required=false>
 						</div>
 
-						<textarea class="dis-block s-text7 size20 bo4 p-l-22 p-r-22 p-t-13 m-b-20" name="message" placeholder="Message"></textarea>
+						<div class="bo4 of-hidden size15 m-b-20">
+							<input class="sizefull s-text7 p-l-22 p-r-22" type="text" name="subject" placeholder="Sujet *" required>
+						</div>
+						<textarea class="dis-block s-text7 size20 bo4 p-l-22 p-r-22 p-t-13 m-b-20" name="message" placeholder="Message *" required></textarea>
 
 						<div class="w-size25">
 							<!-- Button -->
@@ -57,6 +71,7 @@
 								Envoyer
 							</button>
 						</div>
+						 {% csrf_token %} 
 					</form>
 				</div>
 			</div>
