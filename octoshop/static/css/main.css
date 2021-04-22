@@ -2414,11 +2414,14 @@ textarea.input {
   }
   .dot-wrapper {
     width: 48px;
+    width: 48px;
     width: 3rem;
 }
 .dot {
   height: 32px;
+  height: 32px;
   height: 2rem;
+  width: 32px;
   width: 32px;
   width: 2rem;
   border-radius: 50%;
@@ -2429,7 +2432,9 @@ textarea.input {
 .dot, .small-dot {
   margin-left: 2px;
   height: 24px;
+  height: 24px;
   height: 1.5rem;
+  width: 24px;
   width: 24px;
   width: 1.5rem;
 
@@ -2457,7 +2462,9 @@ textarea.input {
 
 .colours span:hover {
   width: 35.2px;
+  width: 35.2px;
   width: 2.2rem;
+  height: 35.2px;
   height: 35.2px;
   height: 2.2rem;
 }
@@ -2474,11 +2481,13 @@ textarea.input {
 
 .colours {
   height: 48px;
+  height: 48px;
   height: 3rem;
 }
 
 .dot-wrapper {
 
+  width: 48px;
   width: 48px;
   width: 3rem;
 
@@ -2715,7 +2724,8 @@ input#id_quantity {
           position:absolute;
           bottom: 7%;
           left: 50%;
-          transform: translateX(-50%);
+          -webkit-transform: translateX(-50%);
+                  transform: translateX(-50%);
         }
     
 
