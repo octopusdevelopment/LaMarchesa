@@ -1,0 +1,319 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-04-22 14:58+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: .\coupons\models.py:22
+msgid "Code coupon"
+msgstr ""
+
+#: .\coupons\models.py:23
+msgid "Valide à partir de"
+msgstr ""
+
+#: .\coupons\models.py:24
+msgid "Valide jusqu'à"
+msgstr ""
+
+#: .\coupons\models.py:25
+msgid "Montant"
+msgstr ""
+
+#: .\coupons\models.py:26
+msgid "Pourcentage"
+msgstr ""
+
+#: .\coupons\models.py:27
+msgid "Actif"
+msgstr ""
+
+#: .\coupons\models.py:28
+msgid "Coupons restant"
+msgstr ""
+
+#: .\coupons\models.py:35
+msgid ""
+"Le pourcentage ou le montant doivent être différents de zéro, pas les deux "
+"en même temps"
+msgstr ""
+
+#: .\coupons\models.py:37
+msgid ""
+"Le pourcentage ou le montant doivent être différents à 0, pas les deux en "
+"même temps"
+msgstr ""
+
+#: .\livraison\models.py:9
+msgid "Nom Wilaya"
+msgstr ""
+
+#: .\livraison\models.py:10
+msgid "Coût de Livraison"
+msgstr ""
+
+#: .\livraison\models.py:11
+msgid "Activer"
+msgstr ""
+
+#: .\livraison\models.py:16 .\main\models.py:128 .\orders\models.py:25
+msgid "Wilaya"
+msgstr ""
+
+#: .\livraison\models.py:17
+msgid "Nom Commune"
+msgstr ""
+
+#: .\main\models.py:10
+msgid "chaussures"
+msgstr ""
+
+#: .\main\models.py:11
+msgid "sacs"
+msgstr ""
+
+#: .\main\models.py:12
+msgid "accessoires"
+msgstr ""
+
+#: .\main\models.py:16
+msgid "Nouveau"
+msgstr ""
+
+#: .\main\models.py:17
+msgid "Rupture"
+msgstr ""
+
+#: .\main\models.py:18
+msgid "Promotion"
+msgstr ""
+
+#: .\main\models.py:19
+msgid "SANS"
+msgstr ""
+
+#: .\main\models.py:23
+msgid "Nom catégorie"
+msgstr ""
+
+#: .\main\models.py:24
+msgid "Slug"
+msgstr ""
+
+#: .\main\models.py:27 .\main\models.py:48
+msgid "Catégorie"
+msgstr ""
+
+#: .\main\models.py:28
+msgid "Catégories"
+msgstr ""
+
+#: .\main\models.py:46
+msgid "Nom Sous Catégorie"
+msgstr ""
+
+#: .\main\models.py:47
+msgid "Slug Catégorie"
+msgstr ""
+
+#: .\main\models.py:51
+msgid "Sous Catégorie"
+msgstr ""
+
+#: .\main\models.py:52
+msgid "Sous Catégories"
+msgstr ""
+
+#: .\main\models.py:69
+msgid "Nom couleur"
+msgstr ""
+
+#: .\main\models.py:70
+msgid "Valeur hexadécimale"
+msgstr ""
+
+#: .\main\models.py:75 .\main\models.py:89 .\orders\models.py:70
+msgid "Couleur"
+msgstr ""
+
+#: .\main\models.py:78
+msgid "Nom taille"
+msgstr ""
+
+#: .\main\models.py:83
+msgid "Nom produit"
+msgstr ""
+
+#: .\main\models.py:84
+msgid "slug"
+msgstr ""
+
+#: .\main\models.py:85
+msgid "Sous catégorie"
+msgstr ""
+
+#: .\main\models.py:86
+msgid "Photo Principale"
+msgstr ""
+
+#: .\main\models.py:87
+msgid "Photo Secondaire"
+msgstr ""
+
+#: .\main\models.py:88
+msgid "Photo Térciaire"
+msgstr ""
+
+#: .\main\models.py:90 .\orders\models.py:69
+msgid "Taille"
+msgstr ""
+
+#: .\main\models.py:91
+msgid "Status"
+msgstr ""
+
+#: .\main\models.py:92 .\orders\models.py:67
+msgid "Prix"
+msgstr ""
+
+#: .\main\models.py:93
+msgid "Ancien prix"
+msgstr ""
+
+#: .\main\models.py:94
+msgid "Description"
+msgstr ""
+
+#: .\main\models.py:95
+msgid "Afficher"
+msgstr ""
+
+#: .\main\models.py:96
+msgid "Afficher dans l'accueil"
+msgstr ""
+
+#: .\main\models.py:97
+msgid "CRÉE"
+msgstr ""
+
+#: .\main\models.py:98
+msgid "MODIFIÉ"
+msgstr ""
+
+#: .\main\models.py:111 .\orders\models.py:66
+msgid "Produit"
+msgstr ""
+
+#: .\main\models.py:119
+msgid "Nom wilaya"
+msgstr ""
+
+#: .\main\models.py:120
+msgid "Prix livraison"
+msgstr ""
+
+#: .\main\models.py:129
+msgid "Nom commune"
+msgstr ""
+
+#: .\main\models.py:136
+msgid "Nom complet"
+msgstr ""
+
+#: .\main\models.py:137 .\orders\models.py:23
+msgid "Téléphone"
+msgstr ""
+
+#: .\main\models.py:138 .\orders\models.py:24
+msgid "Email"
+msgstr ""
+
+#: .\main\models.py:139
+msgid "Sujet"
+msgstr ""
+
+#: .\main\models.py:140
+msgid "Message"
+msgstr ""
+
+#: .\main\models.py:141
+msgid "Date"
+msgstr ""
+
+#: .\octoshop\settings.py:134
+msgid "French"
+msgstr "Français"
+
+#: .\octoshop\settings.py:134
+msgid "Arabic"
+msgstr "Arabe"
+
+#: .\orders\models.py:20
+msgid "Nom"
+msgstr ""
+
+#: .\orders\models.py:21
+msgid "Prenom"
+msgstr ""
+
+#: .\orders\models.py:22
+msgid "Adresse"
+msgstr ""
+
+#: .\orders\models.py:26
+msgid "Commune"
+msgstr ""
+
+#: .\orders\models.py:27
+msgid "Crée"
+msgstr ""
+
+#: .\orders\models.py:28
+msgid "Modifié"
+msgstr ""
+
+#: .\orders\models.py:29
+msgid "Note"
+msgstr ""
+
+#: .\orders\models.py:30
+msgid "Payé"
+msgstr ""
+
+#: .\orders\models.py:31
+msgid "Confirmé"
+msgstr ""
+
+#: .\orders\models.py:32
+msgid "Coupons"
+msgstr ""
+
+#: .\orders\models.py:33
+msgid "Prix Livraison"
+msgstr ""
+
+#: .\orders\models.py:65
+msgid "Commande"
+msgstr ""
+
+#: .\orders\models.py:68
+msgid "Quantité"
+msgstr ""
+
+#: .\templates\admin\base_site.html:6
+msgid "La Marchesa - Panel"
+msgstr "La Marchesa - Panneau"
