@@ -1,14 +1,15 @@
 from django.contrib import admin
 from .models import  Wilaya, Commune
-# Register your models here.
-admin.site.register(Commune)
-admin.site.register(Wilaya)
+from parler.admin import TranslatableAdmin
 
-class ProduitAdmin(admin.ModelAdmin):
-    list_display = ('id','name', 'active')
-    list_display_links = ('id', 'name')
-    list_display_links = ('id','name',)
-    list_per_page = 40
-    list_editable = ['active']
-    list_filter = ('cout',)
-    search_fields = ('id', 'name',)
+
+# Register your models here.
+@admin.register(Wilaya)
+class Wilaya(TranslatableAdmin):
+    list_display = ['name', 'cout', 'activer']
+    list_editable = ['cout', 'activer']
+
+@admin.register(Commune)
+class Commune(TranslatableAdmin):
+    list_display = ['name', 'Wilaya',]
+    list_editable = ['Wilaya',]

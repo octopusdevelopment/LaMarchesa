@@ -4,7 +4,7 @@ from decimal import Decimal
 from django.core.validators import MinValueValidator, MaxValueValidator
 from coupons.models import Coupon
 from main.models import Product
-# , CoutLivraison
+
 """
 The coupon is a foreign key that stores the coupon code used, and the discount is the percentage applied with the 
 coupon just in case the coupon gets deleted, we will still have a way to retrieve the discount

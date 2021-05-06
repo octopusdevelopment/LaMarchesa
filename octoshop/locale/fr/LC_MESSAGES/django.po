@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-22 14:58+0100\n"
+"POT-Creation-Date: 2021-05-06 14:59+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -58,209 +58,181 @@ msgid ""
 "même temps"
 msgstr ""
 
-#: .\livraison\models.py:9
+#: .\livraison\models.py:11
 msgid "Nom Wilaya"
 msgstr ""
 
-#: .\livraison\models.py:10
+#: .\livraison\models.py:13
 msgid "Coût de Livraison"
 msgstr ""
 
-#: .\livraison\models.py:11
+#: .\livraison\models.py:14
 msgid "Activer"
 msgstr ""
 
-#: .\livraison\models.py:16 .\main\models.py:128 .\orders\models.py:25
-msgid "Wilaya"
-msgstr ""
-
-#: .\livraison\models.py:17
+#: .\livraison\models.py:20
 msgid "Nom Commune"
 msgstr ""
 
-#: .\main\models.py:10
-msgid "chaussures"
-msgstr ""
-
-#: .\main\models.py:11
-msgid "sacs"
+#: .\livraison\models.py:21 .\orders\models.py:25
+msgid "Wilaya"
 msgstr ""
 
 #: .\main\models.py:12
+msgid "chaussures"
+msgstr ""
+
+#: .\main\models.py:13
+msgid "sacs"
+msgstr ""
+
+#: .\main\models.py:14
 msgid "accessoires"
 msgstr ""
 
-#: .\main\models.py:16
+#: .\main\models.py:18
 msgid "Nouveau"
 msgstr ""
 
-#: .\main\models.py:17
+#: .\main\models.py:19 .\templates\index.html:162 .\templates\product.html:77
 msgid "Rupture"
 msgstr ""
 
-#: .\main\models.py:18
+#: .\main\models.py:20
 msgid "Promotion"
 msgstr ""
 
-#: .\main\models.py:19
+#: .\main\models.py:21
 msgid "SANS"
 msgstr ""
 
-#: .\main\models.py:23
+#: .\main\models.py:26
 msgid "Nom catégorie"
 msgstr ""
 
-#: .\main\models.py:24
+#: .\main\models.py:27
 msgid "Slug"
 msgstr ""
 
-#: .\main\models.py:27 .\main\models.py:48
-msgid "Catégorie"
-msgstr ""
-
-#: .\main\models.py:28
-msgid "Catégories"
-msgstr ""
-
-#: .\main\models.py:46
+#: .\main\models.py:50
 msgid "Nom Sous Catégorie"
 msgstr ""
 
-#: .\main\models.py:47
+#: .\main\models.py:51
 msgid "Slug Catégorie"
 msgstr ""
 
-#: .\main\models.py:51
-msgid "Sous Catégorie"
-msgstr ""
-
 #: .\main\models.py:52
-msgid "Sous Catégories"
+msgid "Catégorie"
 msgstr ""
 
-#: .\main\models.py:69
+#: .\main\models.py:74
 msgid "Nom couleur"
 msgstr ""
 
-#: .\main\models.py:70
+#: .\main\models.py:75
 msgid "Valeur hexadécimale"
 msgstr ""
 
-#: .\main\models.py:75 .\main\models.py:89 .\orders\models.py:70
-msgid "Couleur"
-msgstr ""
-
-#: .\main\models.py:78
+#: .\main\models.py:84
 msgid "Nom taille"
 msgstr ""
 
-#: .\main\models.py:83
+#: .\main\models.py:90
 msgid "Nom produit"
 msgstr ""
 
-#: .\main\models.py:84
-msgid "slug"
-msgstr ""
-
-#: .\main\models.py:85
-msgid "Sous catégorie"
-msgstr ""
-
-#: .\main\models.py:86
-msgid "Photo Principale"
-msgstr ""
-
-#: .\main\models.py:87
-msgid "Photo Secondaire"
-msgstr ""
-
-#: .\main\models.py:88
-msgid "Photo Térciaire"
-msgstr ""
-
-#: .\main\models.py:90 .\orders\models.py:69
-msgid "Taille"
-msgstr ""
-
 #: .\main\models.py:91
-msgid "Status"
-msgstr ""
-
-#: .\main\models.py:92 .\orders\models.py:67
-msgid "Prix"
-msgstr ""
-
-#: .\main\models.py:93
-msgid "Ancien prix"
-msgstr ""
-
-#: .\main\models.py:94
 msgid "Description"
 msgstr ""
 
+#: .\main\models.py:93
+msgid "slug"
+msgstr ""
+
+#: .\main\models.py:94
+msgid "Sous catégorie"
+msgstr ""
+
 #: .\main\models.py:95
-msgid "Afficher"
+msgid "Photo Principale"
 msgstr ""
 
 #: .\main\models.py:96
-msgid "Afficher dans l'accueil"
+msgid "Photo Secondaire"
 msgstr ""
 
 #: .\main\models.py:97
+msgid "Photo Térciaire"
+msgstr ""
+
+#: .\main\models.py:98 .\orders\models.py:70
+msgid "Couleur"
+msgstr ""
+
+#: .\main\models.py:99 .\orders\models.py:69
+msgid "Taille"
+msgstr ""
+
+#: .\main\models.py:100
+msgid "Status"
+msgstr ""
+
+#: .\main\models.py:101 .\orders\models.py:67
+msgid "Prix"
+msgstr ""
+
+#: .\main\models.py:102
+msgid "Ancien prix"
+msgstr ""
+
+#: .\main\models.py:104
+msgid "Afficher"
+msgstr ""
+
+#: .\main\models.py:105
+msgid "Afficher dans l'accueil"
+msgstr ""
+
+#: .\main\models.py:106
 msgid "CRÉE"
 msgstr ""
 
-#: .\main\models.py:98
+#: .\main\models.py:107
 msgid "MODIFIÉ"
 msgstr ""
 
-#: .\main\models.py:111 .\orders\models.py:66
-msgid "Produit"
-msgstr ""
-
-#: .\main\models.py:119
-msgid "Nom wilaya"
-msgstr ""
-
-#: .\main\models.py:120
-msgid "Prix livraison"
-msgstr ""
-
-#: .\main\models.py:129
-msgid "Nom commune"
-msgstr ""
-
-#: .\main\models.py:136
+#: .\main\models.py:128
 msgid "Nom complet"
 msgstr ""
 
-#: .\main\models.py:137 .\orders\models.py:23
+#: .\main\models.py:129 .\orders\models.py:23
 msgid "Téléphone"
 msgstr ""
 
-#: .\main\models.py:138 .\orders\models.py:24
+#: .\main\models.py:130 .\orders\models.py:24
 msgid "Email"
 msgstr ""
 
-#: .\main\models.py:139
+#: .\main\models.py:131
 msgid "Sujet"
 msgstr ""
 
-#: .\main\models.py:140
+#: .\main\models.py:132
 msgid "Message"
 msgstr ""
 
-#: .\main\models.py:141
+#: .\main\models.py:133
 msgid "Date"
 msgstr ""
 
 #: .\octoshop\settings.py:134
 msgid "French"
-msgstr "Français"
+msgstr ""
 
 #: .\octoshop\settings.py:134
 msgid "Arabic"
-msgstr "Arabe"
+msgstr ""
 
 #: .\orders\models.py:20
 msgid "Nom"
@@ -310,10 +282,240 @@ msgstr ""
 msgid "Commande"
 msgstr ""
 
+#: .\orders\models.py:66
+msgid "Produit"
+msgstr ""
+
 #: .\orders\models.py:68
 msgid "Quantité"
 msgstr ""
 
+#: .\templates\about.html:11
+msgid " À propos "
+msgstr "PIPIabout"
+
+#: .\templates\about.html:18
+msgid "Hi, there. We\\'re La Marchesa Boutique."
+msgstr ""
+
+#: .\templates\about.html:20
+msgid ""
+"We opened in August 2020, and every since that beautiful summer day, have "
+"been working hard to offer you beautiful, trendy shoes and accessories that "
+"are edgy and practical, interesting and comfortable. La Marchesa Boutique "
+"wants you to feel great day and night, whatever the occasion. We want every "
+"visit to our shop to feel you are exploring your most stylish friend’s "
+"closet!"
+msgstr ""
+
+#: .\templates\about.html:31
+msgid "WHO WE ARE"
+msgstr ""
+
+#: .\templates\about.html:33
+msgid "Meet the Designer"
+msgstr ""
+
+#: .\templates\about.html:36
+msgid ""
+"I’m inspired by street styles, and after spending a few years soaking up the "
+"city’s vibes, I knew I was ready to design my own shoes and accessories. At "
+"La Marchesa Boutique, I design what I feel, and feel what I design. It’s a "
+"combination that keeps things lively."
+msgstr ""
+
+#: .\templates\about.html:44
+msgid "OUR STORY"
+msgstr ""
+
+#: .\templates\about.html:46
+msgid "Trendy Tradition"
+msgstr ""
+
+#: .\templates\about.html:49
+msgid ""
+"I love fashion. I also love shoes and accessories that live longer than a "
+"single season. After all, if you’ve found an item that you really love, "
+"don’t you want to wear it longer than a single season? We wanted to build a "
+"store that sells shoes and accessories that are more than just trendy. We "
+"want you to know that whatever you buy here, you’ll be able to enjoy for "
+"years to come!"
+msgstr ""
+
 #: .\templates\admin\base_site.html:6
 msgid "La Marchesa - Panel"
-msgstr "La Marchesa - Panneau"
+msgstr ""
+
+#: .\templates\base.html:67 .\templates\base.html:266
+#: .\templates\base.html:413
+msgid "Accueil"
+msgstr ""
+
+#: .\templates\base.html:83 .\templates\base.html:285
+#: .\templates\base.html:431
+msgid "Contact"
+msgstr ""
+
+#: .\templates\base.html:137 .\templates\base.html:241
+#: .\templates\base.html:352
+msgid "Voir panier"
+msgstr ""
+
+#: .\templates\base.html:144 .\templates\base.html:248
+#: .\templates\base.html:359
+msgid "Commander"
+msgstr ""
+
+#: .\templates\base.html:345
+#, fuzzy, python-format
+#| msgid " Total: %(cart.get_total_price)s DZD "
+msgid "Total: %(cart.get_total_price_after_discount)s DZD"
+msgstr "Total: %(cart.get_total_price)s DZD"
+
+#: .\templates\base.html:383
+msgid "Livraison gratuite pour une commande de 8000 DZD et plus"
+msgstr ""
+
+#: .\templates\base.html:417
+msgid "À Propos"
+msgstr ""
+
+#: .\templates\base.html:448
+msgid "ENTRER EN CONTACT"
+msgstr ""
+
+#: .\templates\base.html:453
+msgid ""
+"Des questions ? Faites-nous savoir via email ou nos réseaux sociaux ou "
+"appelez-nous au (+1) 96716 6879."
+msgstr ""
+
+#: .\templates\base.html:468 .\templates\product.html:27
+msgid "Catégories"
+msgstr ""
+
+#: .\templates\base.html:486
+msgid "Liens"
+msgstr ""
+
+#: .\templates\base.html:498
+msgid "contact"
+msgstr ""
+
+#: .\templates\base.html:511
+msgid "Tous droits réservés Maison La Marchesa | Powered by"
+msgstr ""
+
+#: .\templates\index.html:18
+msgid "Leather Bags 1"
+msgstr ""
+
+#: .\templates\index.html:22
+msgid "New Collection 2018"
+msgstr ""
+
+#: .\templates\index.html:28
+msgid "Shop Now"
+msgstr ""
+
+#: .\templates\index.html:37
+msgid "Sac à main"
+msgstr ""
+
+#: .\templates\index.html:41
+msgid "Nouvelle Collection!"
+msgstr ""
+
+#: .\templates\index.html:47 .\templates\index.html:70
+msgid "Acheter"
+msgstr ""
+
+#: .\templates\index.html:64
+msgid "Votre magazin favori"
+msgstr ""
+
+#: .\templates\index.html:136
+msgid "Produits Tendance"
+msgstr ""
+
+#: .\templates\index.html:168 .\templates\product.html:83
+msgid "Voir"
+msgstr ""
+
+#: .\templates\index.html:213
+msgid "La beauté"
+msgstr ""
+
+#: .\templates\index.html:217
+msgid "L'élegance"
+msgstr ""
+
+#: .\templates\index.html:240
+msgid "Faites-vous livrer vos achats"
+msgstr ""
+
+#: .\templates\index.html:244
+msgid "Cliquez ici pour plus d'info"
+msgstr ""
+
+#: .\templates\index.html:258
+msgid "Devenez des clients fidèles et béneficiez de nos coupons!"
+msgstr ""
+
+#: .\templates\index.html:264
+msgid "Heures d'Ouverture"
+msgstr ""
+
+#: .\templates\index.html:268
+msgid "Du Samedi au Jeudi - De 8H à 19H"
+msgstr ""
+
+#: .\templates\product.html:11
+msgid "Femmes"
+msgstr ""
+
+#: .\templates\product.html:14
+msgid "Nouveautés Collection Femme"
+msgstr ""
+
+#: .\templates\product.html:33
+msgid "Tous"
+msgstr ""
+
+#: .\templates\product.html:53
+#, python-format
+msgid "%(size)s Produits trouvés"
+msgstr ""
+
+#: .\templates\product.html:53
+#, python-format
+msgid "%(size)s Produit trouvé"
+msgstr ""
+
+#: .\templates\product.html:95
+#, python-format
+msgid " %(prod.old_price)s DZD "
+msgstr ""
+
+#: .\templates\product.html:99 .\templates\product.html:103
+#, python-format
+msgid " %(prod.price)s DZD "
+msgstr ""
+
+#: .\templates\product.html:119 .\templates\product.html:122
+msgid "Page précédante"
+msgstr ""
+
+#: .\templates\product.html:127 .\templates\product.html:129
+msgid "Page suivante"
+msgstr ""
+
+#, fuzzy
+#~| msgid " Total: %(cart.get_total_price)s DZD "
+#~ msgid " Total: %(cart.get_total_price_after_discount)s DZD "
+#~ msgstr "Total: %(cart.get_total_price)s DZD"
+
+#, fuzzy
+#~| msgid " À propos "
+#~ msgid "A propos"
+#~ msgstr "PIPIabout"

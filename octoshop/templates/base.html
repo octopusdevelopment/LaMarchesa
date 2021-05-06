@@ -1,8 +1,15 @@
+{% load i18n %} 
+
 {% load static %}
 {% static "img" as baseUrl %}
 
 <!DOCTYPE html>
-<html lang="en">
+{% get_current_language as LANGUAGE_CODE %}
+{% get_available_languages as LANGUAGES %}
+{% get_language_info_list for LANGUAGES as languages %}
+<html  lang='{{LANGUAGE_CODE}}' {% if LANGUAGE_CODE == 'ar' %}
+dir="rtl"{% endif %}>
+
 <head>
 	<title>La Marchesa</title>
 	<meta charset="UTF-8">
@@ -22,8 +29,10 @@
 
 <!--===============================================================================================-->
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{% static 'css/select2.min.css' %}">
+	
 <!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'css/select2.min.css' %}">
+
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="{% static 'css/slick.css' %}">
 	<link rel="stylesheet" type="text/css" href="{% static 'css/nouislider.min.css' %}">
@@ -33,9 +42,14 @@
 	<link rel="stylesheet" type="text/css" href="{% static 'css/util.css' %}">
 	<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
 <!--===============================================================================================-->
-
+	{% if LANGUAGE_CODE == 'ar' %}
+		<link rel="stylesheet" type="text/css" href="{% static 'css/rtl.css' %}">
+	{% endif %}
+	<link rel="stylesheet" type="text/css" href="{% static 'css/language_picker.css' %}">
 
 </head>
+
+
 <body class="animsition ">
 
 	<!-- header fixed -->
@@ -50,10 +64,10 @@
 			<nav class="menu">
 				<ul class="main_menu">
 					<li>
-						<a class="active sale-noti" href="{% url 'main:index' %}">Accueil</a>
+						<a class="active sale-noti" href="{% url 'main:index' %}">{% trans "Accueil" %}</a>
 					</li>
 					<li>
-						<a href="{% url 'main:about' %}">À propos</a>
+						<a href="{% url 'main:about' %}">{% if LANGUAGE_CODE == 'ar' %}حول{% else %} À Propos {% endif %}</a>
 					</li>
 					{% for cat in categories %}
 						<li>
@@ -66,7 +80,7 @@
 						</li>
 					{% endfor %}
 					<li>
-						<a href="{% url 'main:contact' %}">Contact</a>
+						<a href="{% url 'main:contact' %}">{% trans "Contact" %}</a>
 					</li>
 				</ul>
 			</nav>
@@ -92,7 +106,7 @@
 								{% with product=item.product %}
 									<li class="header-cart-item">
 										<div class="header-cart-item-img">
-											<img src="{{product.image.url}}" alt="IMG">
+											<img src="{{product.image.url}}" alt="{{product.name}}">
 										</div>
 
 										<div class="header-cart-item-txt">
@@ -109,21 +123,25 @@
 							{% endfor %}
 
 					<div class="header-cart-total">
-						Total: {{ cart.get_total_price }} DZD
+						{% if LANGUAGE_CODE != 'ar' %}
+							Total: {{cart.get_total_price_after_discount}} DA 
+						{% else %}
+							المجموع :  {{cart.get_total_price_after_discount}} دج
+					{%endif%}
 					</div>
 
 					<div class="header-cart-buttons">
 						<div class="header-cart-wrapbtn">
 							<!-- Button -->
 							<a href="{% url 'cart:cart_detail' %}" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
-								Voir panier
+								{% trans "Voir panier" %}
 							</a>
 						</div>
 
 						<div class="header-cart-wrapbtn">
 							<!-- Button -->
 							<a href="{% url 'orders:order_create' %}" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
-								Commander
+								{% trans "Commander" %}
 							</a>
 						</div>
 					</div>
@@ -135,9 +153,11 @@
 
 
 	<!-- Header -->
+
+	<!-- Header -->
 	<header class="header2">
 		<!-- Header desktop -->
-		<div class="container-menu-header-v2 p-t-26">
+		<div class="container-menu-header-v2 p-t-26" >
 			<div class="topbar2">
 				<div class="topbar-social">
 					<a href="#" class="topbar-social-item fa fa-facebook"></a>
@@ -152,23 +172,20 @@
 					<img src="{% static 'images/icons/logo.png' %}" alt="IMG-LOGO">
 				</a>
 
-				<div class="topbar-child2">
+				<div class="topbar-child2" >
 					<span class="topbar-email">
 						hello@maisonlamarchesa.com
 					</span>
+						<!-- Custom dropdown -->
+					<div class="topbar-language rs1-select2" style="padding: 0 5px">
+						<div class="selection-1" name="time">
+							<a href="/{{languages.0.code}}" style="text-transform:uppercase">{{languages.0.code}}</a> | <a href="/{{languages.1.code}}" style="text-transform:uppercase">{{languages.1.code}}</a>
+						</div>
+					</div>
+						
 
-{% comment %}
-<div class="topbar-language rs1-select2">
-	<select class="selection-1" name="time">
-		<option>AR</option>
-		<option>FR</option>
-	</select>
-</div>
 
-{% endcomment %}
-			
-
-					<span class="linedivide1"></span>
+				<span class="linedivide1"></span>
 					{% with total_items=cart|length %}
 					  
 					<div class="header-wrapicon2 m-r-13">
@@ -210,21 +227,25 @@
 							</ul>
 
 							<div class="header-cart-total">
-								Total: {{ cart.get_total_price }} DZD
+								{% if LANGUAGE_CODE != 'ar' %}
+							Total: {{cart.get_total_price_after_discount}} DA 
+						{% else %}
+							المجموع :  {{cart.get_total_price_after_discount}} دج  
+						{%endif%}
 							</div>
 
-							<div class="header-cart-buttons">
+							<div class="header-cart-buttons>
 								<div class="header-cart-wrapbtn">
 									<!-- Button -->
 									<a href="/panier" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
-										Voir panier
+										{% trans "Voir panier" %}
 									</a>
 								</div>
 
 								<div class="header-cart-wrapbtn">
 									<!-- Button -->
 									<a href="{% url 'orders:order_create' %}" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
-										Commander
+										{% trans "Commander" %}
 									</a>
 								</div>
 							</div>
@@ -242,11 +263,11 @@
 					<nav class="menu">
 						<ul class="main_menu">
 							<li>
-								<a class="active sale-noti" href="{% url 'main:index' %}">Accueil</a>
+								<a class="active sale-noti" href="{% url 'main:index' %}">{% trans "Accueil" %}</a>
 
 							</li>
 							<li>
-								<a href="{% url 'main:about' %}">À propos</a>
+								<a href="{% url 'main:about' %}">{% if LANGUAGE_CODE == 'ar' %}حول{% else %} À Propos {% endif %}</a>
 							</li>
 							{% for cat in categories %}
 						<li>
@@ -261,7 +282,7 @@
 
 
 							<li>
-								<a href="{% url 'main:contact' %}">Contact</a>
+								<a href="{% url 'main:contact' %}">{% trans "Contact" %}</a>
 							</li>
 						</ul>
 					</nav>
@@ -275,7 +296,7 @@
 		<div class="wrap_header_mobile">
 			<!-- Logo moblie -->
 			<a href="{% url 'main:index' %}" class="logo-mobile">
-				<img src="{% static 'images/icons/logo.png' %}" alt="IMG-LOGO">
+				<img src="{% static 'images/icons/logo.png' %}" alt="Logo laMarchesa - Vente de vêtements en ligne">
 			</a>
 
 			<!-- Button show menu -->
@@ -303,7 +324,7 @@
 									{% with product=item.product %}
 									<li class="header-cart-item">
 										<div class="header-cart-item-img">
-											<img src="{{product.image.url}}" alt="IMG">
+											<img src="{{product.image.url}}" alt="{{product.name}}">
 										</div>
 
 										<div class="header-cart-item-txt">
@@ -321,21 +342,21 @@
 								</ul>
 
 								<div class="header-cart-total">
-									Total: {{ cart.get_total_price }} DZD
+									{% blocktrans %}Total: {{cart.get_total_price_after_discount}} DZD{% endblocktrans %}
 								</div>
 
 								<div class="header-cart-buttons">
 									<div class="header-cart-wrapbtn">
 										<!-- Button -->
 										<a href="/panier" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
-											Voir panier
+											{% trans "Voir panier" %}
 										</a>
 									</div>
 
 									<div class="header-cart-wrapbtn">
 										<!-- Button -->
 										<a href="{% url 'orders:order_create' %}" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
-											Commander
+											{% trans "Commander" %}
 										</a>
 									</div>
 								</div>
@@ -359,7 +380,7 @@
 				<ul class="main-menu">
 					<li class="item-topbar-mobile p-l-20 p-t-8 p-b-8">
 						<span class="topbar-child1">
-							Livraison gratuite pour une commande de 8000 DZD et plus
+							{% trans "Livraison gratuite pour une commande de 8000 DZD et plus" %}
 						</span>
 					</li>
 
@@ -369,12 +390,12 @@
 								hello@maisonlamarchesa.com
 							</span>
 
-							{% comment %} <div class="topbar-language rs1-select2">
-								<select class="selection-1" name="time">
-									<option>USD</option>
-									<option>EUR</option>
-								</select>
-							</div> {% endcomment %}
+						<div class="topbar-language rs1-select2" style="padding: 0 5px">
+						<div class="selection-1" name="time">
+							<a href="/{{languages.0.code}}" style="text-transform:uppercase">{{languages.0.code}}</a> | <a href="/{{languages.1.code}}" style="text-transform:uppercase">{{languages.1.code}}</a>
+						</div>
+					
+					</div>
 						</div>
 					</li>
 
@@ -389,11 +410,11 @@
 					</li>
 					
 					<li>
-						<a class="sale-noti" href="{% url 'main:index' %}">Accueil</a>
+						<a class="sale-noti" href="{% url 'main:index' %}">{% trans "Accueil" %}</a>
 
 					</li>
 					<li>
-						<a href="{% url 'main:about' %}">À propos</a>
+						<a href="{% url 'main:about' %}">{%trans 'À Propos' %}</a>
 					</li>
 					{% for cat in categories %}
 					<li>
@@ -407,12 +428,13 @@
 				{% endfor %}
 
 					<li>
-						<a href="{% url 'main:contact' %}">Contact</a>
+						<a href="{% url 'main:contact' %}">{% trans "Contact" %}</a>
 					</li>
 				</ul>
 			</nav>
 		</div>
 	</header>
+
 
 {% block content %}
   
@@ -423,12 +445,12 @@
 		<div class="flex-w p-b-90">
 			<div class="w-size6 p-t-30 p-l-15 p-r-15 respon3">
 				<h4 class="s-text12 p-b-30">
-					ENTRER EN CONTACT
+					{% trans "ENTRER EN CONTACT" %}
 				</h4>
 
 				<div>
 					<p class="s-text7 w-size27">
-						Des questions ? Faites-nous savoir via email ou nos réseaux sociaux ou appelez-nous au (+1) 96716 6879.
+						{% trans "Des questions ? Faites-nous savoir via email ou nos réseaux sociaux ou appelez-nous au (+1) 96716 6879." %}
 					</p>
 
 					<div class="flex-m p-t-30">
@@ -443,7 +465,7 @@
 
 			<div class="w-size7 p-t-30 p-l-15 p-r-15 respon4">
 				<h4 class="s-text12 p-b-30">
-					Catégories
+					{% trans "Catégories" %}
 				</h4>
 
 				<ul>
@@ -461,59 +483,35 @@
 
 			<div class="w-size7 p-t-30 p-l-15 p-r-15 respon4">
 				<h4 class="s-text12 p-b-30">
-					Liens
+					{% trans "Liens" %}
 				</h4>
 
 				<ul>
 					<li class="p-b-9">
 						<a href="{% url 'main:about' %}" class="s-text7">
-							À propos
+							{% if LANGUAGE_CODE == 'ar' %}حول{% else %} À Propos {% endif %}
 						</a>
 					</li>
 
 					<li class="p-b-9">
-						<a href="{% url 'main:contact' %}" class="s-text7">
-							Contact
+						<a href="{% url "main:contact" %}" class="s-text7">
+							{% trans "contact" %}
 						</a>
 					</li>
 
-				
+		
 				</ul>
 			</div>
 
-			
-		<div class="t-center p-l-15 p-r-15">
-{% comment %}
-<a href="#">
-	<img  src="{% static 'images/icons/facebook.png' %}" alt="IMG-facebook" style="height:44px;">
-</a>
-
-<a href="#">
-	<img  src="{% static 'images/icons/pinterest.png' %}" alt="IMG-pinterest" style="height:44px;">
-</a>
-<a href="#">
-	<img  src="{% static 'images/icons/instagram.png' %}" alt="IMG-instagram" style="height:44px;">
-</a>
-
-<a href="#">
-	<img  src="{% static 'images/icons/youtube.png' %}" alt="IMG-youtube" style="height:44px;">
-</a>
-
-{% endcomment %}
-
-
-
-			
+		
 		</div>
-		<div class="t-center bottom-center s-text8 p-t-20">
-				<p class="copy_right text-center">
-					<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-					Copyright &copy;<script>document.write(new Date().getFullYear());</script> Tous droits réservés Maison La Marchesa | Powered by <a href="http://octopus-consulting.com/" target="_blank">OCTOPUS CONSULTING</a>
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-				</p>
+
+		<div class="t-center p-l-15 p-r-15">
+			<div class="t-center s-text8 p-t-20">
+				Copyright &copy;<script>document.write(new Date().getFullYear());</script> {% trans "Tous droits réservés Maison La Marchesa | Powered by" %} <a href="http://octopus-consulting.com/" target="_blank">OCTOPUS CONSULTING</a>
+			</div>
 		</div>
 	</footer>
-
 
 
 	<!-- Back to top -->
@@ -534,11 +532,18 @@
 <!--===============================================================================================-->
 <script type="text/javascript" src="{% static 'vendor/bootstrap/js/popper.js' %}"></script>
 <script type="text/javascript" src="{% static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>
-{% comment %}
+
   
-<script type="text/javascript" src="{% static 'vendor/select2/select2.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/language_picker.js' %}"></script>
+
+{% comment %} <script type="text/javascript">
+		$(".selection-1").select2({
+			minimumResultsForSearch: 20,
+			dropdownParent: $('#dropDownSelect1')
+		});
+</script> {% endcomment %}
 <!--===============================================================================================-->
-{% endcomment %}
+
 <script type="text/javascript" src="{% static 'vendor/slick/slick.min.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/slick-custom.js' %}"></script>
 
@@ -568,6 +573,7 @@
 {% endblock javascript %}
 	<script src="{% static 'js/main.js' %}"></script>
 	<!-- <script src="{% static 'js/form-commune.js' %}"></script> -->
+
 
 </body>
 </html>

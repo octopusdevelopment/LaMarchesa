@@ -1335,9 +1335,12 @@ S2.define('select2/selection/base',[
 
   Utils.Extend(BaseSelection, Utils.Observable);
 
+  
   BaseSelection.prototype.render = function () {
+
+
     var $selection = $(
-      '<span class="select2-selection" role="combobox" ' +
+      '<a href="javascript:void(0)" class="select2-selection" role="combobox"' +
       ' aria-haspopup="true" aria-expanded="false">' +
       '</span>'
     );
@@ -1346,10 +1349,11 @@ S2.define('select2/selection/base',[
 
     if (this.$element.data('old-tabindex') != null) {
       this._tabindex = this.$element.data('old-tabindex');
+      console.log('1')
     } else if (this.$element.attr('tabindex') != null) {
       this._tabindex = this.$element.attr('tabindex');
+      console.log('2')
     }
-
     $selection.attr('title', this.$element.attr('title'));
     $selection.attr('tabindex', this._tabindex);
 
@@ -1358,6 +1362,7 @@ S2.define('select2/selection/base',[
     return $selection;
   };
 
+ 
   BaseSelection.prototype.bind = function (container, $container) {
     var self = this;
 
@@ -1366,9 +1371,15 @@ S2.define('select2/selection/base',[
 
     this.container = container;
 
+  
+
     this.$selection.on('focus', function (evt) {
       self.trigger('focus', evt);
+      //$(evt.target).attr('href', '/fr/');
+       console.log(evt.target) 
     });
+
+    
 
     this.$selection.on('blur', function (evt) {
       self._handleBlur(evt);
@@ -1376,18 +1387,25 @@ S2.define('select2/selection/base',[
 
     this.$selection.on('keydown', function (evt) {
       self.trigger('keypress', evt);
-
+      console.log('key down')
       if (evt.which === KEYS.SPACE) {
         evt.preventDefault();
       }
     });
 
     container.on('results:focus', function (params) {
+      console.log('focusing')
+      console.log(self.$selection)
+
       self.$selection.attr('aria-activedescendant', params.data._resultId);
+      
     });
 
     container.on('selection:update', function (params) {
+      console.log('updating')
       self.update(params.data);
+      
+
     });
 
     container.on('open', function () {
@@ -1492,18 +1510,19 @@ S2.define('select2/selection/single',[
 
   Utils.Extend(SingleSelection, BaseSelection);
 
+
   SingleSelection.prototype.render = function () {
     var $selection = SingleSelection.__super__.render.call(this);
 
     $selection.addClass('select2-selection--single');
-
+    
     $selection.html(
-      '<span class="select2-selection__rendered"></span>' +
+      '<span class="select2-selection__rendered">'+'</span>' +
       '<span class="select2-selection__arrow" role="presentation">' +
         '<b role="presentation"></b>' +
       '</span>'
     );
-
+    
     return $selection;
   };
 
@@ -1572,7 +1591,8 @@ S2.define('select2/selection/single',[
 
     var $rendered = this.$selection.find('.select2-selection__rendered');
     var formatted = this.display(selection, $rendered);
-
+    
+    formatted = `<a href="/${selection.title || selection.text}/">${formatted}</a>`
     $rendered.empty().append(formatted);
     $rendered.prop('title', selection.title || selection.text);
   };
@@ -4754,7 +4774,7 @@ S2.define('select2/defaults',[
         EventRelay
       );
     }
-
+  
     if (typeof options.language === 'string') {
       // Check if the language is specified with a region
       if (options.language.indexOf('-') > 0) {
@@ -4781,6 +4801,8 @@ S2.define('select2/defaults',[
         try {
           // Try to load it with the original name
           language = Translation.loadPath(name);
+         
+
         } catch (e) {
           try {
             // If we couldn't load it, check if it wasn't the full path

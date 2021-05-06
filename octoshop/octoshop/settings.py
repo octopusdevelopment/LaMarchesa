@@ -48,8 +48,8 @@ INSTALLED_APPS = [
     'coupons.apps.CouponsConfig',
     'debug_toolbar',
     'django_extensions',
-
-
+    # translating models
+    'parler',
 ]
 
 MIDDLEWARE = [
@@ -140,6 +140,7 @@ PARLER_LANGUAGES = {
  {'code': 'fr'},
  {'code': 'ar'},
  ),
+ 
  'default': {
  'fallback': 'fr',
  'hide_untranslated': False,

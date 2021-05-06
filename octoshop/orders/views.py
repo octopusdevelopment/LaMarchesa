@@ -54,6 +54,7 @@ def order_create(request):
                 context = {'order': order,
                            'products_total': products_total, 
                            'total_price': total_price,
+                           'delivery': order.delivery,
                            }
                 return render(request, 'created.html', context)
         else:
