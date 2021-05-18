@@ -1,10 +1,12 @@
 {% extends "base.html" %}
+{% load i18n %} 
+-
 {% load static %}
 {% block content %}
 	<!-- Title Page -->
 	<section class="bg-title-page p-t-40 p-b-50 flex-col-c-m" style="background-image: url({% static 'images/bg_leaves_1920x239.jpg' %});">
-		<h2 class="l-text2 t-center" style="color:#242424">
-			CONTACT
+		<h2 class="l-text2 t-center" style="color:#242424; text-transform:uppercase">
+			{% trans "contact" %}
 		</h2>
 	</section>
 
@@ -26,18 +28,12 @@
 				<div class="col-md-6 p-b-30">
 					<div class="p-r-20 p-r-0-lg">
 						<div class="contact-map size21" id="google_map" data-map-x="40.614439" data-map-y="-73.926781" data-pin="/static/images/icons/icon-position-map.png" data-scrollwhell="0" data-draggable="1">
-							<h1>Coordonnées</h1>
+							<h1>{% trans "Coordonnées" %}</h1>
 							<h4 class="m-text26 p-b-36 p-t-15">
-								Email: <a class="m-text26 p-b-36 p-t-15" href="mailto:hello@maisonlamarchesa.com">hello@maisonlamarchesa.com</a>
+								{% trans "Email" %}: <a class="m-text26 p-b-36 p-t-15" href="mailto:hello@maisonlamarchesa.com">hello@maisonlamarchesa.com</a>
 							</h4>
 							<h4 class="m-text26 p-b-36 p-t-15">
-								Téléphone: <a class="m-text26 p-b-36 p-t-15" href="tel:00213774130200">00213 774 130 200 </a>
-							</h4>
-							<h4 class="m-text26 p-b-36 p-t-15">
-								Email: <a class="m-text26 p-b-36 p-t-15" href="mailto:hello@maisonlamarchesa.com">hello@maisonlamarchesa.com</a>
-							</h4>
-							<h4 class="m-text26 p-b-36 p-t-15">
-								Email: <a class="m-text26 p-b-36 p-t-15" href="mailto:hello@maisonlamarchesa.com">hello@maisonlamarchesa.com</a>
+								{% trans "Téléphone" %}: <a class="m-text26 p-b-36 p-t-15" href="tel:00213774130200">00213 774 130 200 </a>
 							</h4>
 						</div>
 					</div>
@@ -45,30 +41,30 @@
 				<div class="col-md-6 p-b-30">
 					<form class="leave-comment" action="{% url 'main:contact-send' %}" id="contact-form" method="post">
 						<h4 class="m-text26 p-b-36 p-t-15">
-							Envoyer-nous un message
+							{% trans "Envoyer-nous un message" %}
 						</h4>
 
 						<div class="bo4 of-hidden size15 m-b-20">
-							<input class="sizefull s-text7 p-l-22 p-r-22" type="text" name="name" placeholder="Nom complet *" required>
+							<input class="sizefull s-text7 p-l-22 p-r-22" type="text" name="name" placeholder="{% trans "Nom complet"%} *" required>
 						</div>
 
 						<div class="bo4 of-hidden size15 m-b-20">
-							<input class="sizefull s-text7 p-l-22 p-r-22" type="tel" name="phone" placeholder="Téléphone *" required>
+							<input class="sizefull s-text7 p-l-22 p-r-22" type="tel" name="phone" placeholder="{% trans "Téléphone"%} *" required>
 						</div>
 
 						<div class="bo4 of-hidden size15 m-b-20">
-							<input class="sizefull s-text7 p-l-22 p-r-22" type="email" name="email" placeholder="Adresse Email" required=false>
+							<input class="sizefull s-text7 p-l-22 p-r-22" type="email" name="email" placeholder="{% trans "Email"%}" required=false>
 						</div>
 
 						<div class="bo4 of-hidden size15 m-b-20">
-							<input class="sizefull s-text7 p-l-22 p-r-22" type="text" name="subject" placeholder="Sujet *" required>
+							<input class="sizefull s-text7 p-l-22 p-r-22" type="text" name="subject" placeholder="{% trans "Sujet"%} *" required>
 						</div>
-						<textarea class="dis-block s-text7 size20 bo4 p-l-22 p-r-22 p-t-13 m-b-20" name="message" placeholder="Message *" required></textarea>
+						<textarea class="dis-block s-text7 size20 bo4 p-l-22 p-r-22 p-t-13 m-b-20" name="message" placeholder="{% trans "Message"%} *" required></textarea>
 
 						<div class="w-size25">
 							<!-- Button -->
 							<button class="flex-c-m size2 bg1 bo-rad-23 hov1 m-text3 trans-0-4">
-								Envoyer
+								{% trans "Envoyer" %}
 							</button>
 						</div>
 						 {% csrf_token %} 
@@ -81,31 +77,35 @@
 		<div class="flex-w p-l-15 p-r-15">
 			<div class="flex-col-c w-size5 p-l-15 p-r-15 p-t-16 p-b-15 respon1">
 				<h4 class="m-text12 t-center">
-					Free Delivery Worldwide
+					{% trans "Faites-vous livrer vos achats" %}
 				</h4>
 
-				<a href="#" class="s-text11 t-center">
-					Click here for more info
+				<a href="{% url 'main:about' %}" class="s-text11 t-center">
+					{% trans "Cliquez ici pour plus d'info" %}
 				</a>
 			</div>
 
 			<div class="flex-col-c w-size5 p-l-15 p-r-15 p-t-16 p-b-15 bo2 respon2">
 				<h4 class="m-text12 t-center">
-					30 Days Return
+					{% if LANGUAGE_CODE != 'ar' %}
+						Coupons de réduction
+					{% else %}
+						كوبونات تخفيض
+					{% endif %}
 				</h4>
 
 				<span class="s-text11 t-center">
-					Simply return it within 30 days for an exchange.
+					{% trans "Devenez des clients fidèles et béneficiez de nos coupons!" %}
 				</span>
 			</div>
 
 			<div class="flex-col-c w-size5 p-l-15 p-r-15 p-t-16 p-b-15 respon1">
 				<h4 class="m-text12 t-center">
-					Store Opening
+					{% trans "Heures d'Ouverture" %}
 				</h4>
 
 				<span class="s-text11 t-center">
-					Shop open from Monday to Sunday
+					{% trans "Du Samedi au Jeudi - De 8H à 19H" %}
 				</span>
 			</div>
 		</div>

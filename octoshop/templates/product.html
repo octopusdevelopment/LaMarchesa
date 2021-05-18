@@ -1,8 +1,8 @@
 
 {% extends "base.html" %}
+{% load i18n %}
 {% load static %}
 {% static "images" as baseUrl %}
-{% load i18n %}
 
 {% block content %}
   
@@ -90,19 +90,19 @@
 										<a href="{{prod.get_absolute_url}}" class="block2-name dis-block s-text3 p-b-5 text-capitalize">
 											{{prod.name}}
 										</a>
-										{% if prod.status == 'P' %}
-											<span class="block2-oldprice m-text7 p-r-5">
-												{% blocktrans %} {{prod.old_price}} DZD {% endblocktrans %}
-											</span>
-			
-											<span class="block2-newprice m-text8 p-r-5">
-												{% blocktrans %} {{prod.price}} DZD {% endblocktrans %}
-											</span>
-											{% else %}
-											<span class="block2-price m-text6 p-r-5">
-												{% blocktrans %} {{prod.price}} DZD {% endblocktrans %}
-											</span>
+										{% if prod.old_price %}
+										  
+										<span class="block2-oldprice m-text7 p-r-5">
+											{{prod.old_price}} دج
+										</span>
 										{% endif %}
+										<span class="block2-price m-text6 p-r-5">
+											{% if LANGUAGE_CODE != 'ar' %}
+												{{prod.price}} DA 
+											{% else %}
+												{{prod.price}} دج
+											{%endif%}
+										</span>
 									</div>
 								</div>
 							</div>

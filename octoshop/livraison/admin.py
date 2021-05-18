@@ -8,6 +8,8 @@ from parler.admin import TranslatableAdmin
 class Wilaya(TranslatableAdmin):
     list_display = ['name', 'cout', 'activer']
     list_editable = ['cout', 'activer']
+    
+
 
 @admin.register(Commune)
 class Commune(TranslatableAdmin):

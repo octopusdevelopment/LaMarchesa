@@ -54,9 +54,76 @@ form ul.inline li {
 .side-menu .main-menu > li > a {
     padding-right: 20px;
 }
+.size-radios .design {
+    margin-left: 16px;
+    margin-right: 0px;
+}
+
+.dark {
+    color: #888888;
+}
+
+.relateproduct .block2-txt.p-t-20{
+    direction: rtl;
+}
+
+.m-r-22 {
+    margin-left: 22px;
+    margin-right: 0px;
+}
+
+.block2-labelnew:before {
+    content:'جديد'
+}
+
+.block2-labelsale:before {
+    content: 'تخفيض'
+}
+
+/*---- Cart ----*/
+
+.table-shopping-cart .column-1 {
+    padding-left: 30px;
+    padding-right: 50px;
+}
+
+
+.table-shopping-cart .column-3,
+.table-shopping-cart .column-4, 
+.table-shopping-cart .column-5 {
+    padding-right: 30px;
+    padding-left: 30px;
+}
+
+
+
+.ml-3 {
+    margin-right: 1rem!important;
+    margin-left: 0rem !important;
+}
+
+.ml-5 {
+    margin-right: 3rem !important;
+    margin-left: 0rem !important;
+}
+  
+
+@media all and (max-width: 993px) {
+    .header-icons-mobile .header-cart {
+        right: -300px;
+        -webkit-transform-origin: top left;
+        transform-origin: top left;
+    }
+}
+
 
 @media all and (min-width: 993px) {
     .topbar-child2 {
         flex-direction: row-reverse;
+        
     }
+
+
+    
 }
+

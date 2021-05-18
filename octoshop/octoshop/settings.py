@@ -22,10 +22,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'zf*p9#mqlt7+kr)m@jt8kbjt)(pq9)l0d(uth-b*_!1-8ixxjr'
+SECRET_KEY = 'zf*p9#mqlt7+kr)m@jt8kbjt)(pq9)l0d(uth-b*_!1-8ixxjritachi'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -50,6 +50,9 @@ INSTALLED_APPS = [
     'django_extensions',
     # translating models
     'parler',
+    #api
+    'rest_framework',
+
 ]
 
 MIDDLEWARE = [
@@ -147,6 +150,16 @@ PARLER_LANGUAGES = {
  }
 }
 
+PARLER_ENABLE_CACHING = True
+CACHES = {
+'default': {
+'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
+'LOCATION': '127.0.0.1',
+'TIMEOUT': 24*3600
+},
+}
+
+PARLER_DEFAULT_LANGUAGE = 'fr'
 LOCALE_PATHS = [
     BASE_DIR / 'locale',
 ]
@@ -168,6 +181,8 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 INTERNAL_IPS = ['127.0.0.1', '::1', '0.0.0.0']
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+
 # EMAIL CONFIGURATION -- TODO: change later
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'

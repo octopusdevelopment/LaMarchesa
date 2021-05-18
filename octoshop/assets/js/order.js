@@ -14,14 +14,17 @@ const change_commune = function(e) {
         
         const wilaya_id = e.target.value
         const url = `${window.location.origin}${url_value}?wilaya=${wilaya_id}`
+        const language = window.location.pathname.split('/')[1]
     fetch(url, {
         headers : { 
             'Accept': 'application/json'
            } 
     } )
-    .then(response => response.json())
+    .then(response => {
+        return response.json()
+    })
     .then(data => {
-        const communes = JSON.parse(data)
+        const communes = data
         console.log(communes)
         commune_input.innerHTML = `<option class="option" value='' selected>---------</option>`
 
@@ -29,7 +32,7 @@ const change_commune = function(e) {
             
             let commune = communes[i]
             commune_input.innerHTML += `
-            <option value="${commune.pk}">${commune.fields.name}</option>
+            <option value="${commune.id}">${commune.translations[language].name}</option>
             `
         }
         change_wilaya(wilaya_id)
@@ -37,6 +40,7 @@ const change_commune = function(e) {
     })
     .catch(err => {
         // empty communes and price
+        console.log(err)
         commune_input.innerHTML =  `<option class="option" value='' selected>---------</option>`
         delivery_price_container.innerHTML = ``
         wilaya_price = 0

@@ -1,7 +1,7 @@
 {% extends "base.html" %}
+{% load i18n %}
 
 {% load static %}
-{% load i18n %}
 
 
 {% block content %}
@@ -15,7 +15,13 @@
 	<!-- content page -->
 	<section class=" p-t-66 p-b-38 m-b-50">
 		<div class="container">
-			<center><h1 classe="l-text2 t-center m-t-10">{% trans "Hi, there. We\'re La Marchesa Boutique." %}</h1></center>
+			<center><h1 classe="l-text2 t-center m-t-10">
+				{% if LANGUAGE_CODE != 'ar' %}
+					Bienvenue, nous sommes la boutique LaMarchesa
+				{% else %}
+					أهلا نحن بوتيك لا مارشيسا
+				{%endif%}
+			</h1></center>
 			<p class="t-center m-t-30">
 				{% trans "We opened in August 2020, and every since that beautiful summer day, have been working hard to offer you beautiful, trendy shoes and accessories that are edgy and practical, interesting and comfortable. La Marchesa Boutique wants you to feel great day and night, whatever the occasion. We want every visit to our shop to feel you are exploring your most stylish friend’s closet!" %}
 			</p>

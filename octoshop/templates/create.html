@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
+{% load i18n %} 
+
 {% static "img" as baseUrl %}
 
 {% block content %}
@@ -17,10 +19,18 @@
 		<!-- row -->
 		<div class="row">
 			<div class="col-md-12">
-				<h3 class="breadcrumb-header">Commande</h3>
+				<h3 class="breadcrumb-header">{% trans "Commande" %}</h3>
 				<ul class="breadcrumb-tree">
-					<li><a href="{% url 'main:index' %}">Accueil</a></li>
-					<li class="active">Commande</li>
+					<li>
+						<a href="{% url 'main:index' %}">
+							{% if LANGUAGE_CODE != 'ar' %}
+								Accueil
+							{% else %}
+								الصفحة الرئيسية
+							{% endif %}
+						</a>
+					</li>
+					<li class="active">{% trans "Commande" %}</li>
 				</ul>
 			</div>
 		</div>
@@ -47,26 +57,26 @@
 							  <div class="col-md-6 mb-2">
 								<!--firstName-->
 								<div class="form-group ">
-									<input class="input" type="text" name="first_name" id="first_name" class="form-control" placeholder="Votre Nom" required>
+									<input class="input" type="text" name="first_name" id="first_name" class="form-control" placeholder="{% trans "Votre Nom" %}" required>
 								</div>
 							  </div>
 							  <div class="col-md-6 mb-2">
 								<!--lastName-->
 								<div class="form-group">
-									<input class="input" type="text" name="last_name" id="last_name" class="form-control"placeholder="Votre Prénom" required>
+									<input class="input" type="text" name="last_name" id="last_name" class="form-control"placeholder="{% trans "Votre Prénom" %}" required>
 								</div>
 							  </div>
 							</div>
 							<div class="row">
 							<div class="col-md-6 mb-2">
 							  <div class="form-group mb-5">
-								<input class="input" type="text" name="email" id="email" class="form-control" placeholder="VotreEmail@example.com" >
+								<input class="input" type="text" name="email" id="email" class="form-control" placeholder="{% trans "VotreEmail@example.com" %}" >
 							  </div>
 							</div>
 							<!--telephone-->
 							<div class="col-md-6 mb-2">
 							  <div class="form-group mb-5">
-								<input class="input" type="text" name="phone" id="telephone" class="form-control" placeholder="votre numéro de téléphone" required>
+								<input class="input" type="text" name="phone" id="telephone" class="form-control" placeholder="{% trans "votre numéro de téléphone" %}" required>
 							  </div>
 							</div>
 							</div>
@@ -76,7 +86,7 @@
 							<div class="row">
 							  <!--Grid column-->
 							  <div class="col-6 mb-4">
-								<label for="country">Wilaya</label>
+								<label for="country">{% trans "Wilaya" %}</label>
 								<select class="input" name="wilaya" id="id_wilaya" class=" d-block w-100" style="cursor: pointer;">
 								  <option class="option" value='' selected>---------</option>
 								  {% for wilaya in wilayas %}
@@ -86,7 +96,7 @@
 							  </div>
 							  <!--Grid column-->
 							  <div class="col-6 mb-4">
-								<label for="state">Commune</label>
+								<label for="state">{% trans "Commune" %}</label>
 								<select class="input  d-block w-100" name="commune" id="id_commune" style="cursor: pointer;" required>
 								  <option class="option" value='' selected>---------</option>
 								</select>
@@ -94,14 +104,15 @@
 							  <!--Grid column-->
 							</div>
 							<div class="form-group mb-5">
-								<input class="input" type="text" name="addresse" id="addresse" class="form-control" placeholder="votre adresse de livraison" required>
+								<input class="input" type="text" name="addresse" id="addresse" class="form-control" 
+								placeholder="{% if LANGUAGE_CODE != 'ar' %} Votre adresse de livraison {% else %}عنوان التسليم{%endif%}" required>
 							  </div>
 							<div class="order-notes">
-								<textarea name="note" id="note" class="input" placeholder="Notes pour cette commande (facultatif)"></textarea>
+								<textarea name="note" id="note" class="input" placeholder="{% trans "Notes pour cette commande (facultatif)" %}"></textarea>
 							</div>
 							<!-- /Order notes -->
 							<hr class="mb-4">
-							<button class="btn btn-primary btn-lg btn-block" type="submit">Valider ma commande</button>
+							<button class="btn btn-primary btn-lg btn-block" type="submit">{% trans "Valider ma commande" %}</button>
 						</form>
 
 
@@ -111,39 +122,54 @@
 					<!-- Order Details -->
 					<div class="col-md-5 order-details">
 						<div class="section-title text-center">
-							<h3 class="title">Votre Commande</h3>
+							<h3 class="title">{% if LANGUAGE_CODE != 'ar' %} Votre commande {% else %}طلبيتك{%endif%}</h3>
 						</div>
 						<div class="order-summary">
 							<div class="order-col">
-								<div><strong>Produit</strong></div>
-								<div><strong>TOTAL</strong></div>
+								<div><strong>{% trans "Produit" %}</strong></div>
+								<div><strong style="text-transform: uppercase">{% trans "total" %}</strong></div>
 							</div>
 							<div class="order-products">
 								{% for item in cart %}
 									<div class="order-col">
 										<div>{{ item.product.name }} <span class="text-danger">X</span> {{ item.quantity }}</div>
-										<div>{{ item.total_price }} DA</div>
+										<div>
+											{% if LANGUAGE_CODE != 'ar' %}
+												{{ item.total_price }} DA
+											{% else %}
+												{{ item.total_price }} دج
+											{%endif%}
+										</div>
 									</div>
 								{% endfor %}
 								
 							</div>
 							<div class="order-col">
-								<div>Livraison</div>
+								<div style="text-transform: capitalize">{% if LANGUAGE_CODE != 'ar' %} Livraison {% else %}التسليم{%endif%}</div>
 								<div id="delivery_price"></div>
 							</div>
 							
 							{% if cart.coupon %}
 							<div class="order-col">
-								<div>REDUCTION</div>
+								<div style="text-transform: uppercase">{% trans "Réduction" %}</div>
 								{% if cart.coupon.discount_percentage %}
 								<div><strong>{{cart.coupon.discount_percentage}} %</strong></div>
 								{% else %}
-								<div><strong>{{cart.coupon.discount_amount}} DA</strong></div>
+								<div>
+									<strong>
+									
+										{% if LANGUAGE_CODE != 'ar' %}
+											{{cart.coupon.discount_amount}} DA
+										{% else %}
+											{{cart.coupon.discount_amount}} دج
+										{%endif%}
+									</strong>
+								</div>
 								{%endif%}
 							</div>
 							{%endif%}
 							<div class="order-col">
-								<div><strong>TOTAL</strong></div>
+								<div><strong style="text-transform: uppercase">{% trans "Total" %}</strong></div>
 								<div><strong class="order-total" id="order_total" data-order-total="{{ cart.get_total_price_after_discount|floatformat:2}}"></strong></div>
 							</div>
 						</div>
@@ -160,5 +186,5 @@
 {% endblock content %}
 
 {% block javascript %}
-  <script src="{% static 'js/order.js' %}"></script>
+  <script src="{% static 'js/order.js' %}" charset="utf-8"></script>
 {% endblock javascript %}
