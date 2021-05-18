@@ -2,6 +2,8 @@
 {% load static %}
 {% static "img" as baseUrl %}
 
+{% load i18n %} 
+
 {% block content %}
 	<!-- Title Page -->
 	<div id="breadcrumb" class="section">
@@ -10,10 +12,24 @@
 			<!-- row -->
 			<div class="row">
 				<div class="col-md-12">
-					<h3 class="breadcrumb-header">PANIER</h3>
+					<h3 class="breadcrumb-header">{% trans "PANIER" %}</h3>
 					<ul class="breadcrumb-tree">
-						<li><a href="{% url 'main:index' %}">Accueil</a></li>
-						<li class="active">Detail de commande </li>
+						<li>
+							<a href="{% url 'main:index' %}">
+								{% if LANGUAGE_CODE != 'ar' %}
+									Accueil
+								{% else %}
+									الصفحة الرئيسية
+								{% endif %}
+							</a>
+						</li>
+						<li class="active">
+							{% if LANGUAGE_CODE != 'ar' %}
+									Détails de votre commande
+							{% else %}
+									تفاصيل الطلبية
+							{% endif %}
+						</li>
 					</ul>
 				</div>
 			</div>
@@ -27,41 +43,81 @@
     <!--================Cart Area =================-->
 	<section class="order_details section_gap mb5">
 		<div class="container">
-			<h3 class="title_confirmation">Merci, Votre commande a été effectué avec succès.</h3>
+			<h3 class="title_confirmation">
+				{% if LANGUAGE_CODE != 'ar' %}
+					Merci, Votre commande a été effectuée avec succès.
+				{% else %}
+					شكرا لك ، تم إكمال طلبيتك بنجاح.
+				{%endif%}
+			</h3>
 			<div class="row order_d_inner">
 				<div class="col-lg-4">
 					<div class="details_item">
-						<h4>Commande Infos</h4>
+						<h4>
+							{% if LANGUAGE_CODE != 'ar' %}
+								Informations Commande 
+							{% else %}
+								معلومات الطلببية
+							{%endif%}
+						</h4>
 						
 						<ul class="list">
-							<li><a href="#"><span>Commande Numéro </span> : {{ order.id }}</a></li>
-							<li><a href="#"><span>Date</span> : {{order.created}}</a></li>
-							<li><a href="#"><span>Total</span> : {{ total_price}} DA</a></li>
+							<li><a href="#">
+							<span>
+								{% if LANGUAGE_CODE != 'ar' %}
+									Commande Numéro
+								{% else %}
+									طلبية رقم
+								{%endif%}
+							</span> : {{ order.id }}</a></li>
+							<li><a href="#"><span>{% trans "Date" %}</span> : {{order.created}}</a></li>
+							<li>
+							<a href="#">
+								<span>{% trans "Total" %}</span> : 
+								{% if LANGUAGE_CODE != 'ar' %}
+									{{ total_price_with_delivery }} DA 
+								{% else %}
+									{{ total_price_with_delivery }} دج
+								{%endif%}
+							</a>
+							</li>
 						</ul>
 					</div>
 				</div>
 				<div class="col-lg-4">
 					<div class="details_item">
-						<h4>Livraison info </h4>
+						<h4>
+							{% if LANGUAGE_CODE != 'ar' %}
+								Informations Livraison
+							{% else %}
+								معلومات التوصيل
+							{%endif%}
+						</h4>
 						<ul class="list">
-							<li><a href="#"><span>Wilaya</span> : {{ order.wilaya }} </a></li>
-							<li><a href="#"><span>Commune</span> : {{ order.commune }} </a></li>
-							<li><a href="#"><span>Adresse</span> : {{ order.addresse }} </a></li>
+							<li><a href="#"><span>{% trans "Wilaya" %}</span> : {{ order.wilaya }} </a></li>
+							<li><a href="#"><span>{% trans "Commune" %}</span> : {{ order.commune }} </a></li>
+							<li><a href="#"><span>{% trans "Adresse" %}</span> : {{ order.addresse }} </a></li>
 						</ul>
 					</div>
 				</div>
 			</div>
 			<div class="order_details_table mb-5">
-				<h2>Commande Details</h2>
+				<h2>
+					{% if LANGUAGE_CODE != 'ar' %}
+						Détails de la commande
+					{% else %}
+						تفاصيل الطلبية
+					{%endif%}
+				</h2>
 				<div class="table-responsive">
 					<table class="table">
 						<thead>
 							<tr>
-								<th scope="col">Produit</th>
-								<th scope="col">Quantité</th>
-								<th scope="col">Couleur</th>
-								<th scope="col">Taille</th>
-								<th scope="col">Prix</th>
+								<th scope="col">{% trans "Produit" %}</th>
+								<th scope="col">{% trans "Quantité" %}</th>
+								<th scope="col">{% trans "Couleur" %}</th>
+								<th scope="col">{% trans "Taille" %}</th>
+								<th scope="col">{% trans "Prix" %}</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -71,38 +127,63 @@
 								<td><h5>x {{ item.quantity }}</h5></td>
 								<td class="num"> <div style="height: 25px; width: 25px; background-color:{{ item.color }}; border-radius:50%; margin-left:10px"></div> </td>
 								<td class="num">{{ item.taille }}</td>
-								<td><p> {{ item.product.price }} DA</p></td>
+								<td>
+									<p> 
+										{% if LANGUAGE_CODE != 'ar' %}
+												{{ item.product.price }} DA 
+										{% else %}
+												{{ item.product.price }} دج
+										{%endif%}
+									</p>
+								</td>
 							</tr>
 							
 						{% endfor %}
 							<tr>
 								<td>
-									<h4>Sous-Total</h4>
+									<h4>{% trans "Sous Total" %}</h4>
 								</td>
 								<td>
 									<h5></h5>
 								</td>
 								<td>
-									<p>{{ total_price }} DA</p>
+									<p> 
+										{% if LANGUAGE_CODE != 'ar' %}
+												{{ total_price }} DA 
+										{% else %}
+												{{ total_price }} دج
+										{%endif%}
+									</p>
 								</td>
 							</tr>
 							<tr>
 								<td>
-									<h4>Livraison</h4>
+									<h4>{% if LANGUAGE_CODE != 'ar' %} Livraison {% else %}التسليم{%endif%}</h4>
 								</td>
 								<td>
 									<h5></h5>
 								</td>
 								<td>
-									<p>600 DA</p>
+									<p> 
+										{% if LANGUAGE_CODE != 'ar' %}
+												{{ delivery }} DA 
+										{% else %}
+												{{ delivery }} دج
+										{%endif%}
+									</p>
 								</td>
 							</tr>
 							<tr>
 								<td>
-									<h4>Total</h4>
+									<h4>{% trans "Total" %}</h4>
 								</td>
 								<td>
-									<h5>{{ total_price}}</h5>
+									<h5>
+									{% if LANGUAGE_CODE != 'ar' %}
+												{{ total_price_with_delivery }} DA 
+										{% else %}
+												{{ total_price_with_delivery }} دج
+										{%endif%}</h5>
 								</td>
 
 								<td>

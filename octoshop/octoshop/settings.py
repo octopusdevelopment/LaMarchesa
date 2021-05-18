@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 import os
 from pathlib import Path
+from django.utils.translation import gettext_lazy as _
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,10 +22,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'zf*p9#mqlt7+kr)m@jt8kbjt)(pq9)l0d(uth-b*_!1-8ixxjr'
+SECRET_KEY = 'zf*p9#mqlt7+kr)m@jt8kbjt)(pq9)l0d(uth-b*_!1-8ixxjritachi'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -46,7 +48,10 @@ INSTALLED_APPS = [
     'coupons.apps.CouponsConfig',
     'debug_toolbar',
     'django_extensions',
-
+    # translating models
+    'parler',
+    #api
+    'rest_framework',
 
 ]
 
@@ -56,6 +61,7 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware', 
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -118,7 +124,6 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
-
 LANGUAGE_CODE = 'fr'
 
 TIME_ZONE = 'Africa/Algiers'
@@ -129,6 +134,35 @@ USE_L10N = True
 
 USE_TZ = True
 
+LANGUAGES = [('fr', _('French')), ('ar', _('Arabic'))]
+LANGUAGES_BIDI = ['ar']
+ALLOW_UNICODE_SLUGS = True
+
+PARLER_LANGUAGES = {
+ None: (
+ {'code': 'fr'},
+ {'code': 'ar'},
+ ),
+ 
+ 'default': {
+ 'fallback': 'fr',
+ 'hide_untranslated': False,
+ }
+}
+
+PARLER_ENABLE_CACHING = True
+CACHES = {
+'default': {
+'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
+'LOCATION': '127.0.0.1',
+'TIMEOUT': 24*3600
+},
+}
+
+PARLER_DEFAULT_LANGUAGE = 'fr'
+LOCALE_PATHS = [
+    BASE_DIR / 'locale',
+]
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
@@ -147,6 +181,8 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 INTERNAL_IPS = ['127.0.0.1', '::1', '0.0.0.0']
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+
 # EMAIL CONFIGURATION -- TODO: change later
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'

@@ -1,19 +1,25 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
+{% load i18n %}
+
 	<!-- breadcrumb -->
 	<div class="bread-crumb bgwhite flex-w p-l-52 p-r-15 p-t-30 p-l-15-sm">
 		<a href="{% url 'main:index' %}" class="s-text16">
-			Accueil
-			<i class="fa fa-angle-right m-l-8 m-r-9" aria-hidden="true"></i>
+			{% if LANGUAGE_CODE != 'ar' %}
+				Accueil
+			{% else %}
+				الصفحة الرئيسية
+			{% endif %}
+		<i class="fa {% if LANGUAGE_CODE != 'ar' %} fa-angle-right {% else %} fa-angle-left {%endif%} m-l-8 m-r-9" aria-hidden="true"></i>
 		</a>
 		<a href="{{product.subCategory.category.get_absolute_url}}" class="s-text16">
 			{{product.subCategory.category}}
-			<i class="fa fa-angle-right m-l-8 m-r-9" aria-hidden="true"></i>
+			<i class="fa {% if LANGUAGE_CODE != 'ar' %} fa-angle-right {% else %} fa-angle-left {%endif%} m-l-8 m-r-9" aria-hidden="true"></i>
 		</a>
 		<a href="{{product.subCategory.get_absolute_url}}" class="s-text16">
 			{{product.subCategory}}
-			<i class="fa fa-angle-right m-l-8 m-r-9" aria-hidden="true"></i>
+			<i class="fa {% if LANGUAGE_CODE != 'ar' %} fa-angle-right {% else %} fa-angle-left {%endif%} m-l-8 m-r-9" aria-hidden="true"></i>
 		</a>
 		<span class="s-text17">
 			{{product.name}}
@@ -64,13 +70,17 @@
 				</h1>
 
 				<span class="s-text23">
-					Prix : {{product.price}} DA
+					{% if LANGUAGE_CODE != 'ar' %}
+						Prix: {{product.price}} DA 
+					{% else %}
+						السعر: {{product.price}} دج  
+					{% endif %}
 				</span>
 
 				<form action="{% url 'cart:cart_add' product.id %}" method="post">
 					{% csrf_token %}
 					<div class="size-radios mt-5" >
-						<h5>Selectionnez une taille</h5>
+						<h5>{% trans "Selectionnez une taille" %}</h5>
 	
 							{% for co in product.taille.all %}
 								<label>
@@ -81,9 +91,9 @@
 							{% endfor %}
 					</div>
 					<table classe="mt-5">
-						<h5 >Selectionnez une Couleur</h5>
+						<h5>{% trans "Selectionnez une Couleur" %}</h5>
 						<tr>
-							<th style="margin-right: 20px;"> Couleur :</th>
+							<th style="margin-right: 20px;">{% trans "Couleur" %} :</th>
 								{% for co in product.color.all %}
 									<td class="colours">
 										<div class="d-inline-block text-center dot-wrapper">
@@ -121,20 +131,20 @@
 								</div>
 								<div class="btn-addcart-product-detail size9 trans-0-4 m-t-10 m-b-10">
 									<!-- Button -->
-									<input class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4" type="submit" style="width: 140%;" value="Ajouter au panier">
+									<input class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4" type="submit" style="width: 140%;" value="{% if LANGUAGE_CODE != 'ar' %}Ajouter au panier{% else %}أضف إلى السلة{%endif%}">
 								</div>
 							</div>
 						</div>
 				</form>
 
 				<div class="p-b-45">
-					<span class="s-text8">Catégorie: <a href="{{product.subCategory.get_absolute_url}}">{{product.subCategory}}</a>  </span>
+					<span class="s-text8">{% trans "Catégorie" %} : <a href="{{product.subCategory.get_absolute_url}}">{{product.subCategory}}</a>  </span>
 				</div>
 
 				<!--  -->
 				<div class="wrap-dropdown-content bo6 p-t-15 p-b-14 active-dropdown-content">
 					<h5 class="js-toggle-dropdown-content flex-sb-m cs-pointer m-text19 color0-hov trans-0-4">
-						Description
+						{% trans "Description" %}
 						<i class="down-mark fs-12 color1 fa fa-minus dis-none" aria-hidden="true"></i>
 						<i class="up-mark fs-12 color1 fa fa-plus" aria-hidden="true"></i>
 					</h5>
@@ -154,11 +164,15 @@
 
 	<!-- Related Product -->
 	{% if similar_products %}
-	<section class="relateproduct bgwhite p-t-45 p-b-138">
+	<section class="relateproduct bgwhite p-t-45 p-b-138" dir="rtl">
 		<div class="container">
 			<div class="sec-title p-b-60">
 				<h3 class="m-text5 t-center">
-					Produits similaires
+					{% if LANGUAGE_CODE != 'ar' %}
+						Produits similaires
+					{% else %}
+						منتجات مماثلة   
+					{%endif%}
 				</h3>
 			</div>
 
@@ -184,20 +198,20 @@
 									{% if prod.status == 'R' %}
 											<div class="rupture-overlay trans-0-4 ">
 												<div class="rupture-wrapbtn">
-													<p class="flex-c-m size1 bg3 hov1 s-text2 trans-0-4">Rupture</p>
+													<p class="flex-c-m size1 bg3 hov1 s-text2 trans-0-4">{% trans "Rupture" %}</p>
 												</div>
 											</div>
 										{% else %}
 											<div class="block2-overlay block2-btn-addcart w-size1 trans-0-4 ">
 												<div class="block2-btn-addcart w-size1 trans-0-4">
-													<a href="{{prod.get_absolute_url}}" class="flex-c-m size1 bg3 bo-rad-23 hov1 s-text2 trans-0-4">Voir</a>
+													<a href="{{prod.get_absolute_url}}" class="flex-c-m size1 bg3 bo-rad-23 hov1 s-text2 trans-0-4">{% trans "Voir" %}</a>
 												</div>
 											</div>
 									{% endif %}
 
 									<div class="block2-btn-addcart w-size1 trans-0-4">
 										<!-- Button -->
-										<a href="{{prod.get_absolute_url}}" class="flex-c-m size1 bg3 bo-rad-23 hov1 s-text2 trans-0-4">Voir</a>
+										<a href="{{prod.get_absolute_url}}" class="flex-c-m size1 bg3 bo-rad-23 hov1 s-text2 trans-0-4">{% trans "Voir" %}</a>
 												
 									</div>
 								</div>
@@ -207,19 +221,19 @@
 								<a href="{{prod.get_absolute_url}}" class="block2-name dis-block s-text3 p-b-5 text-capitalize">
 											{{prod.name}}
 								</a>
-								{% if prod.status == 'P' %}
-								<span class="block2-oldprice m-text7 p-r-5">
-								{{prod.old_price}}
-								</span>
-
-								<span class="block2-newprice m-text8 p-r-5">
-									{{prod.price}} DA
-								</span>
-								{% else %}
-								<span class="block2-price m-text6 p-r-5">
-											{{prod.price}} DA
-								</span>
-								{% endif %}
+								{% if prod.old_price %}
+										  
+										<span class="block2-oldprice m-text7 p-r-5">
+											{{prod.old_price}} دج
+										</span>
+										{% endif %}
+										<span class="block2-price m-text6 p-r-5">
+											{% if LANGUAGE_CODE != 'ar' %}
+												{{prod.price}} DA 
+											{% else %}
+												{{prod.price}} دج
+											{%endif%}
+										</span>
 							</div>
 						</div>
 					</div>

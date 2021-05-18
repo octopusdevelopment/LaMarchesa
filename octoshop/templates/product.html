@@ -1,5 +1,6 @@
 
 {% extends "base.html" %}
+{% load i18n %}
 {% load static %}
 {% static "images" as baseUrl %}
 
@@ -7,10 +8,10 @@
   
 	<section class="bg-title-page p-t-50 p-b-40 flex-col-c-m" style="background-image: url({% static 'images/blue_wall_1920x239.jpg' %});">
 		<h2 class="l-text2 t-center">
-			Femmes
+			{% trans "Femmes" %}
 		</h2>
 		<p class="m-text13 t-center">
-			Nouveautés Collection Femme
+			{% trans "Nouveautés Collection Femme" %}
 		</p>
 	</section>
 
@@ -23,13 +24,13 @@
 					<div class="leftbar p-r-20 p-r-0-sm">
 						<!--  -->
 						<h4 class="m-text14 p-b-7">
-							Catégories
+							{% trans "Catégories" %}
 						</h4>
 
 						<ul class="p-b-54">
 							<li class="p-t-4">
 								<a href="{% url 'main:products' %}" class="s-text13 active1">
-									Tous
+									{% trans "Tous" %}
 								</a>
 							</li>
 							{% for cat in sous_categories %}
@@ -49,7 +50,7 @@
 					<div class="flex-sb-m flex-w p-b-35">
 						<span class="s-text8 p-t-5 p-b-5">
 							<h3 >
-								{{size}}  {% if size > 1 %} Produits trouvés {% else %} Produit trouvé {%endif%}
+								{% if size > 1 %} {% blocktrans %}{{size}} Produits trouvés{% endblocktrans %} {% else %} {% blocktrans %}{{size}} Produit trouvé{% endblocktrans %} {% endif %}
 							</h3>
 						</span>
 					</div>
@@ -73,13 +74,13 @@
 										{% if prod.status == 'R' %}
 											<div class="rupture-overlay trans-0-4 ">
 												<div class="rupture-wrapbtn">
-													<p class="flex-c-m size1 bg3 hov1 s-text2 trans-0-4">Rupture</p>
+													<p class="flex-c-m size1 bg3 hov1 s-text2 trans-0-4">{% trans "Rupture" %}</p>
 												</div>
 											</div>
 										{% else %}
 											<div class="block2-overlay block2-btn-addcart w-size1 trans-0-4 ">
 												<div class="block2-btn-addcart w-size1 trans-0-4">
-													<a href="{{prod.get_absolute_url}}" class="flex-c-m size1 bg3 bo-rad-23 hov1 s-text2 trans-0-4">Voir</a>
+													<a href="{{prod.get_absolute_url}}" class="flex-c-m size1 bg3 bo-rad-23 hov1 s-text2 trans-0-4">{% trans "Voir" %}</a>
 												</div>
 											</div>
 										{% endif %}
@@ -89,19 +90,19 @@
 										<a href="{{prod.get_absolute_url}}" class="block2-name dis-block s-text3 p-b-5 text-capitalize">
 											{{prod.name}}
 										</a>
-										{% if prod.status == 'P' %}
-											<span class="block2-oldprice m-text7 p-r-5">
-											{{prod.old_price}}
-											</span>
-			
-											<span class="block2-newprice m-text8 p-r-5">
-												{{prod.price}} DA
-											</span>
-											{% else %}
-											<span class="block2-price m-text6 p-r-5">
-												{{prod.price}} DA
-											</span>
+										{% if prod.old_price %}
+										  
+										<span class="block2-oldprice m-text7 p-r-5">
+											{{prod.old_price}} دج
+										</span>
 										{% endif %}
+										<span class="block2-price m-text6 p-r-5">
+											{% if LANGUAGE_CODE != 'ar' %}
+												{{prod.price}} DA 
+											{% else %}
+												{{prod.price}} دج
+											{%endif%}
+										</span>
 									</div>
 								</div>
 							</div>
@@ -115,17 +116,17 @@
 					<!-- Pagination -->
 					<div class="pagination flex-m flex-w p-t-26">
 						{% if products.has_previous %}
-						<a href="?page={{ products.previous_page_number }}" class="flex-c-m trans-0-4 page">← Page précédante </a>
+						<a href="?page={{ products.previous_page_number }}" class="flex-c-m trans-0-4 page">← {% trans "Page précédante" %} </a>
 						<a href="?page={{ products.previous_page_number }}" class="item-pagination flex-c-m trans-0-4">{{ products.previous_page_number}}</a>
 						{% else %}
-						<a href="#" class="flex-c-m trans-0-4 page disabled" disabled>← Page précédante </a>
+						<a href="#" class="flex-c-m trans-0-4 page disabled" disabled>← {% trans "Page précédante" %} </a>
 						{% endif %}
 						<a href="?page={{ products.number }}" class="item-pagination flex-c-m trans-0-4 active-pagination">{{ products.number }}</a>
 						{% if products.has_next %}
 						<a href="?page={{ products.next_page_number }}" class="item-pagination flex-c-m trans-0-4">{{ products.next_page_number }}</a>
-						<a href="?page={{ products.next_page_number }}" class="flex-c-m trans-0-4 page">Page suivante →</a>
+						<a href="?page={{ products.next_page_number }}" class="flex-c-m trans-0-4 page">{% trans "Page suivante" %} →</a>
 						{% else %}
-						<a href="#" class="flex-c-m trans-0-4 page disabled" disabled>Page suivante →</a>
+						<a href="#" class="flex-c-m trans-0-4 page disabled" disabled>{% trans "Page suivante" %} →</a>
 						{% endif %}
 					</div> 
 					{%endif%}

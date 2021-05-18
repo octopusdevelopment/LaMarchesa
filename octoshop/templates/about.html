@@ -1,19 +1,29 @@
 {% extends "base.html" %}
+{% load i18n %}
+
 {% load static %}
+
+
 {% block content %}
 	<!-- Title Page -->
 	<section class="bg-title-page p-t-40 p-b-50 flex-col-c-m" style="background-image: url({% static 'images/bg_leaves_1920x239.jpg' %});">
 		<h2 class="l-text2 t-center" style="color:#242424">
-			À propos
+			{% blocktrans %} À propos {% endblocktrans %}
 		</h2>
 	</section>
 
 	<!-- content page -->
 	<section class=" p-t-66 p-b-38 m-b-50">
 		<div class="container">
-			<center><h1 classe="l-text2 t-center m-t-10">Hi, there. We're La Marchesa Boutique.</h1></center>
+			<center><h1 classe="l-text2 t-center m-t-10">
+				{% if LANGUAGE_CODE != 'ar' %}
+					Bienvenue, nous sommes la boutique LaMarchesa
+				{% else %}
+					أهلا نحن بوتيك لا مارشيسا
+				{%endif%}
+			</h1></center>
 			<p class="t-center m-t-30">
-				We opened in August 2020, and every since that beautiful summer day, have been working hard to offer you beautiful, trendy shoes and accessories that are edgy and practical, interesting and comfortable. La Marchesa Boutique wants you to feel great day and night, whatever the occasion. We want every visit to our shop to feel you are exploring your most stylish friend’s closet!
+				{% trans "We opened in August 2020, and every since that beautiful summer day, have been working hard to offer you beautiful, trendy shoes and accessories that are edgy and practical, interesting and comfortable. La Marchesa Boutique wants you to feel great day and night, whatever the occasion. We want every visit to our shop to feel you are exploring your most stylish friend’s closet!" %}
 			</p>
 			<div class="row " style="margin-top: 100px;">
 				<div class="col-lg-6 p-b-30">
@@ -24,12 +34,12 @@
 				<div class="col-lg-6 p-b-30" style="margin-top:70px"> 
 					<center class="mb-5">
 					<p>
-						WHO WE ARE 
+						{% trans "WHO WE ARE" %}
 					</p>
-					<h2>Meet the Designer</h2>
+					<h2>{% trans "Meet the Designer" %}</h2>
 				</center>
 					<p class="p-b-11 t-center ">
-						I’m inspired by street styles, and after spending a few years soaking up the city’s vibes, I knew I was ready to design my own shoes and accessories. At La Marchesa Boutique, I design what I feel, and feel what I design. It’s a combination that keeps things lively.
+						{% trans "I’m inspired by street styles, and after spending a few years soaking up the city’s vibes, I knew I was ready to design my own shoes and accessories. At La Marchesa Boutique, I design what I feel, and feel what I design. It’s a combination that keeps things lively." %}
 					</p>
 				</div>
 			</div>
@@ -37,17 +47,17 @@
 				<div class="col-lg-6 p-b-30 m-t-30" style="margin-top:70px" > 
 					<center class="mb-5">
 					<p>
-						OUR STORY 
+						{% trans "OUR STORY" %}
 					</p>
-					<h2>Trendy Tradition</h2> 
+					<h2>{% trans "Trendy Tradition" %}</h2> 
 				</center>
 					<p class="p-b-11 t-center">
-						I love fashion. I also love shoes and accessories that live longer than a single season. After all, if you’ve found an item that you really love, don’t you want to wear it longer than a single season? We wanted to build a store that sells shoes and accessories that are more than just trendy. We want you to know that whatever you buy here, you’ll be able to enjoy for years to come!
+						{% trans "I love fashion. I also love shoes and accessories that live longer than a single season. After all, if you’ve found an item that you really love, don’t you want to wear it longer than a single season? We wanted to build a store that sells shoes and accessories that are more than just trendy. We want you to know that whatever you buy here, you’ll be able to enjoy for years to come!" %}
 					</p>
 				</div>
 				<div class="col-lg-6 p-b-30">
 					<div class="hov-img-zoom">
-						<img class="img-fluid" src="{% static 'images/about.jpg' %}" alt="IMG-ABOUT">
+						<img class="img-fluid" src="{% static 'images/about.jpg' %}" alt="LaMarchesa - Vente de vêtements en ligne!">
 					</div>
 				</div>
 			</div>

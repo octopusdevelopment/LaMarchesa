@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load i18n %} 
 {% static "img" as baseUrl %}
 {% block content %}
   
@@ -10,10 +11,10 @@
 			<!-- row -->
 			<div class="row">
 				<div class="col-md-12">
-					<h3 class="breadcrumb-header">PANIER</h3>
+					<h3 class="breadcrumb-header">{% trans "PANIER" %}</h3>
 					<ul class="breadcrumb-tree">
-						<li><a href="{% url 'main:index' %}">Accueil</a></li>
-						<li class="active">PANIER</li>
+						<li><a href="{% url 'main:index' %}">{% if LANGUAGE_CODE != 'ar' %}Accueil{% else %}الصفحة الرئيسية{% endif %}</a></li>
+						<li class="active">{% trans "PANIER" %}</li>
 					</ul>
 				</div>
 			</div>
@@ -31,15 +32,15 @@
 					<table class="table-shopping-cart">
 						
 						<tr class="table-head">
-							<th class="column-1">Photo</th>
-							<th class="column-3">Produit</th>
-							<th class="column-3">Taille</th>
-							<th class="column-3">Couleur</th>
-							<th class="column-3">Prix</th>
-							<th class="column-4">Quantité</th>
-							<th class="column-4">Supprimer</th>
+							<th class="column-1">{% trans "Photo" %}</th>
+							<th class="column-3">{% trans "Produit" %}</th>
+							<th class="column-3">{% trans "Taille" %}</th>
+							<th class="column-3">{% trans "Couleur" %}</th>
+							<th class="column-3">{% trans "Prix" %}</th>
+							<th class="column-4">{% trans "Quantité" %}</th>
+							<th class="column-4">{% trans "Supprimer" %}</th>
 
-							<th class="column-5">Total</th>
+							<th class="column-5">{% trans "Total" %}</th>
 						</tr>
 				
 						{% if cart|length > 0 %}
@@ -55,13 +56,19 @@
 										<td class="column-3">{{product.name}}</td>
 									
 									{% else %}
-										<td class="column-2">hellooo</td>
+										<td class="column-2">X</td>
 									
 									{% endif %}
 									
 									<td class="column-3">{{item.taille}}</td>
 									<td class="column-3"><span class="dot small-dot mr-2" style="background-color: {{ item.color }}"></span></td>
-									<td class="column-3">{{item.price}} DZD</td>
+									<td class="column-3">
+										{% if LANGUAGE_CODE != 'ar' %}
+												{{item.price}} DA 
+										{% else %}
+												{{item.price}} دج
+										{%endif%}
+									</td>
 
 									<td class="column-4">
 										<form id="quantity-item" action="{% url 'cart:cart_update' product.id %}" method="post">
@@ -78,19 +85,7 @@
 												<button class="btn ml-3" type="submit"> <i class="fa fa-check"></i></button>
 											</div>
 												{% csrf_token %}
-													{% comment %}
-														<div class="flex-w bo5 of-hidden w-size17">
-															<button class="btn-num-product-down color1 flex-c-m size7 bg8 eff2">
-																<i class="fs-12 fa fa-minus" aria-hidden="true"></i>
-															</button>
-						
-															<input class="size8 m-text18 t-center num-product" type="number" name="num-product1" value="1">
-						
-															<button class="btn-num-product-up color1 flex-c-m size7 bg8 eff2">
-																<i class="fs-12 fa fa-plus" aria-hidden="true"></i>
-															</button>
-														</div>
-													{% endcomment %}
+												
 										</form>
 									</td>
 									<td>
@@ -100,14 +95,20 @@
 												{% csrf_token %}
 											</div>
 										</form>
-									<td class="column-5">{{ item.total_price }} DA</td>
+									<td class="column-5">
+										{% if LANGUAGE_CODE != 'ar' %}
+												{{ item.total_price }} DA
+										{% else %}
+												{{ item.total_price }} دج
+										{%endif%}
+									</td>
 								</tr>
 								{% endwith %}
 							{% endfor %}
 
 						{% else %}
 						<tr class="table-row">
-						<center><td colspan="12"><h2 class="ml-5 text-uppercase text-center text-danger " >Votre Panier est vide</h2></td> </center>
+						<center><td colspan="12"><h2 class="ml-5 text-uppercase text-center text-danger">{% trans "Votre Panier est vide" %}</h2></td> </center>
 						</tr>
 						{% endif %}
 					</table>
@@ -126,13 +127,14 @@
 					<table class="table-shopping-cart">
 						<tr class="table-head">
 						{% if cart.coupon%}
-							<th class="column-1">Coupon</th>
-							<th class="column-3">Réduction</th>
-							<th class="column-3">Sous Total </th>
-							<th class="column-3">Total</th>
-						{% else %}
-							<th class="column-1">Total</th>
+							<th class="column-1" style="text-transform: uppercase">
+								{% if LANGUAGE_CODE != 'ar' %} Coupon {% else %} كوبون {%endif%}
+							</th>
+							<th class="column-3">{% trans "Réduction" %}</th>
+							<th class="column-3">{% trans "Sous Total" %}</th>
 						{% endif %}
+							<th class="column-1">{% trans "Total" %}</th>
+						
 						
 
 						</tr>
@@ -140,15 +142,15 @@
 						{% if cart.coupon%}
 							<td class="column-1">"{{ cart.coupon.code }}"</td>
 							{% if cart.coupon.discount_percentage %}
- 								<td class="column-3"> {{ cart.coupon.discount_percentage}}% off</td>
+ 								<td class="column-3">{% if LANGUAGE_CODE != 'ar' %} {{ cart.coupon.discount_percentage}}% off {% else %} {{ cart.coupon.discount_percentage}}%  {% endif %}</td>
 								{% else %}
-								<td class="column-3"> - {{ cart.coupon.discount_amount}} DA</td>
+								<td class="column-3"> {% if LANGUAGE_CODE != 'ar' %}-{{cart.coupon.discount_amount}} DA{% else %}{{cart.coupon.discount_amount}}- دج{% endif %}</td>
 							{%endif%}
-							<td class="column-3">{{ cart.get_total_price|floatformat:2 }} DA</td>
-							<td class="column-3">{{ cart.get_total_price_after_discount|floatformat:2 }} DA</td>
+							<td class="column-3">{% if LANGUAGE_CODE != 'ar' %}{{cart.get_total_price|floatformat:2}} DA{% else %}{{cart.get_total_price|floatformat:2}} دج{% endif %}</td>
+							<td class="column-3">{% if LANGUAGE_CODE != 'ar' %}{{cart.get_total_price_after_discount|floatformat:2}} DA{% else %}{{cart.get_total_price_after_discount|floatformat:2}} دج{% endif %}</td>
 						
 						{% else %}
-							<td class="column-1">{{ cart.get_total_price_after_discount|floatformat:2 }} DA</td>
+							<td class="column-1">{% if LANGUAGE_CODE != 'ar' %}{{ cart.get_total_price_after_discount|floatformat:2 }} DA{% else %}{{cart.get_total_price_after_discount|floatformat:2}} دج{% endif %}</td>
 						{% endif %}
 						</tr>
 					</table>
@@ -156,28 +158,21 @@
 				</div>
 			{% endif %}
 		<!--Coupon -->
-		{% comment %} <div class="table-row" style= "padding:30px 0 0 50px">
-					<p class="column-1">Apply a coupon: </p>
-					<form action="{% url "coupons:apply" %}" method="post"  class="column-3" style="padding: 10px 0">
- 						{{ coupon_apply_form }}
- 						<input type="submit" value="Apply"  class="column-3"> 
- 					{% csrf_token %}
-					</form>
-		</div> {% endcomment %}
+
 		<div class="col-md-6 p-b-30">
 					<form class="leave-comment" action="{% url "coupons:apply" %}" method="post">
 						<h4 class="m-text26 p-b-36 p-t-15">
-							Saisissez un coupon ici
+							{% trans "Saisissez un coupon ici" %}
 						</h4>
 
 						<div class="bo4 of-hidden size15 m-b-20">
-							<input class="sizefull s-text7 p-l-22 p-r-22" type="text" name="code" placeholder="Coupon">
+							<input class="sizefull s-text7 p-l-22 p-r-22" type="text" name="code" placeholder="{% if LANGUAGE_CODE != 'ar' %} Coupon {% else %} كوبون {%endif%}">
 						</div>
 
 						<div class="w-size25">
 							<!-- Button -->
 							<button class="flex-c-m size2 bg1  hov1 m-text3 trans-0-4">
-								Utiliser
+								{% trans "Utiliser" %}
 							</button>
 						</div>
 						{% csrf_token %}
@@ -189,16 +184,16 @@
 				  
 				<div class="flex-w flex-m w-full-sm">
 					<div class="size11 m-r-10">
-						<a class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4" href="{% url 'main:products' %}" type="button">POURSUIVRE LES ACHATS</a>
+						<a class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4" href="{% url 'main:products' %}" type="button">{% trans "POURSUIVRE LES ACHATS" %}</a>
 					</div>
 				</div>
 				<div class="size10 trans-0-4 m-t-10 m-b-10">
-					<a class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4 " href="{% url 'orders:order_create' %}" type="button">Valider</a>
+					<a class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4 " href="{% url 'orders:order_create' %}" type="button">{% trans "Valider" %}</a>
 				</div>
 
 				{% else %}
 				<div class="size11 m-r-10">
-					<a class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4" href="{% url 'main:products' %}" type="button">SHOP</a>
+					<a class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4" href="{% url 'main:products' %}" type="button">{% trans "SHOP" %}</a>
 				</div>
 				{% endif %}
 

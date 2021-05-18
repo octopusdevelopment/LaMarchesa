@@ -1595,12 +1595,19 @@ li.sale-noti > a {
   content: 'Promotion';
 }
 
+.block2-labelsale.ar:before {
+  content: 'تخفيض'
+}
 
 .block2-labelnew:before {
   background-color: #233774;
-  content: 'New';
+  content: 'Nouveau';
 }
 
+.block2-labelnew.ar:before {
+  background-color: #233774;
+  content: 'جديد';
+}
 
 
 /* ------------------------------------ */

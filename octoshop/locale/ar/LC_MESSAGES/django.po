@@ -1,0 +1,685 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-05-18 14:17+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
+"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+
+#: .\cart\views.py:41
+msgid "veuillez choisir la taille et la couleur de votre choix"
+msgstr "الرجاء اختيار القياس واللون الذي تريده"
+
+#: .\cart\views.py:46
+#, fuzzy
+#| msgid "Selectionnez une Couleur"
+msgid "veuillez choisir une couleur "
+msgstr "اختر اللون"
+
+#: .\cart\views.py:52
+#, fuzzy
+#| msgid "Selectionnez une taille"
+msgid "veuillez choisir une taille"
+msgstr "اختر القياس"
+
+#: .\coupons\models.py:22
+msgid "Code coupon"
+msgstr "رمز الكوبون"
+
+#: .\coupons\models.py:23
+msgid "Valide à partir de"
+msgstr "متاح من"
+
+#: .\coupons\models.py:24
+msgid "Valide jusqu'à"
+msgstr "متاح حتى"
+
+#: .\coupons\models.py:25
+msgid "Montant"
+msgstr "كمية"
+
+#: .\coupons\models.py:26
+msgid "Pourcentage"
+msgstr "النسبة المئوية"
+
+#: .\coupons\models.py:27
+msgid "Actif"
+msgstr "مفعل"
+
+#: .\coupons\models.py:28
+msgid "Coupons restant"
+msgstr "كوبونات المتبقية"
+
+#: .\coupons\models.py:35
+msgid ""
+"Le pourcentage ou le montant doivent être différents de zéro, pas les deux "
+"en même temps"
+msgstr ""
+"يجب أن تختلف النسبة المئوية أو المبلغ عن الصفر ، وليس كلاهما في نفس الوقت"
+
+#: .\coupons\models.py:37
+msgid ""
+"Le pourcentage ou le montant doivent être différents à 0, pas les deux en "
+"même temps"
+msgstr "يجب أن تختلف النسبة المئوية أو المبلغ عن 0 ، وليس كلاهما في نفس الوقت"
+
+#: .\livraison\models.py:11
+msgid "Nom Wilaya"
+msgstr "اسم الولاية"
+
+#: .\livraison\models.py:13
+msgid "Coût de Livraison"
+msgstr "تكلفة التوصيل"
+
+#: .\livraison\models.py:14
+msgid "Activer"
+msgstr "تفعيل"
+
+#: .\livraison\models.py:21
+msgid "Nom Commune"
+msgstr "اسم البلدية"
+
+#: .\livraison\models.py:22 .\orders\models.py:25 .\templates\create.html:89
+#: .\templates\created.html:91
+msgid "Wilaya"
+msgstr "ولاية"
+
+#: .\main\models.py:12
+msgid "chaussures"
+msgstr "أحذية"
+
+#: .\main\models.py:13
+msgid "sacs"
+msgstr "حقائب"
+
+#: .\main\models.py:14
+msgid "accessoires"
+msgstr "اكسسوارات"
+
+#: .\main\models.py:18
+msgid "Nouveau"
+msgstr "جديد"
+
+#: .\main\models.py:19 .\templates\index.html:162
+#: .\templates\product-detail.html:201 .\templates\product.html:77
+msgid "Rupture"
+msgstr "غير متوفر"
+
+#: .\main\models.py:20
+msgid "Promotion"
+msgstr "تخفيض"
+
+#: .\main\models.py:21
+msgid "SANS"
+msgstr "بدون"
+
+#: .\main\models.py:26
+msgid "Nom catégorie"
+msgstr "اسم الفئة"
+
+#: .\main\models.py:27
+msgid "Slug"
+msgstr "سلاج"
+
+#: .\main\models.py:50
+msgid "Nom Sous Catégorie"
+msgstr "اسم الفئة الفرعية"
+
+#: .\main\models.py:51
+msgid "Slug Catégorie"
+msgstr "سلاج الفئة"
+
+#: .\main\models.py:52 .\templates\product-detail.html:141
+msgid "Catégorie"
+msgstr "الفئة"
+
+#: .\main\models.py:74
+msgid "Nom couleur"
+msgstr "اسم اللون"
+
+#: .\main\models.py:75
+msgid "Valeur hexadécimale"
+msgstr "قيمة السداسية العشرية"
+
+#: .\main\models.py:84
+msgid "Nom taille"
+msgstr "المقاس"
+
+#: .\main\models.py:90
+msgid "Nom produit"
+msgstr "اسم المنتج"
+
+#: .\main\models.py:91 .\templates\product-detail.html:147
+msgid "Description"
+msgstr "المواصفات"
+
+#: .\main\models.py:93
+msgid "slug"
+msgstr "سلاج"
+
+#: .\main\models.py:94
+msgid "Sous catégorie"
+msgstr "فئة فرعية"
+
+#: .\main\models.py:95
+msgid "Photo Principale"
+msgstr "الصورة الرئيسية"
+
+#: .\main\models.py:96
+msgid "Photo Secondaire"
+msgstr "الصورة الثانوية"
+
+#: .\main\models.py:97
+msgid "Photo Térciaire"
+msgstr "الصورة الثلاثية"
+
+#: .\main\models.py:98 .\orders\models.py:70 .\templates\cart.html:38
+#: .\templates\created.html:106 .\templates\product-detail.html:96
+msgid "Couleur"
+msgstr "اللون"
+
+#: .\main\models.py:99 .\orders\models.py:69 .\templates\cart.html:37
+#: .\templates\created.html:107
+msgid "Taille"
+msgstr "المقاس"
+
+#: .\main\models.py:100
+msgid "Status"
+msgstr "ستاتس"
+
+#: .\main\models.py:101 .\orders\models.py:67 .\templates\cart.html:39
+#: .\templates\created.html:108
+msgid "Prix"
+msgstr "السعر"
+
+#: .\main\models.py:102
+msgid "Ancien prix"
+msgstr "السعر القديم"
+
+#: .\main\models.py:104
+msgid "Afficher"
+msgstr "عرض"
+
+#: .\main\models.py:105
+msgid "Afficher dans l'accueil"
+msgstr "عرض في الصفحة الرئيسية"
+
+#: .\main\models.py:106
+msgid "CRÉE"
+msgstr "تاريخ الإنشاء"
+
+#: .\main\models.py:107
+msgid "MODIFIÉ"
+msgstr "تاريخ التعديل"
+
+#: .\main\models.py:128 .\templates\contact.html:48
+msgid "Nom complet"
+msgstr "اسم كامل"
+
+#: .\main\models.py:129 .\orders\models.py:23 .\templates\contact.html:36
+#: .\templates\contact.html:52
+msgid "Téléphone"
+msgstr "رقم الهاتف"
+
+#: .\main\models.py:130 .\orders\models.py:24 .\templates\contact.html:33
+#: .\templates\contact.html:56
+msgid "Email"
+msgstr "البريد الإلكتروني"
+
+#: .\main\models.py:131 .\templates\contact.html:60
+msgid "Sujet"
+msgstr "الموضوع"
+
+#: .\main\models.py:132 .\templates\contact.html:62
+msgid "Message"
+msgstr "الرسالة"
+
+#: .\main\models.py:133 .\templates\created.html:67
+msgid "Date"
+msgstr "بتاريخ"
+
+#: .\octoshop\settings.py:137
+msgid "French"
+msgstr "الفرنسية"
+
+#: .\octoshop\settings.py:137
+msgid "Arabic"
+msgstr "العربية"
+
+#: .\orders\models.py:20
+msgid "Nom"
+msgstr "اللقب"
+
+#: .\orders\models.py:21
+msgid "Prenom"
+msgstr "الاسم"
+
+#: .\orders\models.py:22 .\templates\created.html:93
+msgid "Adresse"
+msgstr "العنوان"
+
+#: .\orders\models.py:26 .\templates\create.html:99
+#: .\templates\created.html:92
+msgid "Commune"
+msgstr "البلدية"
+
+#: .\orders\models.py:27
+msgid "Crée"
+msgstr "تاريخ الإنشاء"
+
+#: .\orders\models.py:28
+msgid "Modifié"
+msgstr "تاريخ التعديل"
+
+#: .\orders\models.py:29
+msgid "Note"
+msgstr "ملاحظة"
+
+#: .\orders\models.py:30
+msgid "Payé"
+msgstr "مدفوع"
+
+#: .\orders\models.py:31
+msgid "Confirmé"
+msgstr "تم التأكيد"
+
+#: .\orders\models.py:32
+msgid "Coupons"
+msgstr "كوبونات"
+
+#: .\orders\models.py:33
+msgid "Prix Livraison"
+msgstr "سعر التسليم"
+
+#: .\orders\models.py:65 .\templates\create.html:22 .\templates\create.html:33
+msgid "Commande"
+msgstr "الطلب"
+
+#: .\orders\models.py:66 .\templates\cart.html:36 .\templates\create.html:129
+#: .\templates\created.html:104
+msgid "Produit"
+msgstr "منتج"
+
+#: .\orders\models.py:68 .\templates\cart.html:40 .\templates\created.html:105
+msgid "Quantité"
+msgstr "كمية"
+
+#: .\templates\about.html:11
+msgid " À propos "
+msgstr "حول"
+
+#: .\templates\about.html:26
+msgid ""
+"We opened in August 2020, and every since that beautiful summer day, have "
+"been working hard to offer you beautiful, trendy shoes and accessories that "
+"are edgy and practical, interesting and comfortable. La Marchesa Boutique "
+"wants you to feel great day and night, whatever the occasion. We want every "
+"visit to our shop to feel you are exploring your most stylish friend’s "
+"closet!"
+msgstr ""
+"افتتحنا في أغسطس 2020 ، ومنذ ذلك اليوم الصيفي الجميل ، نعمل جاهدين لنقدم لك "
+"أحذية وإكسسوارات جميلة وعصرية وعملية ومثيرة للاهتمام ومريحة. يريدك بوتيك لا "
+"مارشيسا أن تشعر بالراحة ليلاً ونهارًا ، مهما كانت المناسبة. نريد أن تشعر كل "
+"زيارة لمتجرنا أنك تستكشف خزانة صديقك الأكثر أناقة!"
+
+#: .\templates\about.html:37
+msgid "WHO WE ARE"
+msgstr "من نحن"
+
+#: .\templates\about.html:39
+msgid "Meet the Designer"
+msgstr "لقاء مع مصمم"
+
+#: .\templates\about.html:42
+msgid ""
+"I’m inspired by street styles, and after spending a few years soaking up the "
+"city’s vibes, I knew I was ready to design my own shoes and accessories. At "
+"La Marchesa Boutique, I design what I feel, and feel what I design. It’s a "
+"combination that keeps things lively."
+msgstr ""
+"أنا مستوحاة من أنماط الشارع ، وبعد قضاء بضع سنوات في الاستمتاع بأجواء "
+"المدينة ، أدركت أنني على استعداد لتصميم حذائي وإكسسواراتي الخاصة. في بوتيك "
+"لا مارشيسا ، أصمم ما أشعر به وأشعر بما أصممه. إنه مزيج يحافظ على حيوية "
+"الأشياء."
+
+#: .\templates\about.html:50
+msgid "OUR STORY"
+msgstr "قصتنا"
+
+#: .\templates\about.html:52
+msgid "Trendy Tradition"
+msgstr "تقليد عصري"
+
+#: .\templates\about.html:55
+msgid ""
+"I love fashion. I also love shoes and accessories that live longer than a "
+"single season. After all, if you’ve found an item that you really love, "
+"don’t you want to wear it longer than a single season? We wanted to build a "
+"store that sells shoes and accessories that are more than just trendy. We "
+"want you to know that whatever you buy here, you’ll be able to enjoy for "
+"years to come!"
+msgstr ""
+"أنا أحب الموضة. كما أنني أحب الأحذية والإكسسوارات التي تدوم أطول من موسم "
+"واحد. بعد كل شيء ، إذا وجدت عنصرًا تحبه حقًا ، ألا ترغب في ارتدائه لفترة أطول "
+"من موسم واحد؟ أردنا بناء متجر لبيع الأحذية والإكسسوارات التي هي أكثر من مجرد "
+"موضة. نريدك أن تعرف أنه مهما كان ما تشتريه هنا ، فستتمكن من الاستمتاع به "
+"لسنوات قادمة!"
+
+#: .\templates\admin\base_site.html:6
+msgid "La Marchesa - Panel"
+msgstr "لا مارشيسا - لوحة"
+
+#: .\templates\base.html:66 .\templates\base.html:265
+#: .\templates\base.html:417
+msgid "Accueil"
+msgstr "الصفحة الرئيسية"
+
+#: .\templates\base.html:82 .\templates\base.html:284
+#: .\templates\base.html:435
+msgid "Contact"
+msgstr "اتصال"
+
+#: .\templates\base.html:136 .\templates\base.html:240
+#: .\templates\base.html:356
+msgid "Voir panier"
+msgstr "انظر العربة"
+
+#: .\templates\base.html:143 .\templates\base.html:247
+#: .\templates\base.html:363
+msgid "Commander"
+msgstr "طلب"
+
+#: .\templates\base.html:387
+msgid "Livraison gratuite pour une commande de 8000 DZD et plus"
+msgstr "توصيل مجاني لطلب 8000 دج وأكثر"
+
+#: .\templates\base.html:452
+msgid "ENTRER EN CONTACT"
+msgstr "ابقى على تواصل"
+
+#: .\templates\base.html:457
+msgid ""
+"Des questions ? Faites-nous savoir via email ou nos réseaux sociaux ou "
+"appelez-nous au (+1) 96716 6879."
+msgstr ""
+"أسئلة ؟ أخبرنا عبر البريد الإلكتروني أو شبكاتنا الاجتماعية أو اتصل بنا على "
+"(+1) 96716 6879."
+
+#: .\templates\base.html:472 .\templates\product.html:27
+msgid "Catégories"
+msgstr "الفئات"
+
+#: .\templates\base.html:490
+msgid "Liens"
+msgstr "روابط"
+
+#: .\templates\base.html:502 .\templates\contact.html:9
+msgid "contact"
+msgstr "اتصال"
+
+#: .\templates\base.html:515
+msgid "Tous droits réservés Maison La Marchesa | Powered by"
+msgstr "جميع الحقوق محفوظة Maison La Marchesa | مشغل بواسطة"
+
+#: .\templates\cart.html:14 .\templates\cart.html:17
+#: .\templates\created.html:15
+msgid "PANIER"
+msgstr "السلة"
+
+#: .\templates\cart.html:35
+msgid "Photo"
+msgstr "الصورة"
+
+#: .\templates\cart.html:41
+msgid "Supprimer"
+msgstr "إزالة"
+
+#: .\templates\cart.html:43 .\templates\cart.html:136
+#: .\templates\create.html:172 .\templates\created.html:70
+#: .\templates\created.html:166
+msgid "Total"
+msgstr "المجموع"
+
+#: .\templates\cart.html:111
+msgid "Votre Panier est vide"
+msgstr "سلتك فارغة"
+
+#: .\templates\cart.html:133 .\templates\create.html:154
+msgid "Réduction"
+msgstr "تخفيض"
+
+#: .\templates\cart.html:134
+msgid "Sous Total"
+msgstr "المجموع الفرعي"
+
+#: .\templates\cart.html:165
+msgid "Saisissez un coupon ici"
+msgstr "أدخل كوبون هنا"
+
+#: .\templates\cart.html:175
+msgid "Utiliser"
+msgstr "استخدام"
+
+#: .\templates\cart.html:187
+msgid "POURSUIVRE LES ACHATS"
+msgstr "استمر في الشراء"
+
+#: .\templates\cart.html:191
+msgid "Valider"
+msgstr "تأكيد"
+
+#: .\templates\cart.html:196
+msgid "SHOP"
+msgstr "المتجر"
+
+#: .\templates\contact.html:31
+msgid "Coordonnées"
+msgstr "معلومات شخصية"
+
+#: .\templates\contact.html:44
+msgid "Envoyer-nous un message"
+msgstr "أرسل لنا رسالة"
+
+#: .\templates\contact.html:67
+msgid "Envoyer"
+msgstr "إرسال"
+
+#: .\templates\contact.html:80 .\templates\index.html:244
+msgid "Faites-vous livrer vos achats"
+msgstr "نسهر على  تسليم مشترياتكم"
+
+#: .\templates\contact.html:84 .\templates\index.html:248
+msgid "Cliquez ici pour plus d'info"
+msgstr "انقر هنا لمزيد من المعلومات"
+
+#: .\templates\contact.html:98 .\templates\index.html:262
+msgid "Devenez des clients fidèles et béneficiez de nos coupons!"
+msgstr "كن زبون مخلص واستفد من كوبونات!"
+
+#: .\templates\contact.html:104 .\templates\index.html:268
+msgid "Heures d'Ouverture"
+msgstr "ساعات الفتح"
+
+#: .\templates\contact.html:108 .\templates\index.html:272
+msgid "Du Samedi au Jeudi - De 8H à 19H"
+msgstr "من السبت إلى الخميس - من 8 صباحًا حتى 7 مساءً"
+
+#: .\templates\create.html:60
+msgid "Votre Nom"
+msgstr "اللقب"
+
+#: .\templates\create.html:66
+msgid "Votre Prénom"
+msgstr "اسمك"
+
+#: .\templates\create.html:73
+msgid "VotreEmail@example.com"
+msgstr "بريدك الإلكتروني"
+
+#: .\templates\create.html:79
+msgid "votre numéro de téléphone"
+msgstr "رقم هاتفك"
+
+#: .\templates\create.html:111
+msgid "Notes pour cette commande (facultatif)"
+msgstr "ملاحظات لهذا الطلب (اختياري)"
+
+#: .\templates\create.html:115
+msgid "Valider ma commande"
+msgstr "تأكيد طلبي"
+
+#: .\templates\create.html:130
+#, fuzzy
+#| msgid "Total"
+msgid "total"
+msgstr "المجموع"
+
+#: .\templates\created.html:46
+msgid "Merci, Votre commande a été effectuée avec succès."
+msgstr ""
+
+#: .\templates\created.html:99
+#, fuzzy
+#| msgid "Commande"
+msgid "Commande Détails"
+msgstr "الطلب"
+
+#: .\templates\created.html:132
+#, fuzzy
+#| msgid "Sous Total"
+msgid "Sous-Total"
+msgstr "المجموع الفرعي"
+
+#: .\templates\created.html:149
+#, fuzzy
+#| msgid "Prix Livraison"
+msgid "Livraison"
+msgstr "سعر التسليم"
+
+#: .\templates\index.html:18
+msgid "Leather Bags 1"
+msgstr "حقائب جلدية 1"
+
+#: .\templates\index.html:22
+msgid "New Collection 2018"
+msgstr "مجموعة جديدة 2018"
+
+#: .\templates\index.html:28
+msgid "Shop Now"
+msgstr "تسوق الآن"
+
+#: .\templates\index.html:37
+msgid "Sac à main"
+msgstr "حقائب اليد"
+
+#: .\templates\index.html:41
+#, fuzzy
+#| msgid "Nouveautés Collection Femme"
+msgid "Nouvelle Collection!"
+msgstr "المستجدات في مجموعة النساء"
+
+#: .\templates\index.html:47 .\templates\index.html:70
+msgid "Acheter"
+msgstr "شراء"
+
+#: .\templates\index.html:64
+msgid "Votre magazin favori"
+msgstr "متجركم المفضل"
+
+#: .\templates\index.html:136
+msgid "Produits Tendance"
+msgstr "منتجات تريند"
+
+#: .\templates\index.html:168 .\templates\product-detail.html:207
+#: .\templates\product-detail.html:214 .\templates\product.html:83
+msgid "Voir"
+msgstr "رؤية"
+
+#: .\templates\index.html:217
+msgid "La beauté"
+msgstr "الجمال"
+
+#: .\templates\index.html:221
+msgid "L'élegance"
+msgstr "الأناقة"
+
+#: .\templates\product-detail.html:83
+msgid "Selectionnez une taille"
+msgstr "اختر القياس"
+
+#: .\templates\product-detail.html:94
+msgid "Selectionnez une Couleur"
+msgstr "اختر اللون"
+
+#: .\templates\product.html:11
+msgid "Femmes"
+msgstr "النساء"
+
+#: .\templates\product.html:14
+msgid "Nouveautés Collection Femme"
+msgstr "المستجدات في مجموعة النساء"
+
+#: .\templates\product.html:33
+msgid "Tous"
+msgstr "جميع الفئات"
+
+#: .\templates\product.html:53
+#, python-format
+msgid "%(size)s Produits trouvés"
+msgstr "%(size)s منتجات"
+
+#: .\templates\product.html:53
+#, python-format
+msgid "%(size)s Produit trouvé"
+msgstr "%(size)s منتج"
+
+#: .\templates\product.html:119 .\templates\product.html:122
+msgid "Page précédante"
+msgstr "الصفحة السابقة"
+
+#: .\templates\product.html:127 .\templates\product.html:129
+msgid "Page suivante"
+msgstr "الصفحة التالية"
+
+#, fuzzy
+#~| msgid "Commander"
+#~ msgid "Commande Numéro"
+#~ msgstr "طلب"
+
+#, fuzzy
+#~| msgid "Commande"
+#~ msgid "Informations Commande"
+#~ msgstr "الطلب"
+
+#, fuzzy
+#~| msgid "Prix Livraison"
+#~ msgid "Informations Livraison"
+#~ msgstr "سعر التسليم"
+
+#, fuzzy
+#~| msgid "Valider ma commande"
+#~ msgid "Detail de commande"
+#~ msgstr "تأكيد طلبي"
+
+#, fuzzy
+#~| msgid "Réduction"
+#~ msgid "réduction"
+#~ msgstr "تخفيض"
+
+#, fuzzy
+#~| msgid "Coût de Livraison"
+#~ msgid "Votre adresse de livraison"
+#~ msgstr "تكلفة التوصيل"
